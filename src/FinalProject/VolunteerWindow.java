@@ -10,7 +10,11 @@ import java.time.LocalDateTime;
 
 public class VolunteerWindow {
     // home tab nodes
+    Label lblHome = new Label("Share a post with other volunteers!");
     Button btnAddPost = new Button("Add Post");
+    Button btnRefreshFeed = new Button("Refresh");
+    TextArea txtPost = new TextArea();
+    GridPane homeGridPane = new GridPane();
 
     // event tab nodes
 
@@ -63,11 +67,19 @@ public class VolunteerWindow {
 
         // GridPanes to hold the nodes (buttons, labels) of each scene
         //--------home tab
-        VBox content = new VBox(5);
-        ScrollPane scroller = new ScrollPane(content);
+        VBox vbox = new VBox(5);
+        ScrollPane scroller = new ScrollPane(vbox);
         scroller.setFitToWidth(true);
-        BorderPane homePane = new BorderPane(scroller, null, null, btnAddPost, null);
-        homePane.setMargin(btnAddPost, new Insets(12, 12, 12, 12));
+        txtPost.setWrapText(true);
+        txtPost.setPrefHeight(90);
+        homeGridPane.setHgap(10);
+        homeGridPane.setVgap(10);
+        homeGridPane.add(lblHome, 0, 0, 2, 1);
+        homeGridPane.add(btnAddPost, 0, 1);
+        homeGridPane.add(btnRefreshFeed, 0, 2);
+        homeGridPane.add(txtPost, 1, 1, 1, 2);
+        BorderPane homeBorderPane = new BorderPane(scroller, homeGridPane, null, null, null);
+        homeBorderPane.setMargin(homeGridPane, new Insets(12, 12, 12, 12));
         //--------event tab
         GridPane eventPane = new GridPane();
         //--------account tab
@@ -78,7 +90,7 @@ public class VolunteerWindow {
         setPositionAlignment(clockIOPane, accountPane);
 
         //Tab1.setContent(HomePane);
-        Tab1.setContent(homePane);
+        Tab1.setContent(homeBorderPane);
         Tab2.setContent(eventPane);
         Tab3.setContent(clockIOPane);
         Tab4.setContent(accountPane);
@@ -147,16 +159,16 @@ public class VolunteerWindow {
         btnAddPost.setOnAction(e -> {
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setStyle("-fx-background-color: WHITE");
-            Label label = new Label("Pane "+(content.getChildren().size()+1));
+            Label label = new Label("Pane "+(vbox.getChildren().size()+1));
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
             Button button = new Button("Remove");
-            button.setOnAction(evt -> content.getChildren().remove(anchorPane));
+            button.setOnAction(evt -> vbox.getChildren().remove(anchorPane));
             AnchorPane.setRightAnchor(button, 5.0);
             AnchorPane.setTopAnchor(button, 5.0);
             AnchorPane.setBottomAnchor(button, 5.0);
             anchorPane.getChildren().addAll(label, button);
-            content.getChildren().add(anchorPane);
+            vbox.getChildren().add(anchorPane);
         });
 
         // event lambda expressions
