@@ -1,0 +1,65 @@
+
+CREATE TABLE VOLUNTEER(
+	VolunteerID			Integer(5) primary key NOT NULL,
+	Name				VARCHAR(30),
+	DateOfBirth			DATE,
+	Specialization			VARCHAR(70)
+	EmailAddress			VARCHAR(30)		
+	HoursServed			FLOAT(5),
+	PhoneNumber			VARCHAR(15),
+	Status				VARCHAR(20),
+	EmergencyContactNum		VARCHAR(15),	
+	WorkHistory			VARCHAR(70),
+	TotalMileage			Integer(10),
+	AdminID				Integer(5) NOT NULL
+		references VOLUNTEER(VolunteerID)
+);
+
+CREATE TABLE EVENT(
+	EventID				Integer(5) primary key NOT NULL,
+	location			VARCHAR(35)
+);
+
+CREATE TABLE TRIP(
+	TripID				Integer(5) primary key NOT NULL,
+	VolunteerID			Integer(5)
+		references VOLUNTEER(VolunteerID),
+	Mileage 			Integer(3),
+	Date				DATE,
+	Info				VARCHAR(50),
+	EventID				Integer(5)
+		references EVENT(EventID)	
+);
+
+CREATE TABLE SOCIALPOSTS(
+	PostID				Integer(5) primary key NOT NULL,
+	VolunteerID			Integer(5) NOT NULL
+		references VOLUNTEER(VolunteerID),
+	Content				VARCHAR(150),
+	CreationDate			DATE
+);
+
+CREATE TABLE VOLUNTEERAPPLICATION(
+	VolunteerApplicationID		Integer(5) primary key NOT NULL,
+	VolunteerID			Integer(5) NOT NULL
+		references VOLUNTEER(VolunteerID),
+	DateOfBirth			DATE,
+	ShadowPreference		VARCHAR(30),
+	Address				VARCHAR(45),
+	City				CHAR(20),
+	State				CHAR(20),
+	Zip				Integer(5),
+	Experience			VARCHAR(250),
+	PreferredSpecialization 	VARCHAR(70),
+	EmergencyContactNum		VARCHAR(15)
+);
+
+CREATE TABLE TIMEHISTORY(
+	ClockInID			Integer(5) primary key NOT NULL,
+	VolunteerID			Integer(5) NOT NULL
+		references VOLUNTEER(VolunteerID),
+	Date				DATE,
+	TimeIn				Time(7),
+	TimeOut				Time(7)
+);
+
