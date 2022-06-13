@@ -24,15 +24,32 @@ public class VolunteerWindow {
     Label lblMyAccountInfo = new Label("My Account Info");
     Label lblName = new Label("Name\t");
     TextField txtName = new TextField();
+    Label lblDoB = new Label("Date of Birth\t");
+    TextField txtDoB = new TextField();
     Label lblEmail = new Label("Email\t");
     TextField txtEmail = new TextField();
-    Label lblAddress = new Label("Address\t");
+    Label lblPhone = new Label("Phone\t");
+    TextField txtPhone = new TextField();
+    Label lblAddress = new Label("Street Address\t");
     TextField txtAddress = new TextField();
+    Label lblCity = new Label("City\t");
+    TextField txtCity = new TextField();
+    Label lblState = new Label("State\t");
+    TextField txtState = new TextField();
+    Label lblZip = new Label("Zip Code\t");
+    TextField txtZip = new TextField();
+    Label lblWorkHistory = new Label("Work History\t");
+    TextArea txtWorkHistory = new TextArea();
     Label lblSpecialization = new Label("Specialization\t");
     ComboBox cbSpecialization = new ComboBox();
-    Button btnEdit = new Button("Edit");
-    Label lblAllVolunteers = new Label("All Volunteers");
-    ListView listView = new ListView();
+    Label lblShadow = new Label("Shadow Volunteer");
+    Label lblShadowName = new Label("Example Name");
+    Label lblEmergencyContactPhone = new Label("Emergency Contact Phone Number\t");
+    TextField txtEmergencyContactPhone = new TextField();
+
+    Button btnEdit = new Button("Confirm Account Changes");
+    Button btnViewVolunteers = new Button("View Volunteers");
+    Button btnLogout = new Button("Logout");
 
     public VolunteerWindow(){
         Stage primaryStage = new Stage();
@@ -84,27 +101,49 @@ public class VolunteerWindow {
         clockIOPane.add(lblClockOutTime, 0, 3);
 
         // nodal content of AccountPane
-        accountPane.add(lblMyAccountInfo, 0, 0);
+        // formatting
+        setMaxWidth(txtWorkHistory, txtName, txtDoB, txtEmail, txtPhone,
+                txtEmergencyContactPhone,  txtAddress, txtCity, txtState, txtZip);
+        txtWorkHistory.setMaxHeight(150);
+        txtWorkHistory.setWrapText(true);
+
+
+        accountPane.add(lblMyAccountInfo, 0, 0, 2, 1);
         lblMyAccountInfo.setStyle("-fx-font: 18 arial");
         accountPane.add(lblName, 0,1);
-        accountPane.add(txtName, 1, 1);
-        accountPane.add(lblEmail, 0, 2);
-        accountPane.add(txtEmail, 1, 2);
-        accountPane.add(lblAddress, 0, 3);
-        accountPane.add(txtAddress, 1, 3);
-        accountPane.add(lblSpecialization, 0, 4);
-        accountPane.add(cbSpecialization, 1, 4);
-        accountPane.add(btnEdit, 1, 5);
-        accountPane.add(lblAllVolunteers, 2, 0);
-        lblAllVolunteers.setStyle("-fx-font: 18 arial");
-        accountPane.add(listView, 2, 1, 1, 6);
+        accountPane.add(txtName, 0, 2);
+        accountPane.add(lblDoB, 0, 3);
+        accountPane.add(txtDoB, 0, 4);
+        accountPane.add(lblEmail, 0, 5);
+        accountPane.add(txtEmail, 0, 6);
+        accountPane.add(lblPhone, 0, 7);
+        accountPane.add(txtPhone, 0, 8);
+        accountPane.add(lblAddress, 0, 9);
+        accountPane.add(txtAddress, 0, 10);
+        accountPane.add(lblCity, 0, 11);
+        accountPane.add(txtCity, 0, 12);
+        accountPane.add(lblState, 0, 13);
+        accountPane.add(txtState, 0, 14);
+        accountPane.add(lblZip, 0, 15);
+        accountPane.add(txtZip, 0, 16);
+        accountPane.add(lblWorkHistory, 1, 1, 3, 1);
+        accountPane.add(txtWorkHistory, 1, 2, 3, 5);
+        accountPane.add(lblSpecialization, 1, 7, 3, 1);
+        accountPane.add(cbSpecialization, 1, 8, 3, 1);
+        accountPane.add(lblShadow, 1, 9, 3, 1);
+        accountPane.add(lblShadowName, 1, 10, 3, 1);
+        accountPane.add(lblEmergencyContactPhone, 1, 11, 3, 1);
+        accountPane.add(txtEmergencyContactPhone, 1, 12, 3, 1);
+        accountPane.add(btnEdit, 1, 16);
+        accountPane.add(btnViewVolunteers, 2, 16);
+        accountPane.add(btnLogout, 3, 16);
 
-        Scene primaryScene = new Scene(TabPane, 600, 600);
+        Scene primaryScene = new Scene(TabPane, 775, 600);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Bark Volunteer View");
         primaryStage.show();
 
-
+        // home lambda expressions
         btnAddPost.setOnAction(e -> {
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setStyle("-fx-background-color: WHITE");
@@ -120,12 +159,20 @@ public class VolunteerWindow {
             content.getChildren().add(anchorPane);
         });
 
+        // event lambda expressions
+
+        // clock in/out lambda expressions
         btnClockIn.setOnAction(e -> {
             lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
         });
 
         btnClockOut.setOnAction(e -> {
             lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentTime());
+        });
+
+        // account lambda expressions
+        btnViewVolunteers.setOnAction(e -> {
+            ViewVolunteers vv = new ViewVolunteers();
         });
 
 
@@ -142,5 +189,11 @@ public class VolunteerWindow {
             g.setHgap(10);
             g.setVgap(4);
         }
+    }
+
+    public void setMaxWidth(TextArea ta, TextField... tf){
+        for (TextField t: tf)
+            t.setPrefWidth(250);
+        ta.setPrefWidth(250);
     }
 }
