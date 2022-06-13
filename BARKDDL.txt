@@ -1,7 +1,7 @@
 CREATE TABLE VOLUNTEER(
 	VolunteerID			Integer(5) primary key NOT NULL,
 	Name				VARCHAR(30),
-	DateOfBirth			DATE,
+	DateOfBirth			CHAR (20),
 	Specialization			VARCHAR(70)
 	EmailAddress			VARCHAR(30)		
 	HoursServed			FLOAT(5),
@@ -24,7 +24,7 @@ CREATE TABLE TRIP(
 	VolunteerID			Integer(5)
 		references VOLUNTEER(VolunteerID),
 	Mileage 			Integer(3),
-	Date				DATE,
+	Date				CHAR (20),
 	Info				VARCHAR(50),
 	EventID				Integer(5)
 		references EVENT(EventID)	
@@ -35,14 +35,14 @@ CREATE TABLE SOCIALPOSTS(
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
 	Content				VARCHAR(150),
-	CreationDate			DATE
+	CreationDate			CHAR (20)
 );
 
 CREATE TABLE VOLUNTEERAPPLICATION(
 	VolunteerApplicationID		Integer(5) primary key NOT NULL,
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
-	DateOfBirth			DATE,
+	DateOfBirth			CHAR (20),
 	ShadowPreference		VARCHAR(30),
 	Address				VARCHAR(45),
 	City				CHAR(20),
@@ -57,7 +57,7 @@ CREATE TABLE TIMEHISTORY(
 	ClockInID			Integer(5) primary key NOT NULL,
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
-	Date				DATE,
+	Date				CHAR (20),
 	TimeIn				Time(7),
 	TimeOut				Time(7)
 );
