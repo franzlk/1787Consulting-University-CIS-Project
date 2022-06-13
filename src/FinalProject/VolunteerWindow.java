@@ -5,21 +5,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class VolunteerWindow {
     // home tab nodes
-    Button addPost = new Button("Add Post");
+    Button btnAddPost = new Button("Add Post");
 
     // event tab nodes
 
     // time entry tab nodes
-    Label lblEventHours = new Label("Log event hours:\t");
-    TextField txtEventHours = new TextField();
-    Label lblTotalMileage = new Label("Log total mileage:\t");
-    TextField txtTotalMileage = new TextField();
-    Label lblEventType = new Label("Log event type\t");
-    ComboBox cbEventType = new ComboBox();
-    Button btnSubmit = new Button("Submit Info");
+    Button btnClockIn = new Button("Clock-In");
+    Label lblClockInTime = new Label();
+    Button btnClockOut = new Button("Clock-Out");
+    Label lblClockOutTime = new Label();
 
     // account tab nodes
     Label lblMyAccountInfo = new Label("My Account Info");
@@ -42,7 +41,7 @@ public class VolunteerWindow {
         TabPane TabPane = new TabPane();
         Tab Tab1 = new Tab("Home");
         Tab Tab2 = new Tab("Event");
-        Tab Tab3 = new Tab("Time Entry");
+        Tab Tab3 = new Tab("Clock-In/Clock-Out");
         Tab Tab4 = new Tab("Account");
 
         // GridPanes to hold the nodes (buttons, labels) of each scene
@@ -50,21 +49,21 @@ public class VolunteerWindow {
         VBox content = new VBox(5);
         ScrollPane scroller = new ScrollPane(content);
         scroller.setFitToWidth(true);
-        BorderPane homePane = new BorderPane(scroller, null, null, addPost, null);
-        homePane.setMargin(addPost, new Insets(12, 12, 12, 12));
+        BorderPane homePane = new BorderPane(scroller, null, null, btnAddPost, null);
+        homePane.setMargin(btnAddPost, new Insets(12, 12, 12, 12));
         //--------event tab
         GridPane eventPane = new GridPane();
         //--------account tab
-        GridPane timeEntryPane = new GridPane();
+        GridPane clockIOPane = new GridPane();
         //--------home tab
         GridPane accountPane = new GridPane();
 
-        setPositionAlignment(timeEntryPane, accountPane);
+        setPositionAlignment(clockIOPane, accountPane);
 
         //Tab1.setContent(HomePane);
         Tab1.setContent(homePane);
         Tab2.setContent(eventPane);
-        Tab3.setContent(timeEntryPane);
+        Tab3.setContent(clockIOPane);
         Tab4.setContent(accountPane);
         TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4);
 
@@ -72,14 +71,17 @@ public class VolunteerWindow {
 
         // nodal content of EventPane
 
-        // nodal content of TimeEntryPane
-        timeEntryPane.add(lblEventHours, 0, 0);
-        timeEntryPane.add(txtEventHours, 1, 0);
-        timeEntryPane.add(lblTotalMileage, 0, 1);
-        timeEntryPane.add(txtTotalMileage, 1, 1);
-        timeEntryPane.add(lblEventType, 0, 2);
-        timeEntryPane.add(cbEventType, 1, 2);
-        timeEntryPane.add(btnSubmit, 0, 3);
+        // nodal content of clockIOPane
+        btnClockIn.setPrefWidth(250);
+        btnClockIn.setPrefHeight(60);
+        btnClockIn.setStyle("-fx-font: 16 arial");
+        btnClockOut.setPrefWidth(250);
+        btnClockOut.setPrefHeight(60);
+        btnClockOut.setStyle("-fx-font: 16 arial");
+        clockIOPane.add(btnClockIn, 0, 0);
+        clockIOPane.add(lblClockInTime, 0, 1);
+        clockIOPane.add(btnClockOut, 0, 2);
+        clockIOPane.add(lblClockOutTime, 0, 3);
 
         // nodal content of AccountPane
         accountPane.add(lblMyAccountInfo, 0, 0);
@@ -103,7 +105,7 @@ public class VolunteerWindow {
         primaryStage.show();
 
 
-        addPost.setOnAction(e -> {
+        btnAddPost.setOnAction(e -> {
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setStyle("-fx-background-color: WHITE");
             Label label = new Label("Pane "+(content.getChildren().size()+1));
@@ -118,8 +120,21 @@ public class VolunteerWindow {
             content.getChildren().add(anchorPane);
         });
 
+        btnClockIn.setOnAction(e -> {
+            lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
+        });
+
+        btnClockOut.setOnAction(e -> {
+            lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentTime());
+        });
 
 
+
+    }
+    public String getCurrentTime(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return (dtf.format(now));
     }
 
     public void setPositionAlignment(GridPane... gp){
