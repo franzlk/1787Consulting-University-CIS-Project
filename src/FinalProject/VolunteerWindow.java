@@ -1,6 +1,6 @@
 package FinalProject;
 
-import javafx.geometry.Pos;
+import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -50,7 +50,8 @@ public class VolunteerWindow {
         VBox content = new VBox(5);
         ScrollPane scroller = new ScrollPane(content);
         scroller.setFitToWidth(true);
-        BorderPane HomePane = new BorderPane(scroller, null, null, addPost, null);
+        BorderPane homePane = new BorderPane(scroller, null, null, addPost, null);
+        homePane.setMargin(addPost, new Insets(12, 12, 12, 12));
         //--------event tab
         GridPane eventPane = new GridPane();
         //--------account tab
@@ -61,7 +62,7 @@ public class VolunteerWindow {
         setPositionAlignment(timeEntryPane, accountPane);
 
         //Tab1.setContent(HomePane);
-        Tab1.setContent(HomePane);
+        Tab1.setContent(homePane);
         Tab2.setContent(eventPane);
         Tab3.setContent(timeEntryPane);
         Tab4.setContent(accountPane);
