@@ -25,16 +25,27 @@ public class SignUpWindow {
         txtUsername.setPromptText("Username");
         txtPassword.setPromptText("Password");
         vbox.getChildren().addAll(txtName, txtEmail, txtUsername, txtPassword, btnSignUp);
+
         txtName.setMaxWidth(225);
         txtEmail.setMaxWidth(225);
         txtUsername.setMaxWidth(225);
         txtPassword.setMaxWidth(225);
+
+        txtName.setFocusTraversable(false);
+        txtEmail.setFocusTraversable(false);
+        txtUsername.setFocusTraversable(false);
+        txtPassword.setFocusTraversable(false);
 
         Scene primaryScene = new Scene(vbox, 400, 500);
 
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Bark Sign Up");
         primaryStage.show();
+
+        btnSignUp.setOnAction(e -> {
+            VolunteerWindow vw = new VolunteerWindow();
+            primaryStage.hide();
+        });
 
     }
 }

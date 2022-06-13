@@ -6,7 +6,7 @@ import javafx.event.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.stage.*;
 import javafx.collections.*;
 import java.util.*;
 import javafx.scene.layout.VBox;
@@ -25,6 +25,7 @@ public class Main extends Application{
     Button btnLogin = new Button("Login");
     Label lblSignUp = new Label("If you are a new user, sign up below.");
     Button btnSignUp = new Button("Sign up");
+    TextField temp = new TextField();
 
 
 
@@ -38,14 +39,24 @@ public class Main extends Application{
         vbox.getChildren().addAll(txtUsername, txtPassword, btnLogin, lblSignUp, btnSignUp);
         txtUsername.setMaxWidth(225);
         txtPassword.setMaxWidth(225);
+        txtUsername.setFocusTraversable(false);
+        txtPassword.setFocusTraversable(false);
 
         Scene primaryScene = new Scene(vbox, 500, 500);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("BARK Login");
         primaryStage.show();
 
+        btnLogin.setOnAction(e -> {
+            VolunteerWindow vw = new VolunteerWindow();
+            primaryStage.hide();
+        });
+
         btnSignUp.setOnAction(e -> {
             SignUpWindow suw = new SignUpWindow();
+            primaryStage.hide();
         });
+
+
     }
 }

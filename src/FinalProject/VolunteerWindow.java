@@ -31,10 +31,11 @@ public class VolunteerWindow {
         volTab4.setContent(volAccountPane);
         volTabPane.getTabs().addAll(volTab1, volTab2, volTab3, volTab4);
 
-        Scene primaryScene = new Scene(volTabPane, 400, 500);
+        Scene primaryScene = new Scene(volTabPane, 600, 600);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Bark Volunteer View");
         primaryStage.show();
+
 
     }
 }
