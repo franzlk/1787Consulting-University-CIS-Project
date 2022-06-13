@@ -2,8 +2,8 @@ CREATE TABLE VOLUNTEER(
 	VolunteerID			Integer(5) primary key NOT NULL,
 	Name				VARCHAR(30),
 	DateOfBirth			CHAR (20),
-	Specialization			VARCHAR(70)
-	EmailAddress			VARCHAR(30)		
+	Specialization			VARCHAR(70),
+	EmailAddress			VARCHAR(30),		
 	HoursServed			FLOAT(5),
 	PhoneNumber			VARCHAR(15),
 	Status				VARCHAR(20),
@@ -42,7 +42,10 @@ CREATE TABLE VOLUNTEERAPPLICATION(
 	VolunteerApplicationID		Integer(5) primary key NOT NULL,
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
+	Name				VARCHAR(30),
 	DateOfBirth			CHAR (20),
+	EmailAddress			VARCHAR(30),
+	PhoneNumber			VARCHAR(15),
 	ShadowPreference		VARCHAR(30),
 	Address				VARCHAR(45),
 	City				CHAR(20),
