@@ -23,11 +23,8 @@ public class Main extends Application{
     TextField txtUsername = new TextField();
     TextField txtPassword = new TextField();
     Button btnLogin = new Button("Login");
-    Label lblSignUp = new Label("If you are a new user, sign up below.");
-    Button btnSignUp = new Button("Sign up");
-    TextField temp = new TextField();
-
-
+    Label lblSignUp = new Label("  If you are a new user, sign up below by\nfilling out an application to be a volunteer.");
+    Button btnSignUp = new Button("New Application");
 
     @Override
     public void start(Stage primaryStage) {
