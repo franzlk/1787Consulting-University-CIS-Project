@@ -91,7 +91,11 @@ public class SignUpWindow {
         primaryStage.show();
 
         btnSignUp.setOnAction(e -> {
-            VolunteerWindow vw = new VolunteerWindow();
+            Volunteer newVolunteer = new Volunteer(txtName.getText(), txtDoB.getText(),
+                    (String)cbSpecializationPreference.getSelectionModel().getSelectedItem(), txtEmail.getText(),
+                    0.0, txtPhone.getText(), "Conditional", txtEmergencyContactPhone.getText(),
+                    txtWorkHistory.getText(), 0.0, txtUsername.getText(), txtPassword.getText());
+            VolunteerWindow vw = new VolunteerWindow(newVolunteer);
             primaryStage.hide();
         });
 

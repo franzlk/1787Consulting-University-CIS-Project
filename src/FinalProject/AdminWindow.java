@@ -13,7 +13,7 @@ public class AdminWindow {
     // event tab nodes
     // clock in/out tab nodes
     // account tab nodes
-public AdminWindow(){
+public AdminWindow(Volunteer v){
     Stage primaryStage = new Stage();
 
     // TabPanes to be used in each Scene

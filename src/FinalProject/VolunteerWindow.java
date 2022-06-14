@@ -58,7 +58,7 @@ public class VolunteerWindow {
     Button btnViewVolunteers = new Button("View Volunteers");
     Button btnLogout = new Button("Logout");
 
-    public VolunteerWindow() {
+    public VolunteerWindow(Volunteer v) {
         Stage primaryStage = new Stage();
 
         // TabPanes to be used in each Scene

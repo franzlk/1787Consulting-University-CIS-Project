@@ -52,13 +52,13 @@ public class Main extends Application{
                 if ((txtUsername.getText().equals(v.username))
                         && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))
                         && (v.adminID==-1)){
-                    AdminWindow vw = new AdminWindow();
+                    AdminWindow vw = new AdminWindow(v);
                     primaryStage.hide();
                     bool = true;
                 }
                 else if ((txtUsername.getText().equals(v.username))
                         && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))) {
-                    VolunteerWindow vw = new VolunteerWindow();
+                    VolunteerWindow vw = new VolunteerWindow(v);
                     primaryStage.hide();
                     bool = true;
                 }
