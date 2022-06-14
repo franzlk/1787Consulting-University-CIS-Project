@@ -18,8 +18,9 @@ public class AddEventWindow {
     TextField txtState = new TextField();
     TextArea txtDescription = new TextArea();
     Button btnConfirm = new Button("Confirm Event");
+    VolunteerWindow parentForm;
 
-    public AddEventWindow(){
+    public AddEventWindow(VolunteerWindow parentForm){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -59,7 +60,10 @@ public class AddEventWindow {
         primaryStage.show();
 
         btnConfirm.setOnAction(e -> {
+            Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
+                    txtCity.getText(), txtState.getText(), txtDescription.getText());
             primaryStage.hide();
+            parentForm.addEvent();
         });
 
     }

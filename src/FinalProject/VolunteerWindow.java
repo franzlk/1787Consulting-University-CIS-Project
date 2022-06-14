@@ -20,6 +20,7 @@ public class VolunteerWindow {
     Label lblEvent = new Label("Create an event for volunteers to attend!");
     Button btnAddEvent = new Button("Add Event");
     Button btnRefreshEventFeed = new Button("Refresh");
+    VBox eventVBox = new VBox(5);
 
     // time entry tab nodes
     Button btnClockIn = new Button("Clock-In");
@@ -78,7 +79,7 @@ public class VolunteerWindow {
         homeBorderPane.setMargin(homeGridPane, new Insets(12, 12, 12, 12));
         //--------event tab
         GridPane eventGridPane = new GridPane();
-        VBox eventVBox = new VBox(5);
+
         ScrollPane eventScroller = new ScrollPane(eventVBox);
         eventScroller.setFitToWidth(true);
         BorderPane eventBorderPane = new BorderPane(eventScroller, eventGridPane, null, null, null);
@@ -189,23 +190,9 @@ public class VolunteerWindow {
         });
 
         btnAddEvent.setOnAction(e -> {
-            AddEventWindow aew = new AddEventWindow();
-            AnchorPane anchorPane = new AnchorPane();
-            anchorPane.setStyle("-fx-background-color: WHITE");
-            Label label = new Label("Post " + (eventVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
-            AnchorPane.setLeftAnchor(label, 5.0);
-            AnchorPane.setTopAnchor(label, 5.0);
-            Label content = new Label(txtPost.getText());
-            txtPost.clear();
-            AnchorPane.setLeftAnchor(content, 200.0);
-            AnchorPane.setTopAnchor(content, 5.0);
-            Button button = new Button("Remove");
-            button.setOnAction(evt -> eventVBox.getChildren().remove(anchorPane));
-            AnchorPane.setRightAnchor(button, 5.0);
-            AnchorPane.setTopAnchor(button, 5.0);
-            AnchorPane.setBottomAnchor(button, 5.0);
-            anchorPane.getChildren().addAll(label, content, button);
-            eventVBox.getChildren().add(anchorPane);
+
+            AddEventWindow aew = new AddEventWindow(this);
+
         });
 
         // event lambda expressions
@@ -225,6 +212,29 @@ public class VolunteerWindow {
         });
 
 
+    }
+
+    public Event getRecentEvent(){
+        return Event.eventArrayList.get(Event.eventArrayList.size()-1);
+    }
+
+    public void addEvent(){
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setStyle("-fx-background-color: WHITE");
+        Label label = new Label("Event " + (eventVBox.getChildren().size() + 1 + ", " + getRecentEvent().name));
+        AnchorPane.setLeftAnchor(label, 5.0);
+        AnchorPane.setTopAnchor(label, 5.0);
+        Label content = new Label(getRecentEvent().description);
+        txtPost.clear();
+        AnchorPane.setLeftAnchor(content, 200.0);
+        AnchorPane.setTopAnchor(content, 5.0);
+        Button button = new Button("Remove");
+        button.setOnAction(evt -> eventVBox.getChildren().remove(anchorPane));
+        AnchorPane.setRightAnchor(button, 5.0);
+        AnchorPane.setTopAnchor(button, 5.0);
+        AnchorPane.setBottomAnchor(button, 5.0);
+        anchorPane.getChildren().addAll(label, content, button);
+        eventVBox.getChildren().add(anchorPane);
     }
 
     public String getCurrentTime() {
