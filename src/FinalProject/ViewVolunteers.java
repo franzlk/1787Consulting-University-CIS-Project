@@ -12,7 +12,6 @@ public class ViewVolunteers {
     ListView listView = new ListView();
 
     public ViewVolunteers() {
-
         Stage primaryStage = new Stage();
         GridPane primaryPane = new GridPane();
         primaryPane.setAlignment(Pos.CENTER);

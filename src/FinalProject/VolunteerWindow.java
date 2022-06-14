@@ -189,22 +189,23 @@ public class VolunteerWindow {
         });
 
         btnAddEvent.setOnAction(e -> {
-                AnchorPane anchorPane = new AnchorPane();
-                anchorPane.setStyle("-fx-background-color: WHITE");
-                Label label = new Label("Post " + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
-                AnchorPane.setLeftAnchor(label, 5.0);
-                AnchorPane.setTopAnchor(label, 5.0);
-                Label content = new Label(txtPost.getText());
-                txtPost.clear();
-                AnchorPane.setLeftAnchor(content, 200.0);
-                AnchorPane.setTopAnchor(content, 5.0);
-                Button button = new Button("Remove");
-                button.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
-                AnchorPane.setRightAnchor(button, 5.0);
-                AnchorPane.setTopAnchor(button, 5.0);
-                AnchorPane.setBottomAnchor(button, 5.0);
-                anchorPane.getChildren().addAll(label, content, button);
-                homeVBox.getChildren().add(anchorPane);
+            AddEventWindow aew = new AddEventWindow();
+            AnchorPane anchorPane = new AnchorPane();
+            anchorPane.setStyle("-fx-background-color: WHITE");
+            Label label = new Label("Post " + (eventVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
+            AnchorPane.setLeftAnchor(label, 5.0);
+            AnchorPane.setTopAnchor(label, 5.0);
+            Label content = new Label(txtPost.getText());
+            txtPost.clear();
+            AnchorPane.setLeftAnchor(content, 200.0);
+            AnchorPane.setTopAnchor(content, 5.0);
+            Button button = new Button("Remove");
+            button.setOnAction(evt -> eventVBox.getChildren().remove(anchorPane));
+            AnchorPane.setRightAnchor(button, 5.0);
+            AnchorPane.setTopAnchor(button, 5.0);
+            AnchorPane.setBottomAnchor(button, 5.0);
+            anchorPane.getChildren().addAll(label, content, button);
+            eventVBox.getChildren().add(anchorPane);
         });
 
         // event lambda expressions

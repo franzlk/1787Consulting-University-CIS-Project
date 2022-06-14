@@ -86,7 +86,6 @@ public class SignUpWindow {
         gridPane.add(btnSignUp, 0, 13, 3, 1);
 
         Scene primaryScene = new Scene(gridPane, 600, 600);
-
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Bark Application");
         primaryStage.show();
