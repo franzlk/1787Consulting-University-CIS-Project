@@ -78,12 +78,16 @@ public class Main extends Application{
     @Override
     public void init(){
         // creating an initial admin user
-        String x = "admin";
-        Volunteer admin = new Volunteer(x, x, x, x, 0.0, x, x, x, x, 0.0, x, x);
+        Volunteer admin = new Volunteer("Generic Name", "10/26/1998", "Administration",
+                "genericemail@gmail.com", 20.0, "(999) 999-9999", "Full Volunteer",
+                "800 South Main St.", "Harrisonburg", "VA", "22801", "(999) 999-9999",
+                "James Madison University Bookstore", 948.5, "admin", "admin");
         admin.setAdminID(-1);
         // creating an initial regular volunteer
-        String y = "volunteer";
-        Volunteer volunteer = new Volunteer(y, y, y, y, 0.0, y, y, y, y, 0.0, y, y);
+        Volunteer volunteer = new Volunteer("Generic Name", "10/26/1998", "Administration",
+                "genericemail@gmail.com", 20.0, "(999) 999-9999", "Full Volunteer",
+                "800 South Main St.", "Harrisonburg", "VA", "22801", "(999) 999-9999",
+                "James Madison University Bookstore", 154.0, "volunteer", "volunteer");
 
     }
 

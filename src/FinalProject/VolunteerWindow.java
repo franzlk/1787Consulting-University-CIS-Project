@@ -49,7 +49,7 @@ public class VolunteerWindow {
     TextArea txtWorkHistory = new TextArea();
     Label lblSpecialization = new Label("Specialization\t");
     ComboBox cbSpecialization = new ComboBox();
-    Label lblShadow = new Label("Shadow Volunteer");
+    Label lblShadow = new Label();
     Label lblShadowName = new Label("Example Name");
     Label lblEmergencyContactPhone = new Label("Emergency Contact Phone Number\t");
     TextField txtEmergencyContactPhone = new TextField();
@@ -58,7 +58,7 @@ public class VolunteerWindow {
     Button btnViewVolunteers = new Button("View Volunteers");
     Button btnLogout = new Button("Logout");
 
-    public VolunteerWindow(Volunteer v) {
+    public VolunteerWindow(Volunteer activeUser) {
         Stage primaryStage = new Stage();
 
         // TabPanes to be used in each Scene
@@ -160,6 +160,19 @@ public class VolunteerWindow {
         accountPane.add(btnEdit, 1, 16);
         accountPane.add(btnViewVolunteers, 2, 16);
         accountPane.add(btnLogout, 3, 16);
+
+        txtName.setText(activeUser.getName());
+        txtDoB.setText(activeUser.getDateOfBirth());
+        txtEmail.setText(activeUser.getEmail());
+        txtPhone.setText(activeUser.getPhone());
+        txtAddress.setText(activeUser.getAddress());
+        txtCity.setText(activeUser.getCity());
+        txtState.setText(activeUser.getState());
+        txtZip.setText(activeUser.getZip());
+        txtWorkHistory.setText(activeUser.getWorkHistory());
+        //cbSpecialization.setText
+        //lblShadowName.setText();
+        txtEmergencyContactPhone.setText(activeUser.getEmergencyContactPhone());
 
         Scene primaryScene = new Scene(TabPane, 775, 600);
         primaryStage.setScene(primaryScene);

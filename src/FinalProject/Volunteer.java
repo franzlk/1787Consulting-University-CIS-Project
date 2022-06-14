@@ -15,6 +15,10 @@ public class Volunteer {
     Double hoursServed;
     String phone;
     String status;
+    String address;
+    String city;
+    String state;
+    String zip;
     String emergencyContactPhone;
     String workHistory;
     Double totalHours;
@@ -25,8 +29,8 @@ public class Volunteer {
     static ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
 
     public Volunteer(String name, String dateOfBirth, String specialization,
-                String email, Double hoursServed, String phone, String status,
-                String emergencyContactPhone, String workHistory, Double totalHours, String username, String password) {
+                String email, Double hoursServed, String phone, String status,String address, String city, String state,
+                String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password) {
 
         this.idNumber = ++count;
         this.name = name;
@@ -36,6 +40,10 @@ public class Volunteer {
         this.hoursServed = hoursServed;
         this.phone = phone;
         this.status = status;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
         this.emergencyContactPhone = emergencyContactPhone;
         this.workHistory = workHistory;
         this.totalHours = totalHours;
@@ -44,6 +52,38 @@ public class Volunteer {
 
         count++;
         addVolunteers(this);
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public static int getCount() {
