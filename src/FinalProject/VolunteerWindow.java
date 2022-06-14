@@ -15,9 +15,11 @@ public class VolunteerWindow {
     Button btnAddPost = new Button("Add Post");
     Button btnRefreshFeed = new Button("Refresh");
     TextArea txtPost = new TextArea();
-    GridPane homeGridPane = new GridPane();
 
     // event tab nodes
+    Label lblEvent = new Label("Create an event for volunteers to attend!");
+    Button btnAddEvent = new Button("Add Event");
+    Button btnRefreshEventFeed = new Button("Refresh");
 
     // time entry tab nodes
     Button btnClockIn = new Button("Clock-In");
@@ -68,9 +70,33 @@ public class VolunteerWindow {
 
         // GridPanes to hold the nodes (buttons, labels) of each scene
         //--------home tab
-        VBox vbox = new VBox(5);
-        ScrollPane scroller = new ScrollPane(vbox);
-        scroller.setFitToWidth(true);
+        GridPane homeGridPane = new GridPane();
+        VBox homeVBox = new VBox(5);
+        ScrollPane homeScroller = new ScrollPane(homeVBox);
+        homeScroller.setFitToWidth(true);
+        BorderPane homeBorderPane = new BorderPane(homeScroller, homeGridPane, null, null, null);
+        homeBorderPane.setMargin(homeGridPane, new Insets(12, 12, 12, 12));
+        //--------event tab
+        GridPane eventGridPane = new GridPane();
+        VBox eventVBox = new VBox(5);
+        ScrollPane eventScroller = new ScrollPane(eventVBox);
+        eventScroller.setFitToWidth(true);
+        BorderPane eventBorderPane = new BorderPane(eventScroller, eventGridPane, null, null, null);
+        eventBorderPane.setMargin(eventGridPane, new Insets(12, 12, 12, 12));
+        //--------account tab
+        GridPane clockIOPane = new GridPane();
+        //--------home tab
+        GridPane accountPane = new GridPane();
+
+        setPositionAlignment(clockIOPane, accountPane);
+        
+        Tab1.setContent(homeBorderPane);
+        Tab2.setContent(eventBorderPane);
+        Tab3.setContent(clockIOPane);
+        Tab4.setContent(accountPane);
+        TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4);
+
+        // nodal content of HomePane
         txtPost.setWrapText(true);
         txtPost.setPrefHeight(90);
         homeGridPane.setHgap(10);
@@ -79,28 +105,14 @@ public class VolunteerWindow {
         homeGridPane.add(btnAddPost, 0, 1);
         homeGridPane.add(btnRefreshFeed, 0, 2);
         homeGridPane.add(txtPost, 1, 1, 1, 2);
-        BorderPane homeBorderPane = new BorderPane(scroller, homeGridPane, null, null, null);
-        homeBorderPane.setMargin(homeGridPane, new Insets(12, 12, 12, 12));
-        //--------event tab
-        GridPane eventPane = new GridPane();
-        //--------account tab
-        GridPane clockIOPane = new GridPane();
-        //--------home tab
-        GridPane accountPane = new GridPane();
-
-        setPositionAlignment(clockIOPane, accountPane);
-
-        //Tab1.setContent(HomePane);
-        Tab1.setContent(homeBorderPane);
-        Tab2.setContent(eventPane);
-        Tab3.setContent(clockIOPane);
-        Tab4.setContent(accountPane);
-        TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4);
-
-        // nodal content of HomePane
-
+        
         // nodal content of EventPane
-
+        eventGridPane.setHgap(10);
+        eventGridPane.setVgap(10);
+        eventGridPane.add(lblEvent, 0, 0, 2, 1);
+        eventGridPane.add(btnAddEvent, 0, 1);
+        eventGridPane.add(btnRefreshEventFeed, 1, 1);
+        
         // nodal content of clockIOPane
         btnClockIn.setPrefWidth(250);
         btnClockIn.setPrefHeight(60);
@@ -119,7 +131,6 @@ public class VolunteerWindow {
                 txtEmergencyContactPhone, txtAddress, txtCity, txtState, txtZip);
         txtWorkHistory.setMaxHeight(150);
         txtWorkHistory.setWrapText(true);
-
 
         accountPane.add(lblMyAccountInfo, 0, 0, 2, 1);
         lblMyAccountInfo.setStyle("-fx-font: 18 arial");
@@ -161,7 +172,7 @@ public class VolunteerWindow {
             if (!txtPost.getText().equals("")){
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setStyle("-fx-background-color: WHITE");
-            Label label = new Label("Post " + (vbox.getChildren().size() + 1 + ", " + getCurrentTime()));
+            Label label = new Label("Post " + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
             Label content = new Label(txtPost.getText());
@@ -169,12 +180,31 @@ public class VolunteerWindow {
             AnchorPane.setLeftAnchor(content, 200.0);
             AnchorPane.setTopAnchor(content, 5.0);
             Button button = new Button("Remove");
-            button.setOnAction(evt -> vbox.getChildren().remove(anchorPane));
+            button.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
             AnchorPane.setRightAnchor(button, 5.0);
             AnchorPane.setTopAnchor(button, 5.0);
             AnchorPane.setBottomAnchor(button, 5.0);
             anchorPane.getChildren().addAll(label, content, button);
-            vbox.getChildren().add(anchorPane);}
+            homeVBox.getChildren().add(anchorPane);}
+        });
+
+        btnAddEvent.setOnAction(e -> {
+                AnchorPane anchorPane = new AnchorPane();
+                anchorPane.setStyle("-fx-background-color: WHITE");
+                Label label = new Label("Post " + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
+                AnchorPane.setLeftAnchor(label, 5.0);
+                AnchorPane.setTopAnchor(label, 5.0);
+                Label content = new Label(txtPost.getText());
+                txtPost.clear();
+                AnchorPane.setLeftAnchor(content, 200.0);
+                AnchorPane.setTopAnchor(content, 5.0);
+                Button button = new Button("Remove");
+                button.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
+                AnchorPane.setRightAnchor(button, 5.0);
+                AnchorPane.setTopAnchor(button, 5.0);
+                AnchorPane.setBottomAnchor(button, 5.0);
+                anchorPane.getChildren().addAll(label, content, button);
+                homeVBox.getChildren().add(anchorPane);
         });
 
         // event lambda expressions
