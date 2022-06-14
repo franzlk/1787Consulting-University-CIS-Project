@@ -63,7 +63,7 @@ public class AddEventWindow {
             Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
                     txtCity.getText(), txtState.getText(), txtDescription.getText());
             primaryStage.hide();
-            parentForm.addEvent();
+            parentForm.addEvent(event.idNumber);
         });
 
     }

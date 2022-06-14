@@ -22,6 +22,8 @@ public class VolunteerWindow {
     Button btnRefreshEventFeed = new Button("Refresh");
     VBox eventVBox = new VBox(5);
 
+
+
     // time entry tab nodes
     Button btnClockIn = new Button("Clock-In");
     Label lblClockInTime = new Label();
@@ -168,12 +170,12 @@ public class VolunteerWindow {
         primaryStage.setTitle("Bark Volunteer View");
         primaryStage.show();
 
-        // home lambda expressions
+        // home tab lambda expressions
         btnAddPost.setOnAction(e -> {
             if (!txtPost.getText().equals("")){
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setStyle("-fx-background-color: WHITE");
-            Label label = new Label("Post " + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
+            Label label = new Label("Post #" + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
             Label content = new Label(txtPost.getText());
@@ -189,15 +191,18 @@ public class VolunteerWindow {
             homeVBox.getChildren().add(anchorPane);}
         });
 
+
+
+        // event tab lambda expressions
         btnAddEvent.setOnAction(e -> {
 
             AddEventWindow aew = new AddEventWindow(this);
 
         });
 
-        // event lambda expressions
 
-        // clock in/out lambda expressions
+
+        // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
             lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
         });
@@ -206,34 +211,50 @@ public class VolunteerWindow {
             lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentTime());
         });
 
-        // account lambda expressions
+        // account tab lambda expressions
         btnViewVolunteers.setOnAction(e -> {
             ViewVolunteers vv = new ViewVolunteers();
         });
-
-
     }
 
-    public Event getRecentEvent(){
-        return Event.eventArrayList.get(Event.eventArrayList.size()-1);
-    }
-
-    public void addEvent(){
+    public void addEvent(int ID){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setStyle("-fx-background-color: WHITE");
-        Label label = new Label("Event " + (eventVBox.getChildren().size() + 1 + ", " + getRecentEvent().name));
+        Label label = new Label("Event #" + (eventVBox.getChildren().size() + 1 + ", " + Event.eventArrayList.get(ID-1).name));
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
-        Label content = new Label(getRecentEvent().description);
-        txtPost.clear();
+        Label content = new Label(Event.eventArrayList.get(ID-1).description);
+        Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
+        Button btnEditEvent = new Button ("Edit");
+        Button btnViewEvent = new Button ("View");
+
         AnchorPane.setLeftAnchor(content, 200.0);
         AnchorPane.setTopAnchor(content, 5.0);
-        Button button = new Button("Remove");
-        button.setOnAction(evt -> eventVBox.getChildren().remove(anchorPane));
-        AnchorPane.setRightAnchor(button, 5.0);
-        AnchorPane.setTopAnchor(button, 5.0);
-        AnchorPane.setBottomAnchor(button, 5.0);
-        anchorPane.getChildren().addAll(label, content, button);
+
+        AnchorPane.setRightAnchor(btnViewEvent, 200.0);
+        AnchorPane.setTopAnchor(btnViewEvent, 5.0);
+        AnchorPane.setBottomAnchor(btnViewEvent, 5.0);
+        btnViewEvent.setOnAction(evt -> {
+            ViewEventWindow vew = new ViewEventWindow(ID);
+        });
+        AnchorPane.setRightAnchor(btnEditEvent, 100.0);
+        AnchorPane.setTopAnchor(btnEditEvent, 5.0);
+        AnchorPane.setBottomAnchor(btnEditEvent, 5.0);
+        btnEditEvent.setOnAction(evt -> {
+            //edit the current anchorpane
+            // show edit window
+            //edit the event in the arraylist
+
+        });
+        AnchorPane.setRightAnchor(btnDeleteEvent, 5.0);
+        AnchorPane.setTopAnchor(btnDeleteEvent, 5.0);
+        AnchorPane.setBottomAnchor(btnDeleteEvent, 5.0);
+        btnDeleteEvent.setOnAction(evt -> {
+            eventVBox.getChildren().remove(anchorPane);
+            //show delete window
+            //add in delete window and delete from array list
+        });
+        anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);
         eventVBox.getChildren().add(anchorPane);
     }
 
