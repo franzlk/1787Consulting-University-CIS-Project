@@ -17,6 +17,7 @@ import oracle.jdbc.pool.*;
 public class Main extends Application{
     public static void main(String[] args){
         launch(args);
+
     }
 
     // Scene nodes
@@ -28,6 +29,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) {
+
         VBox vbox = new VBox(10);
         vbox.setAlignment(Pos.CENTER);
 
@@ -45,8 +47,24 @@ public class Main extends Application{
         primaryStage.show();
 
         btnLogin.setOnAction(e -> {
-            VolunteerWindow vw = new VolunteerWindow();
-            primaryStage.hide();
+            boolean bool = false;
+            for (Volunteer v : Volunteer.volunteerArrayList)
+                if ((txtUsername.getText().equals(v.username))
+                        && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))
+                        && (v.adminID==-1)){
+                    AdminWindow vw = new AdminWindow();
+                    primaryStage.hide();
+                    bool = true;
+                }
+                else if ((txtUsername.getText().equals(v.username))
+                        && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))) {
+                    VolunteerWindow vw = new VolunteerWindow();
+                    primaryStage.hide();
+                    bool = true;
+                }
+            if (bool == false)
+                System.out.println("Invalid User");
+
         });
 
         btnSignUp.setOnAction(e -> {
@@ -54,6 +72,18 @@ public class Main extends Application{
             primaryStage.hide();
         });
 
+
+    }
+
+    @Override
+    public void init(){
+        // creating an initial admin user
+        String x = "admin";
+        Volunteer admin = new Volunteer(x, x, x, x, 0.0, x, x, x, x, 0.0, x, x);
+        admin.setAdminID(-1);
+        // creating an initial regular volunteer
+        String y = "volunteer";
+        Volunteer volunteer = new Volunteer(y, y, y, y, 0.0, y, y, y, y, 0.0, y, y);
 
     }
 

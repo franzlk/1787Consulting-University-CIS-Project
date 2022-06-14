@@ -19,12 +19,14 @@ public class Volunteer {
     String workHistory;
     Double totalHours;
     int adminID = 0;
+    String username;
+    String password;
 
     static ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
 
     public Volunteer(String name, String dateOfBirth, String specialization,
                 String email, Double hoursServed, String phone, String status,
-                String emergencyContactPhone, String workHistory, Double totalHours) {
+                String emergencyContactPhone, String workHistory, Double totalHours, String username, String password) {
 
         this.idNumber = ++count;
         this.name = name;
@@ -37,7 +39,8 @@ public class Volunteer {
         this.emergencyContactPhone = emergencyContactPhone;
         this.workHistory = workHistory;
         this.totalHours = totalHours;
-        this.adminID = adminID;
+        this.username = username;
+        this.password = CryptoHash.cryptoProtect(password);
 
         count++;
         addVolunteers(this);

@@ -34,6 +34,19 @@ public class CryptoHash {
         return hexString.toString();
     }
 
+    public static String cryptoProtect(String x){
+        String convertedString = "";
+        try
+    {
+        convertedString = toHexString(getSHA(x));
+    }
+    // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+        System.out.println("Exception thrown for incorrect algorithm: " + e);
+    }
+        return convertedString;
+    }
+
     // Driver code
     /*public static void main(String args[])
     {

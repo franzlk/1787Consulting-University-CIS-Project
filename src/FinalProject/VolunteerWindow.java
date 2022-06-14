@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -22,9 +21,7 @@ public class VolunteerWindow {
     Button btnRefreshEventFeed = new Button("Refresh");
     VBox eventVBox = new VBox(5);
 
-
-
-    // time entry tab nodes
+    // clock in/out nodes
     Button btnClockIn = new Button("Clock-In");
     Label lblClockInTime = new Label();
     Button btnClockOut = new Button("Clock-Out");
@@ -71,7 +68,7 @@ public class VolunteerWindow {
         Tab Tab3 = new Tab("Clock-In/Clock-Out");
         Tab Tab4 = new Tab("Account");
 
-        // GridPanes to hold the nodes (buttons, labels) of each scene
+        // Panes to hold the nodes (buttons, labels) of each tab
         //--------home tab
         GridPane homeGridPane = new GridPane();
         VBox homeVBox = new VBox(5);
@@ -81,14 +78,13 @@ public class VolunteerWindow {
         homeBorderPane.setMargin(homeGridPane, new Insets(12, 12, 12, 12));
         //--------event tab
         GridPane eventGridPane = new GridPane();
-
         ScrollPane eventScroller = new ScrollPane(eventVBox);
         eventScroller.setFitToWidth(true);
         BorderPane eventBorderPane = new BorderPane(eventScroller, eventGridPane, null, null, null);
         eventBorderPane.setMargin(eventGridPane, new Insets(12, 12, 12, 12));
-        //--------account tab
+        //--------clock in/out tab
         GridPane clockIOPane = new GridPane();
-        //--------home tab
+        //--------account tab
         GridPane accountPane = new GridPane();
 
         setPositionAlignment(clockIOPane, accountPane);
@@ -167,7 +163,7 @@ public class VolunteerWindow {
 
         Scene primaryScene = new Scene(TabPane, 775, 600);
         primaryStage.setScene(primaryScene);
-        primaryStage.setTitle("Bark Volunteer View");
+        primaryStage.setTitle("BARK Volunteer View");
         primaryStage.show();
 
         // home tab lambda expressions
