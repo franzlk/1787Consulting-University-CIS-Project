@@ -35,7 +35,7 @@ public class CryptoHash {
     }
 
     // Driver code
-    public static void main(String args[])
+    /*public static void main(String args[])
     {
         try
         {
@@ -51,5 +51,5 @@ public class CryptoHash {
         catch (NoSuchAlgorithmException e) {
             System.out.println("Exception thrown for incorrect algorithm: " + e);
         }
-    }
+    }*/
 }
