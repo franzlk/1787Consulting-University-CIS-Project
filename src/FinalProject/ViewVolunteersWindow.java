@@ -8,10 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class ViewVolunteers {
+public class ViewVolunteersWindow {
     ListView listView = new ListView();
 
-    public ViewVolunteers() {
+    public ViewVolunteersWindow() {
         Stage primaryStage = new Stage();
         GridPane primaryPane = new GridPane();
         primaryPane.setAlignment(Pos.CENTER);

@@ -213,7 +213,7 @@ public class VolunteerWindow {
 
         // account tab lambda expressions
         btnViewVolunteers.setOnAction(e -> {
-            ViewVolunteers vv = new ViewVolunteers();
+            ViewVolunteersWindow vv = new ViewVolunteersWindow();
         });
     }
 
