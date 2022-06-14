@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -55,7 +56,7 @@ public class VolunteerWindow {
     Button btnViewVolunteers = new Button("View Volunteers");
     Button btnLogout = new Button("Logout");
 
-    public VolunteerWindow(){
+    public VolunteerWindow() {
         Stage primaryStage = new Stage();
 
         // TabPanes to be used in each Scene
@@ -115,14 +116,14 @@ public class VolunteerWindow {
         // nodal content of AccountPane
         // formatting
         setMaxWidth(txtWorkHistory, txtName, txtDoB, txtEmail, txtPhone,
-                txtEmergencyContactPhone,  txtAddress, txtCity, txtState, txtZip);
+                txtEmergencyContactPhone, txtAddress, txtCity, txtState, txtZip);
         txtWorkHistory.setMaxHeight(150);
         txtWorkHistory.setWrapText(true);
 
 
         accountPane.add(lblMyAccountInfo, 0, 0, 2, 1);
         lblMyAccountInfo.setStyle("-fx-font: 18 arial");
-        accountPane.add(lblName, 0,1);
+        accountPane.add(lblName, 0, 1);
         accountPane.add(txtName, 0, 2);
         accountPane.add(lblDoB, 0, 3);
         accountPane.add(txtDoB, 0, 4);
@@ -157,18 +158,23 @@ public class VolunteerWindow {
 
         // home lambda expressions
         btnAddPost.setOnAction(e -> {
+            if (!txtPost.getText().equals("")){
             AnchorPane anchorPane = new AnchorPane();
             anchorPane.setStyle("-fx-background-color: WHITE");
-            Label label = new Label("Pane "+(vbox.getChildren().size()+1));
+            Label label = new Label("Post " + (vbox.getChildren().size() + 1 + ", " + getCurrentTime()));
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
+            Label content = new Label(txtPost.getText());
+            txtPost.clear();
+            AnchorPane.setLeftAnchor(content, 200.0);
+            AnchorPane.setTopAnchor(content, 5.0);
             Button button = new Button("Remove");
             button.setOnAction(evt -> vbox.getChildren().remove(anchorPane));
             AnchorPane.setRightAnchor(button, 5.0);
             AnchorPane.setTopAnchor(button, 5.0);
             AnchorPane.setBottomAnchor(button, 5.0);
-            anchorPane.getChildren().addAll(label, button);
-            vbox.getChildren().add(anchorPane);
+            anchorPane.getChildren().addAll(label, content, button);
+            vbox.getChildren().add(anchorPane);}
         });
 
         // event lambda expressions
@@ -189,22 +195,23 @@ public class VolunteerWindow {
 
 
     }
-    public String getCurrentTime(){
+
+    public String getCurrentTime() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return (dtf.format(now));
     }
 
-    public void setPositionAlignment(GridPane... gp){
-        for (GridPane g : gp){
+    public void setPositionAlignment(GridPane... gp) {
+        for (GridPane g : gp) {
             g.setAlignment(Pos.CENTER);
             g.setHgap(10);
             g.setVgap(4);
         }
     }
 
-    public void setMaxWidth(TextArea ta, TextField... tf){
-        for (TextField t: tf)
+    public void setMaxWidth(TextArea ta, TextField... tf) {
+        for (TextField t : tf)
             t.setPrefWidth(250);
         ta.setPrefWidth(250);
     }
