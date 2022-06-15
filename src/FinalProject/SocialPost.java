@@ -5,7 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.*;
 
-public class HomePost {
+public class SocialPost {
 
     static int count = 0;
     int idNumber;
@@ -14,9 +14,9 @@ public class HomePost {
     String userID;
     String text;
 
-    static ArrayList<HomePost> homePostArrayList = new ArrayList<>();
+    static ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
 
-    public HomePost(int idNumber, String date, String time, String userID, String text) {
+    public SocialPost(int idNumber, String date, String time, String userID, String text) {
         this.idNumber = ++count;
         this.date = date;
         this.time = time;
@@ -55,8 +55,8 @@ public class HomePost {
         return text;
     }
 
-    public static ArrayList<HomePost> getHomePostArrayList() {
-        return homePostArrayList;
+    public static ArrayList<SocialPost> getHomePostArrayList() {
+        return socialPostArrayList;
     }
 
     @Override
@@ -70,9 +70,9 @@ public class HomePost {
                 '}';
     }
 
-    public static void addPost(HomePost... posts) {
-        for (HomePost p : posts) {
-            Collections.addAll(homePostArrayList, p);
+    public static void addPost(SocialPost... posts) {
+        for (SocialPost sp : posts) {
+            Collections.addAll(socialPostArrayList, sp);
         }
     }
 }
