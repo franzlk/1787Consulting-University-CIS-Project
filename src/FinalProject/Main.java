@@ -65,8 +65,8 @@ public class Main extends Application{
 
                 }
                 else if (!bool){
-                    if (i<= Volunteer.volunteerArrayList.size())
-                        continue;
+                    if (i < Volunteer.volunteerArrayList.size() - 1){
+                        continue;}
                     ErrorWindow ew = new ErrorWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
                         "Please try again or contact an administrator.");
                 }
