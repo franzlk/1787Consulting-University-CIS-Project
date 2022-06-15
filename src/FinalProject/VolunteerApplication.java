@@ -45,6 +45,10 @@ public class VolunteerApplication {
         addVolunteerApplication(this);
     }
 
+    public int getIdNumber() {
+        return idNumber;
+    }
+
     @Override
     public String toString() {
         return "VolunteerApplication{" +
