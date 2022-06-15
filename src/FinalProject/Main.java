@@ -48,29 +48,30 @@ public class Main extends Application{
 
         btnLogin.setOnAction(e -> {
             boolean bool = false;
-            //for (int i = 0; i<Volunteer.volunteerArrayList.size(); i++)
-            for (Volunteer v : Volunteer.volunteerArrayList)
-                if ((txtUsername.getText().equals(v.username))
-                        && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))
-                        && (v.adminID==-1)){
-                    AdminWindow vw = new AdminWindow(v);
+            for (int i = 0; i<Volunteer.volunteerArrayList.size(); i++){
+                if ((txtUsername.getText().equals(Volunteer.volunteerArrayList.get(i).username))
+                        && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(Volunteer.volunteerArrayList.get(i).password))
+                        && (Volunteer.volunteerArrayList.get(i).adminID==-1)){
+                    AdminWindow vw = new AdminWindow(Volunteer.volunteerArrayList.get(i));
                     primaryStage.hide();
                     bool = true;
 
                 }
-                else if ((txtUsername.getText().equals(v.username))
-                        && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))) {
-                    VolunteerWindow vw = new VolunteerWindow(v);
+                else if ((txtUsername.getText().equals(Volunteer.volunteerArrayList.get(i).username))
+                        && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(Volunteer.volunteerArrayList.get(i).password))) {
+                    VolunteerWindow vw = new VolunteerWindow(Volunteer.volunteerArrayList.get(i));
                     primaryStage.hide();
                     bool = true;
 
                 }
                 else if (!bool){
-                    //if (i<= Volunteer.volunteerArrayList.size())
-                    //    continue;
+                    if (i<= Volunteer.volunteerArrayList.size())
+                        continue;
                     ErrorWindow ew = new ErrorWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
                         "Please try again or contact an administrator.");
-                }});
+                }
+            }
+        });
 
 
         btnSignUp.setOnAction(e -> {
