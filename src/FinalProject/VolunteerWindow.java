@@ -201,16 +201,10 @@ public class VolunteerWindow {
                 homeVBox.getChildren().add(anchorPane);}
         });
 
-
-
         // event tab lambda expressions
         btnAddEvent.setOnAction(e -> {
-
             AddEventWindow aew = new AddEventWindow(this);
-
         });
-
-
 
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
@@ -224,6 +218,12 @@ public class VolunteerWindow {
         // account tab lambda expressions
         btnViewVolunteers.setOnAction(e -> {
             ViewVolunteersWindow vv = new ViewVolunteersWindow();
+        });
+
+        btnLogout.setOnAction(e -> {
+            Main m = new Main();
+            m.start(new Stage());
+            primaryStage.hide();
         });
     }
 

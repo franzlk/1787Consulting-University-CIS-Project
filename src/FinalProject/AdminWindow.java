@@ -165,6 +165,16 @@ public AdminWindow(Volunteer activeUser){
     primaryStage.setScene(primaryScene);
     primaryStage.setTitle("BARK Admin View");
     primaryStage.show();
+
+    // home tab lambda expressions
+    // event tab lambda expression
+    // volunteer management tab lambda expressions
+    // account tab lambda expressions
+    btnLogout.setOnAction(e -> {
+        Main m = new Main();
+        m.start(new Stage());
+        primaryStage.hide();
+    });
 }
 
     public void setPositionAlignment(GridPane... gp) {
