@@ -189,12 +189,7 @@ public class Volunteer {
 
     @Override
     public String toString() {
-        return "Volunteer{" +
-                "name='" + name + '\'' +
-                ", specialization='" + specialization + '\'' +
-                ", hoursServed=" + hoursServed +
-                ", status='" + status + '\'' +
-                '}';
+        return name + ";\t\tSpecialization: " + specialization;
     }
 
     public static void addVolunteers(Volunteer... volunteers){

@@ -85,17 +85,21 @@ public class Main extends Application{
     @Override
     public void init(){
         // creating an initial admin user
-        Volunteer admin = new Volunteer("Generic Name", "10/26/1998", "Administration",
+        Volunteer admin = new Volunteer("Julie Markinson", "10/26/1998", "Administration",
                 "genericemail@gmail.com", 20.0, "(999) 999-9999", "Full Volunteer",
                 "800 South Main St.", "Harrisonburg", "VA", "22801", "(999) 999-9999",
                 "James Madison University Bookstore", 948.5, "admin", "admin");
         admin.setAdminID(-1);
         // creating an initial regular volunteer
-        Volunteer volunteer = new Volunteer("Generic Name", "10/26/1998", "Administration",
+        Volunteer volunteer = new Volunteer("John Newby", "10/26/1998", "Animal Health Care",
                 "genericemail@gmail.com", 20.0, "(999) 999-9999", "Full Volunteer",
                 "800 South Main St.", "Harrisonburg", "VA", "22801", "(999) 999-9999",
                 "James Madison University Bookstore", 154.0, "volunteer", "volunteer");
-
+        // creating an initial pending application
+        VolunteerApplication va = new VolunteerApplication("Sarah McInterested", "10/26/1998",
+                "genericemail@email.com", "(999) 999-9999", "800 South Main St.", "Harrisonburg",
+                "VA", "22801", "JMU Bookstore", "Adopter Relations",
+                "Julie Markinson", "(999) 999-9999", "volunteerApplication");
     }
 
 

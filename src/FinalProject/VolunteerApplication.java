@@ -23,7 +23,7 @@ public class VolunteerApplication {
 
     static ArrayList<VolunteerApplication> volunteerApplicationArrayList = new ArrayList<>();
 
-    public VolunteerApplication(int idNumber, String name, String doB, String email,
+    public VolunteerApplication(String name, String doB, String email,
                                 String phone, String address, String city, String state,
                                 String zip, String workHistory, String specializationPreference,
                                 String shadowPreference, String emergencyContactPhone, String username) {
@@ -51,11 +51,7 @@ public class VolunteerApplication {
 
     @Override
     public String toString() {
-        return "VolunteerApplication{" +
-                "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", specializationPreference='" + specializationPreference + '\'' +
-                '}';
+        return name +";\t\tPhone: " + phone;
     }
 
     public static void addVolunteerApplication(VolunteerApplication... apps) {
