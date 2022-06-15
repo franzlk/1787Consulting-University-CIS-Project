@@ -61,7 +61,7 @@ CREATE TABLE TIMEHISTORY(
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
 	Date				CHAR (20),
-	TimeIn				Time(7),
-	TimeOut				Time(7)
+	TimeIn				CHAR (7),
+	TimeOut				CHAR (7)
 );
 
