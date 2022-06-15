@@ -25,7 +25,7 @@ public class SignUpWindow {
     TextField txtState = new TextField();
     TextField txtZip = new TextField();
     TextField txtUsername = new TextField();
-    TextField txtPassword = new TextField();
+    PasswordField txtPassword = new PasswordField();
     Label spacer1 = new Label();
     Label spacer2 = new Label();
     Label spacer3 = new Label();
