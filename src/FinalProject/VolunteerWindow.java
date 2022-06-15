@@ -49,7 +49,7 @@ public class VolunteerWindow {
     TextArea txtWorkHistory = new TextArea();
     Label lblSpecialization = new Label("Specialization\t");
     ComboBox cbSpecialization = new ComboBox();
-    Label lblShadow = new Label();
+    Label lblShadow = new Label("Shadow name");
     Label lblShadowName = new Label("Example Name");
     Label lblEmergencyContactPhone = new Label("Emergency Contact Phone Number\t");
     TextField txtEmergencyContactPhone = new TextField();

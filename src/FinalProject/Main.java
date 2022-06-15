@@ -48,6 +48,7 @@ public class Main extends Application{
 
         btnLogin.setOnAction(e -> {
             boolean bool = false;
+            //for (int i = 0; i<Volunteer.volunteerArrayList.size(); i++)
             for (Volunteer v : Volunteer.volunteerArrayList)
                 if ((txtUsername.getText().equals(v.username))
                         && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))
@@ -55,17 +56,22 @@ public class Main extends Application{
                     AdminWindow vw = new AdminWindow(v);
                     primaryStage.hide();
                     bool = true;
+
                 }
                 else if ((txtUsername.getText().equals(v.username))
                         && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(v.password))) {
                     VolunteerWindow vw = new VolunteerWindow(v);
                     primaryStage.hide();
                     bool = true;
-                }
-            if (bool == false)
-                System.out.println("Invalid User");
 
-        });
+                }
+                else if (!bool){
+                    //if (i<= Volunteer.volunteerArrayList.size())
+                    //    continue;
+                    ErrorWindow ew = new ErrorWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
+                        "Please try again or contact an administrator.");
+                }});
+
 
         btnSignUp.setOnAction(e -> {
             SignUpWindow suw = new SignUpWindow();

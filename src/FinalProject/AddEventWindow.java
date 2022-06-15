@@ -18,7 +18,6 @@ public class AddEventWindow {
     TextField txtState = new TextField();
     TextArea txtDescription = new TextArea();
     Button btnConfirm = new Button("Confirm Event");
-    VolunteerWindow parentForm;
 
     public AddEventWindow(VolunteerWindow parentForm){
         Stage primaryStage = new Stage();
