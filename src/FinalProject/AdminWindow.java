@@ -10,9 +10,13 @@ import java.time.LocalDateTime;
 
 public class AdminWindow {
     // home tab nodes
+
     // event tab nodes
+
     // clock in/out tab nodes
+
     // account tab nodes
+
 public AdminWindow(Volunteer activeUser){
     Stage primaryStage = new Stage();
 
