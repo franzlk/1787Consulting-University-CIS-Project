@@ -7,9 +7,8 @@ import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
 
 public class AdminWindow {
     // home tab nodes
@@ -25,12 +24,14 @@ public class AdminWindow {
     // volunteer tab nodes
     Label lblVolunteer = new Label("Volunteers");
     ListView volunteerListView = new ListView();
-    Button btnEditVolInfo = new Button("Edit Selected Volunteer's Info");
-    Button btnDelVol = new Button("Delete Selected Volunteer");
+    Button btnViewVolInfo = new Button("View Selected\nVolunteer's Info");
+    Button btnEditVolInfo = new Button("Edit Selected\nVolunteer's Info");
+    Button btnDelVol = new Button("Delete Selected\nVolunteer");
     Label lblPendingApplications = new Label("Pending Applications");
     ListView applicationListView = new ListView();
-    Button btnConfirmApp = new Button("Confirm Selected Application");
-    Button btnDenyApp = new Button("Deny Selected Application");
+    Button btnViewApp = new Button("View Selected\nApplication");
+    Button btnApproveApp = new Button("Approve Selected\nApplication");
+    Button btnDenyApp = new Button("Deny Selected\nApplication");
 
     // account tab nodes
     Label lblMyAccountInfo = new Label("My Account Info");
@@ -114,19 +115,23 @@ public AdminWindow(Volunteer activeUser){
     clearUpdateTable(volunteerListView, Volunteer.volunteerArrayList, volunteerObservableList);
     clearUpdateTable(applicationListView, VolunteerApplication.volunteerApplicationArrayList, applicationObservableList);
 
-    volunteerGridPane.add(lblVolunteer, 0, 0, 2, 1);
-    lblVolunteer.setStyle("-fx-font: 16 arial");
-    volunteerGridPane.add(volunteerListView, 0, 1, 2, 1);
-    volunteerListView.setPrefWidth(350);
-    volunteerGridPane.add(btnEditVolInfo, 0, 2);
-    volunteerGridPane.add(btnDelVol, 1, 2);
+    setButtonFormatting(btnViewVolInfo, btnEditVolInfo, btnDelVol, btnViewApp, btnApproveApp, btnDenyApp);
 
-    volunteerGridPane.add(lblPendingApplications, 2, 0, 2, 1);
+    volunteerGridPane.add(lblVolunteer, 0, 0, 3, 1);
+    lblVolunteer.setStyle("-fx-font: 16 arial");
+    volunteerGridPane.add(volunteerListView, 0, 1, 3, 1);
+    volunteerListView.setPrefWidth(350);
+    volunteerGridPane.add(btnViewVolInfo, 0, 2);
+    volunteerGridPane.add(btnEditVolInfo, 1, 2);
+    volunteerGridPane.add(btnDelVol, 2, 2);
+
+    volunteerGridPane.add(lblPendingApplications, 3, 0, 3, 1);
     lblPendingApplications.setStyle("-fx-font: 16 arial");
-    volunteerGridPane.add(applicationListView, 2, 1, 2, 1);
+    volunteerGridPane.add(applicationListView, 3, 1, 3, 1);
     applicationListView.setPrefWidth(350);
-    volunteerGridPane.add(btnConfirmApp, 2, 2);
-    volunteerGridPane.add(btnDenyApp, 3, 2);
+    volunteerGridPane.add(btnViewApp, 3, 2);
+    volunteerGridPane.add(btnApproveApp, 4, 2);
+    volunteerGridPane.add(btnDenyApp, 5, 2);
 
     // nodal content of accountGridPane
     // formatting
@@ -199,6 +204,15 @@ public AdminWindow(Volunteer activeUser){
             g.setHgap(10);
             g.setVgap(4);
         }
+    }
+
+    public void setButtonFormatting(Button... buttons){
+        for (Button b : buttons){
+            b.setPrefHeight(60);
+            b.setTextAlignment(TextAlignment.CENTER);
+            b.setPrefWidth(110);
+        }
+
     }
 
     public void setMaxWidth(TextArea ta, TextField... tf) {
