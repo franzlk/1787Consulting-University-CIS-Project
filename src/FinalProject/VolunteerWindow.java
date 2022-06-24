@@ -91,8 +91,6 @@ public class VolunteerWindow {
         eventBorderPane.setMargin(eventGridPane, new Insets(12, 12, 12, 12));
         //--------pet tab
         VBox petVBox = new VBox();
-        petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
-
         //--------clock in/out tab
         GridPane clockIOPane = new GridPane();
         //--------account tab
@@ -127,6 +125,7 @@ public class VolunteerWindow {
         // nodal content of petVBox
         petVBox.setAlignment(Pos.CENTER);
         petVBox.setSpacing(20);
+        petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
         petListView.setMaxWidth(700);
         
         // nodal content of clockIOPane

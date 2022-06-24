@@ -16,6 +16,12 @@ public class AdminWindow {
 
     // event tab nodes
 
+    // pet tab nodes
+    ListView petListView = new ListView();
+    Button btnViewPet = new Button("View Selected Pet");
+    Button btnEditPet = new Button("Edit Selected Pet");
+    Button btnDeletePet = new Button("Delete Selected Pet");
+
     // volunteer tab nodes
     Label lblVolunteer = new Label("Volunteers");
     ListView volunteerListView = new ListView();
@@ -63,14 +69,17 @@ public AdminWindow(Volunteer activeUser){
     TabPane TabPane = new TabPane();
     Tab Tab1 = new Tab("Home");
     Tab Tab2 = new Tab("Event");
-    Tab Tab3 = new Tab("Volunteer Management");
-    Tab Tab4 = new Tab("Account");
+    Tab Tab3 = new Tab("Pets");
+    Tab Tab4 = new Tab("Volunteer Management");
+    Tab Tab5 = new Tab("Account");
 
     // Panes to hold the nodes (buttons, labels) of each tab
     //--------home tab
     GridPane homeGridPane = new GridPane();
     //--------event tab
     GridPane eventGridPane = new GridPane();
+    //--------pet tab
+    VBox petVBox = new VBox();
     //--------volunteers tab
     GridPane volunteerGridPane = new GridPane();
     //--------account tab
@@ -80,13 +89,20 @@ public AdminWindow(Volunteer activeUser){
 
     Tab1.setContent(homeGridPane);
     Tab2.setContent(eventGridPane);
-    Tab3.setContent(volunteerGridPane);
-    Tab4.setContent(accountGridPane);
-    TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4);
+    Tab3.setContent(petVBox);
+    Tab4.setContent(volunteerGridPane);
+    Tab5.setContent(accountGridPane);
+    TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4, Tab5);
 
     // nodal content of homeGridPane
 
     // nodal content of eventGridPane
+
+    // nodal content of petVBox
+    petVBox.setAlignment(Pos.CENTER);
+    petVBox.setSpacing(20);
+    petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
+    petListView.setMaxWidth(700);
 
     // nodal content of volunteerGridPane
     volunteerGridPane.setVgap(10);
