@@ -100,7 +100,7 @@ public class SignUpWindow {
             primaryStage.hide();
             Main m = new Main();
             m.start(new Stage());
-            GenericWindow newAppWindow = new GenericWindow("Application successfully submitted",
+            GenericMessageWindow newAppWindow = new GenericMessageWindow("Application successfully submitted",
                     "Your application has been submitted.\n\nPlease try logging in a later date" +
                             " with your chosen username\nand password after your volunteer application is approved.");
         });

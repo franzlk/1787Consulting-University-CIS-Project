@@ -9,10 +9,10 @@ import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-public class GenericWindow {
+public class GenericMessageWindow {
     Label lblMessage = new Label();
 
-    public GenericWindow(String title, String message){
+    public GenericMessageWindow(String title, String message){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);

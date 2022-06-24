@@ -60,7 +60,7 @@ public class Main extends Application{
                 else if (!bool){
                     if (i < Volunteer.volunteerArrayList.size() - 1){
                         continue;}
-                    GenericWindow ew = new GenericWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
+                    GenericMessageWindow ew = new GenericMessageWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
                         "Please try again or contact an administrator.");
                 }
             }
