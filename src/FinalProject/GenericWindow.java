@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class GenericWindow {
@@ -19,6 +20,7 @@ public class GenericWindow {
         gridPane.setHgap(10);
 
         lblMessage.setStyle("-fx-font: 14 arial");
+        lblMessage.setTextAlignment(TextAlignment.CENTER);
         lblMessage.setText(message);
         gridPane.add(lblMessage, 0, 0);
 

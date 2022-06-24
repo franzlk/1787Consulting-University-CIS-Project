@@ -18,6 +18,7 @@ public class VolunteerApplication {
     String specializationPreference;
     String ShadowPreference;
     String EmergencyContactPhone;
+    String password;
 
     String username;
 
@@ -26,7 +27,7 @@ public class VolunteerApplication {
     public VolunteerApplication(String name, String doB, String email,
                                 String phone, String address, String city, String state,
                                 String zip, String workHistory, String specializationPreference,
-                                String shadowPreference, String emergencyContactPhone, String username) {
+                                String shadowPreference, String emergencyContactPhone, String username, String password) {
         this.idNumber = ++count;
         this.name = name;
         DoB = doB;
@@ -41,6 +42,7 @@ public class VolunteerApplication {
         ShadowPreference = shadowPreference;
         EmergencyContactPhone = emergencyContactPhone;
         this.username = username;
+        this.password = CryptoHash.cryptoProtect(password);
 
         addVolunteerApplication(this);
     }

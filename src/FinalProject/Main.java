@@ -92,7 +92,8 @@ public class Main extends Application{
         VolunteerApplication va = new VolunteerApplication("Sarah McInterested", "10/26/1998",
                 "genericemail@email.com", "(999) 999-9999", "800 South Main St.", "Harrisonburg",
                 "VA", "22801", "JMU Bookstore", "Adopter Relations",
-                "Julie Markinson", "(999) 999-9999", "volunteerApplication");
+                "Julie Markinson", "(999) 999-9999", "volunteerApplication",
+                "password");
     }
 
 

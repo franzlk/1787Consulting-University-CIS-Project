@@ -91,13 +91,26 @@ public class SignUpWindow {
         primaryStage.show();
 
         btnSignUp.setOnAction(e -> {
-            Volunteer newVolunteer = new Volunteer(txtName.getText(), txtDoB.getText(),
+            /*Volunteer newVolunteer = new Volunteer(txtName.getText(), txtDoB.getText(),
                     (String)cbSpecializationPreference.getSelectionModel().getSelectedItem(), txtEmail.getText(),
                     0.0, txtPhone.getText(), "Conditional", txtAddress.getText(), txtCity.getText(),
                     txtState.getText(), txtZip.getText(), txtEmergencyContactPhone.getText(), txtWorkHistory.getText(),
                     0.0, txtUsername.getText(), txtPassword.getText());
             VolunteerWindow vw = new VolunteerWindow(newVolunteer);
+            primaryStage.hide();*/
+
+            VolunteerApplication newVA = new VolunteerApplication(txtName.getText(), txtDoB.getText(), txtEmail.getText(),
+                    txtPhone.getText(), txtAddress.getText(), txtCity.getText(),
+                    txtState.getText(), txtZip.getText(), txtWorkHistory.getText(),
+                    (String)cbSpecializationPreference.getSelectionModel().getSelectedItem(),
+                    (String)cbShadowPreference.getSelectionModel().getSelectedItem(), txtEmergencyContactPhone.getText(),
+                    txtUsername.getText(), txtPassword.getText());
             primaryStage.hide();
+            Main m = new Main();
+            m.start(new Stage());
+            GenericWindow newAppWindow = new GenericWindow("Application successfully submitted",
+                    "Your application has been submitted.\n\nPlease try logging in a later date" +
+                            " with your chosen username\nand password after your volunteer application is approved.");
         });
 
     }
