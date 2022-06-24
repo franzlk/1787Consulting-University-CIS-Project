@@ -1,18 +1,11 @@
 package FinalProject;
 
-import java.io.*;
 import javafx.application.Application;
-import javafx.event.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
-import javafx.collections.*;
-import java.util.*;
 import javafx.scene.layout.*;
-
-import java.sql.*;
-import oracle.jdbc.pool.*;
 
 public class Main extends Application{
     public static void main(String[] args){
@@ -67,7 +60,7 @@ public class Main extends Application{
                 else if (!bool){
                     if (i < Volunteer.volunteerArrayList.size() - 1){
                         continue;}
-                    ErrorWindow ew = new ErrorWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
+                    GenericWindow ew = new GenericWindow("Invalid Login", "The username and password you entered isn’t connected to an account.\n" +
                         "Please try again or contact an administrator.");
                 }
             }

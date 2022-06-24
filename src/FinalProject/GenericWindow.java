@@ -8,10 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class ErrorWindow {
+public class GenericWindow {
     Label lblMessage = new Label();
 
-    public ErrorWindow(String title, String message){
+    public GenericWindow(String title, String message){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);

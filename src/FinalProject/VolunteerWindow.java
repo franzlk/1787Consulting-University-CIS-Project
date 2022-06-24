@@ -21,6 +21,12 @@ public class VolunteerWindow {
     Button btnRefreshEventFeed = new Button("Refresh");
     VBox eventVBox = new VBox(5);
 
+    // pet tab nodes
+    ListView petListView = new ListView();
+    Button btnViewPet = new Button("View Selected Pet");
+    Button btnEditPet = new Button("Edit Selected Pet");
+    Button btnDeletePet = new Button("Delete Selected Pet");
+
     // clock in/out nodes
     Button btnClockIn = new Button("Clock-In");
     Label lblClockInTime = new Label();
@@ -65,8 +71,9 @@ public class VolunteerWindow {
         TabPane TabPane = new TabPane();
         Tab Tab1 = new Tab("Home");
         Tab Tab2 = new Tab("Event");
-        Tab Tab3 = new Tab("Clock-In/Clock-Out");
-        Tab Tab4 = new Tab("Account");
+        Tab Tab3 = new Tab("Pets");
+        Tab Tab4 = new Tab("Clock-In/Clock-Out");
+        Tab Tab5 = new Tab("Account");
 
         // Panes to hold the nodes (buttons, labels) of each tab
         //--------home tab
@@ -82,6 +89,10 @@ public class VolunteerWindow {
         eventScroller.setFitToWidth(true);
         BorderPane eventBorderPane = new BorderPane(eventScroller, eventGridPane, null, null, null);
         eventBorderPane.setMargin(eventGridPane, new Insets(12, 12, 12, 12));
+        //--------pet tab
+        VBox petVBox = new VBox();
+        petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
+
         //--------clock in/out tab
         GridPane clockIOPane = new GridPane();
         //--------account tab
@@ -91,9 +102,10 @@ public class VolunteerWindow {
         
         Tab1.setContent(homeBorderPane);
         Tab2.setContent(eventBorderPane);
-        Tab3.setContent(clockIOPane);
-        Tab4.setContent(accountPane);
-        TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4);
+        Tab3.setContent(petVBox);
+        Tab4.setContent(clockIOPane);
+        Tab5.setContent(accountPane);
+        TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4, Tab5);
 
         // nodal content of HomePane
         txtPost.setWrapText(true);
@@ -111,6 +123,11 @@ public class VolunteerWindow {
         eventGridPane.add(lblEvent, 0, 0, 2, 1);
         eventGridPane.add(btnAddEvent, 0, 1);
         eventGridPane.add(btnRefreshEventFeed, 1, 1);
+
+        // nodal content of petVBox
+        petVBox.setAlignment(Pos.CENTER);
+        petVBox.setSpacing(20);
+        petListView.setMaxWidth(700);
         
         // nodal content of clockIOPane
         btnClockIn.setPrefWidth(250);
