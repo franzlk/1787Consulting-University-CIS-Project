@@ -58,9 +58,6 @@ public class SignUpWindow {
         txtWorkHistory.setWrapText(true);
         btnSignUp.setMinWidth(510);
 
-        setFocusTraversable(txtWorkHistory, txtName, txtDoB, txtEmail, txtPhone,
-                txtEmergencyContactPhone,  txtAddress, txtCity, txtState, txtZip,txtUsername, txtPassword);
-
         gridPane.add(lblBarkApplication, 0, 0, 2, 1);
         lblBarkApplication.setStyle("-fx-font: 18 arial");
         gridPane.add(txtName, 0, 1);
@@ -90,6 +87,8 @@ public class SignUpWindow {
         primaryStage.setTitle("Bark Application");
         primaryStage.show();
 
+        btnSignUp.requestFocus();
+
         btnSignUp.setOnAction(e -> {
             VolunteerApplication newVA = new VolunteerApplication(txtName.getText(), txtDoB.getText(), txtEmail.getText(),
                     txtPhone.getText(), txtAddress.getText(), txtCity.getText(),
@@ -110,12 +109,6 @@ public class SignUpWindow {
         for (TextField t: tf)
             t.setPrefWidth(250);
         ta.setPrefWidth(250);
-    }
-
-    public void setFocusTraversable(TextArea ta, TextField... tf){
-        for (TextField t: tf)
-            t.setFocusTraversable(false);
-        ta.setFocusTraversable(false);
     }
 
 }

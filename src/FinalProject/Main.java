@@ -31,13 +31,13 @@ public class Main extends Application{
         vbox.getChildren().addAll(txtUsername, txtPassword, btnLogin, lblSignUp, btnSignUp);
         txtUsername.setMaxWidth(225);
         txtPassword.setMaxWidth(225);
-        txtUsername.setFocusTraversable(false);
-        txtPassword.setFocusTraversable(false);
 
         Scene primaryScene = new Scene(vbox, 500, 500);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("BARK Login");
         primaryStage.show();
+
+        btnLogin.requestFocus();
 
         btnLogin.setOnAction(e -> {
             boolean bool = false;

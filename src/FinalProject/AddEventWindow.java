@@ -41,9 +41,6 @@ public class AddEventWindow {
         txtDescription.setWrapText(true);
         btnConfirm.setMinWidth(510);
 
-        setFocusTraversable(txtDescription, txtName, txtDate, txtTime, txtAddress,
-                txtCity, txtState);
-
         gridPane.add(txtName, 0, 0);
         gridPane.add(txtDate, 0, 1);
         gridPane.add(txtTime, 0, 2);
@@ -58,6 +55,8 @@ public class AddEventWindow {
         primaryStage.setTitle("Add Event");
         primaryStage.show();
 
+        btnConfirm.requestFocus();
+
         btnConfirm.setOnAction(e -> {
             Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
                     txtCity.getText(), txtState.getText(), txtDescription.getText());
@@ -71,11 +70,5 @@ public class AddEventWindow {
         for (TextField t: tf)
             t.setPrefWidth(250);
         ta.setPrefWidth(250);
-    }
-
-    public void setFocusTraversable(TextArea ta, TextField... tf){
-        for (TextField t: tf)
-            t.setFocusTraversable(false);
-        ta.setFocusTraversable(false);
     }
 }
