@@ -1,5 +1,7 @@
 package FinalProject;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +22,12 @@ public class AdminWindow {
     Button btnViewPet = new Button("View Selected Pet");
     Button btnEditPet = new Button("Edit Selected Pet");
     Button btnDeletePet = new Button("Delete Selected Pet");
+
+    // Clock-In/Clock-Out tab nodes
+    Button btnClockIn = new Button("Clock-In");
+    Label lblClockInTime = new Label();
+    Button btnClockOut = new Button("Clock-Out");
+    Label lblClockOutTime = new Label();
 
     // volunteer tab nodes
     Label lblVolunteer = new Label("Volunteers");
@@ -71,8 +79,9 @@ public AdminWindow(Volunteer activeUser){
     Tab Tab1 = new Tab("Home");
     Tab Tab2 = new Tab("Event");
     Tab Tab3 = new Tab("Pets");
-    Tab Tab4 = new Tab("Volunteer Management");
-    Tab Tab5 = new Tab("Account");
+    Tab Tab4 = new Tab("Clock-In/Clock-Out");
+    Tab Tab5 = new Tab("Volunteer Management");
+    Tab Tab6 = new Tab("Account");
 
     // Panes to hold the nodes (buttons, labels) of each tab
     //--------home tab
@@ -81,19 +90,22 @@ public AdminWindow(Volunteer activeUser){
     GridPane eventGridPane = new GridPane();
     //--------pet tab
     VBox petVBox = new VBox();
+    //--------clock i/o tab
+    GridPane clockIOPane = new GridPane();
     //--------volunteers tab
     GridPane volunteerGridPane = new GridPane();
     //--------account tab
     GridPane accountGridPane = new GridPane();
 
-    setPositionAlignment(homeGridPane, eventGridPane, volunteerGridPane, accountGridPane);
+    setPositionAlignment(volunteerGridPane, clockIOPane, accountGridPane);
 
     Tab1.setContent(homeGridPane);
     Tab2.setContent(eventGridPane);
     Tab3.setContent(petVBox);
-    Tab4.setContent(volunteerGridPane);
-    Tab5.setContent(accountGridPane);
-    TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4, Tab5);
+    Tab4.setContent(clockIOPane);
+    Tab5.setContent(volunteerGridPane);
+    Tab6.setContent(accountGridPane);
+    TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4, Tab5, Tab6);
 
     // nodal content of homeGridPane
 
@@ -104,6 +116,18 @@ public AdminWindow(Volunteer activeUser){
     petVBox.setSpacing(20);
     petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
     petListView.setMaxWidth(700);
+
+    // nodal content of clockIOPane
+    btnClockIn.setPrefWidth(250);
+    btnClockIn.setPrefHeight(60);
+    btnClockIn.setStyle("-fx-font: 16 arial");
+    btnClockOut.setPrefWidth(250);
+    btnClockOut.setPrefHeight(60);
+    btnClockOut.setStyle("-fx-font: 16 arial");
+    clockIOPane.add(btnClockIn, 0, 0);
+    clockIOPane.add(lblClockInTime, 0, 1);
+    clockIOPane.add(btnClockOut, 0, 2);
+    clockIOPane.add(lblClockOutTime, 0, 3);
 
     // nodal content of volunteerGridPane
     volunteerGridPane.setVgap(10);
@@ -189,6 +213,16 @@ public AdminWindow(Volunteer activeUser){
 
     // home tab lambda expressions
     // event tab lambda expression
+    // pet tab lambda expressions
+    // clock io tab lambda expression
+    // clock in/out tab lambda expressions
+    btnClockIn.setOnAction(e -> {
+        lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
+    });
+
+    btnClockOut.setOnAction(e -> {
+        lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentTime());
+    });
     // volunteer management tab lambda expressions
     // account tab lambda expressions
     btnLogout.setOnAction(e -> {
@@ -225,5 +259,11 @@ public AdminWindow(Volunteer activeUser){
         lv.getItems().clear();
         for (int i = 0; i<al.size(); i++)
             lv.getItems().add(obsList.get(i));
+    }
+
+    public String getCurrentTime() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return (dtf.format(now));
     }
 }
