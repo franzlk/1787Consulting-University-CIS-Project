@@ -248,6 +248,8 @@ public AdminWindow(Volunteer activeUser) {
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
         Label content = new Label((SocialPost.getByID(ID).text));
+        content.setMaxWidth(300);
+        content.setWrapText(true);
         AnchorPane.setLeftAnchor(content, 200.0);
         AnchorPane.setTopAnchor(content, 5.0);
         Button btnRemove = new Button("Remove");
@@ -265,6 +267,8 @@ public AdminWindow(Volunteer activeUser) {
         anchorPane.setStyle("-fx-background-color: WHITE");
         Label label = new Label("Event: " + (Event.getByID(ID).name));
         Label content = new Label(Event.getByID(ID).description);
+        content.setMaxWidth(300);
+        content.setWrapText(true);
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
 

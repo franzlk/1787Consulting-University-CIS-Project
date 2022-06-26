@@ -32,6 +32,8 @@ public class ViewEventWindow {
         lblCity.setText("City:\t" + Event.eventArrayList.get(ID-1).city);
         lblState.setText("State:\t" + Event.eventArrayList.get(ID-1).state);
         lblDescription.setText("Description:\t" + Event.eventArrayList.get(ID-1).description);
+        lblDescription.setMaxWidth(500);
+        lblDescription.setWrapText(true);
 
         gridPane.add(lblName, 0, 0);
         gridPane.add(lblDate, 0, 1);
