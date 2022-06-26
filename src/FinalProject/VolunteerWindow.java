@@ -199,6 +199,14 @@ public class VolunteerWindow {
                 AddSocialPostWindow aspw = new AddSocialPostWindow(this);
         });
 
+        btnRefreshFeed.setOnAction(e -> {
+            homeVBox.getChildren().clear();
+
+            for (SocialPost sp : SocialPost.socialPostArrayList){
+                addSocialPost(sp.idNumber);
+            }
+        });
+
         // event tab lambda expressions
         btnAddEvent.setOnAction(e -> {
             AddEventWindow aew = new AddEventWindow(this);

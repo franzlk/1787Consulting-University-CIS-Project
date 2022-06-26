@@ -21,7 +21,7 @@ public class Event {
 
     public Event(String name, String date, String time, String address,
                  String city, String state, String description, int eventCreatorID) {
-        this.idNumber = count +1;
+        this.idNumber = ++count;
         this.name = name;
         this.date = date;
         this.time = time;
@@ -31,7 +31,6 @@ public class Event {
         this.description = description;
         this.eventCreatorID = eventCreatorID;
 
-        count++;
         addEvents(this);
     }
 
