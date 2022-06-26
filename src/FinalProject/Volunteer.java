@@ -50,7 +50,6 @@ public class Volunteer {
         this.username = username;
         this.password = CryptoHash.cryptoProtect(password);
 
-        count++;
         addVolunteers(this);
     }
 

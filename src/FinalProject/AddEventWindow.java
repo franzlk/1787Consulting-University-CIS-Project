@@ -59,7 +59,7 @@ public class AddEventWindow {
 
         btnConfirm.setOnAction(e -> {
             Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
-                    txtCity.getText(), txtState.getText(), txtDescription.getText());
+                    txtCity.getText(), txtState.getText(), txtDescription.getText(), parentForm.currentUser.idNumber);
             primaryStage.hide();
             parentForm.addEvent(event.idNumber);
         });
@@ -71,4 +71,6 @@ public class AddEventWindow {
             t.setPrefWidth(250);
         ta.setPrefWidth(250);
     }
+
+
 }

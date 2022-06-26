@@ -63,8 +63,10 @@ public class VolunteerWindow {
     Button btnEdit = new Button("Confirm Account Changes");
     Button btnViewVolunteers = new Button("View Volunteers");
     Button btnLogout = new Button("Logout");
+    Volunteer currentUser;
 
     public VolunteerWindow(Volunteer activeUser) {
+        currentUser = activeUser;
         Stage primaryStage = new Stage();
 
         // TabPanes to be used in each Scene
@@ -250,6 +252,8 @@ public class VolunteerWindow {
             m.start(new Stage());
             primaryStage.hide();
         });
+
+
     }
 
     public void addEvent(int ID){
@@ -311,4 +315,6 @@ public class VolunteerWindow {
             t.setPrefWidth(250);
         ta.setPrefWidth(250);
     }
+
+
 }

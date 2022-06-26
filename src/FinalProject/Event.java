@@ -15,10 +15,12 @@ public class Event {
     String city;
     String state;
     String description;
+    int eventCreatorID;
 
     static ArrayList<Event> eventArrayList = new ArrayList<>();
 
-    public Event(String name, String date, String time, String address, String city, String state, String description) {
+    public Event(String name, String date, String time, String address,
+                 String city, String state, String description, int eventCreatorID) {
         this.idNumber = count +1;
         this.name = name;
         this.date = date;
@@ -27,6 +29,7 @@ public class Event {
         this.city = city;
         this.state = state;
         this.description = description;
+        this.eventCreatorID = eventCreatorID;
 
         count++;
         addEvents(this);
