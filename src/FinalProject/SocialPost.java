@@ -1,9 +1,6 @@
 package FinalProject;
 
 import java.util.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import java.io.*;
 
 public class SocialPost {
 
@@ -11,12 +8,12 @@ public class SocialPost {
     int idNumber;
     String date;
     String time;
-    String userID;
+    int userID;
     String text;
 
     static ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
 
-    public SocialPost(int idNumber, String date, String time, String userID, String text) {
+    public SocialPost(String date, String time, int userID, String text) {
         this.idNumber = ++count;
         this.date = date;
         this.time = time;
@@ -47,7 +44,7 @@ public class SocialPost {
     }
 
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 

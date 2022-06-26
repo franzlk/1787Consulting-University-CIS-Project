@@ -13,7 +13,7 @@ public class VolunteerWindow {
     Label lblHome = new Label("Share a post with other volunteers!");
     Button btnAddPost = new Button("Add Post");
     Button btnRefreshFeed = new Button("Refresh");
-    TextArea txtPost = new TextArea();
+    VBox homeVBox = new VBox(5);
 
     // event tab nodes
     Label lblEvent = new Label("Create an event for volunteers to attend!");
@@ -80,7 +80,6 @@ public class VolunteerWindow {
         // Panes to hold the nodes (buttons, labels) of each tab
         //--------home tab
         GridPane homeGridPane = new GridPane();
-        VBox homeVBox = new VBox(5);
         ScrollPane homeScroller = new ScrollPane(homeVBox);
         homeScroller.setFitToWidth(true);
         BorderPane homeBorderPane = new BorderPane(homeScroller, homeGridPane, null, null, null);
@@ -108,14 +107,12 @@ public class VolunteerWindow {
         TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4, Tab5);
 
         // nodal content of HomePane
-        txtPost.setWrapText(true);
-        txtPost.setPrefHeight(90);
         homeGridPane.setHgap(10);
         homeGridPane.setVgap(10);
         homeGridPane.add(lblHome, 0, 0, 2, 1);
         homeGridPane.add(btnAddPost, 0, 1);
-        homeGridPane.add(btnRefreshFeed, 0, 2);
-        homeGridPane.add(txtPost, 1, 1, 1, 2);
+        homeGridPane.add(btnRefreshFeed, 1, 1);
+
         
         // nodal content of EventPane
         eventGridPane.setHgap(10);
@@ -199,24 +196,7 @@ public class VolunteerWindow {
 
         // home tab lambda expressions
         btnAddPost.setOnAction(e -> {
-            if (!txtPost.getText().equals("")){
-                //add HomePost constructor and set the values each time the btnAddPost is clicked
-                AnchorPane anchorPane = new AnchorPane();
-                anchorPane.setStyle("-fx-background-color: WHITE");
-                Label label = new Label("Post on: " + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
-                AnchorPane.setLeftAnchor(label, 5.0);
-                AnchorPane.setTopAnchor(label, 5.0);
-                Label content = new Label(txtPost.getText());
-                txtPost.clear();
-                AnchorPane.setLeftAnchor(content, 200.0);
-                AnchorPane.setTopAnchor(content, 5.0);
-                Button button = new Button("Remove");
-                button.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
-                AnchorPane.setRightAnchor(button, 5.0);
-                AnchorPane.setTopAnchor(button, 5.0);
-                AnchorPane.setBottomAnchor(button, 5.0);
-                anchorPane.getChildren().addAll(label, content, button);
-                homeVBox.getChildren().add(anchorPane);}
+                AddSocialPostWindow aspw = new AddSocialPostWindow(this);
         });
 
         // event tab lambda expressions
@@ -235,11 +215,11 @@ public class VolunteerWindow {
 
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
-            lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
+            lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate());
         });
 
         btnClockOut.setOnAction(e -> {
-            lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentTime());
+            lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate());
         });
 
         // account tab lambda expressions
@@ -253,6 +233,25 @@ public class VolunteerWindow {
             primaryStage.hide();
         });
 
+
+    }
+
+    public void addSocialPost(int ID){
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setStyle("-fx-background-color: WHITE");
+        Label label = new Label("Post on: " + getCurrentDate() + " " + getCurrentTime());
+        AnchorPane.setLeftAnchor(label, 5.0);
+        AnchorPane.setTopAnchor(label, 5.0);
+        Label content = new Label((SocialPost.getByID(ID).text));
+        AnchorPane.setLeftAnchor(content, 200.0);
+        AnchorPane.setTopAnchor(content, 5.0);
+        Button btnRemove = new Button("Remove");
+        btnRemove.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
+        AnchorPane.setRightAnchor(btnRemove, 5.0);
+        AnchorPane.setTopAnchor(btnRemove, 5.0);
+        AnchorPane.setBottomAnchor(btnRemove, 5.0);
+        anchorPane.getChildren().addAll(label, content, btnRemove);
+        homeVBox.getChildren().add(anchorPane);
 
     }
 
@@ -296,8 +295,14 @@ public class VolunteerWindow {
 
     }
 
+    public String getCurrentDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        return (dtf.format(now));
+    }
+
     public String getCurrentTime() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return (dtf.format(now));
     }
