@@ -255,10 +255,11 @@ public class VolunteerWindow {
     public void addEvent(int ID){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setStyle("-fx-background-color: WHITE");
-        Label label = new Label("Event #" + (eventVBox.getChildren().size() + 1 + ", " + Event.eventArrayList.get(ID-1).name));
+        Label label = new Label("Event: " + (Event.getByID(ID).name));
+        Label content = new Label(Event.getByID(ID).description);
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
-        Label content = new Label(Event.eventArrayList.get(ID-1).description);
+
         Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
         Button btnEditEvent = new Button ("Edit");
         Button btnViewEvent = new Button ("View");
@@ -276,19 +277,15 @@ public class VolunteerWindow {
         AnchorPane.setTopAnchor(btnEditEvent, 5.0);
         AnchorPane.setBottomAnchor(btnEditEvent, 5.0);
         btnEditEvent.setOnAction(evt -> {
-            // show edit window and edit the event in the arraylist
                 EditEventWindow eew = new EditEventWindow(ID, this);
-
-
-
         });
         AnchorPane.setRightAnchor(btnDeleteEvent, 5.0);
         AnchorPane.setTopAnchor(btnDeleteEvent, 5.0);
         AnchorPane.setBottomAnchor(btnDeleteEvent, 5.0);
         btnDeleteEvent.setOnAction(evt -> {
-            eventVBox.getChildren().remove(anchorPane);
             //show delete window
-            //add in delete window and delete from array list
+                DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
+
         });
         anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);
         eventVBox.getChildren().add(anchorPane);

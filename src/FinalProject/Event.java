@@ -112,4 +112,13 @@ public class Event {
             Collections.addAll(eventArrayList, e);
         }
     }
+
+    public static Event getByID(int ID){
+        Event evnt = eventArrayList.get(0);
+        for (Event e : eventArrayList){
+            if (ID==e.idNumber){
+                evnt = e;}
+        }
+        return evnt;
+    }
 }

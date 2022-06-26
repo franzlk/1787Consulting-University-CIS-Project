@@ -58,9 +58,6 @@ public class EditEventWindow {
         btnConfirm.requestFocus();
 
         btnConfirm.setOnAction(e -> {
-            //Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
-            //        txtCity.getText(), txtState.getText(), txtDescription.getText());
-            //parentForm.addEvent(event.idNumber);
 
             Event.eventArrayList.get(ID-1).setName(txtName.getText());
             Event.eventArrayList.get(ID-1).setDate(txtDate.getText());
