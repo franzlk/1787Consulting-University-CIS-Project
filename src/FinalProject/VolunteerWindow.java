@@ -215,11 +215,11 @@ public class VolunteerWindow {
 
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
-            lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate());
+            lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
         });
 
         btnClockOut.setOnAction(e -> {
-            lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate());
+            lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
         });
 
         // account tab lambda expressions
