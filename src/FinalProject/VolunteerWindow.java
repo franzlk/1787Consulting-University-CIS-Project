@@ -222,6 +222,15 @@ public class VolunteerWindow {
             AddEventWindow aew = new AddEventWindow(this);
         });
 
+        btnRefreshEventFeed.setOnAction(e -> {
+            eventVBox.getChildren().clear();
+
+            for (Event element : Event.eventArrayList){
+                addEvent(element.idNumber);
+
+            }
+        });
+
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
             lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
@@ -267,9 +276,10 @@ public class VolunteerWindow {
         AnchorPane.setTopAnchor(btnEditEvent, 5.0);
         AnchorPane.setBottomAnchor(btnEditEvent, 5.0);
         btnEditEvent.setOnAction(evt -> {
-            //edit the current anchorpane
-            // show edit window
-            //edit the event in the arraylist
+            // show edit window and edit the event in the arraylist
+                EditEventWindow eew = new EditEventWindow(ID, this);
+
+
 
         });
         AnchorPane.setRightAnchor(btnDeleteEvent, 5.0);
@@ -282,6 +292,7 @@ public class VolunteerWindow {
         });
         anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);
         eventVBox.getChildren().add(anchorPane);
+
     }
 
     public String getCurrentTime() {
