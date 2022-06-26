@@ -12,7 +12,7 @@ public class DeleteEventWindow {
     Button btnDelete = new Button("Delete");
     Button btnCancel = new Button("Cancel");
 
-    public DeleteEventWindow(int ID, VolunteerWindow parentForm){
+    public <T> DeleteEventWindow(int ID, T parentForm){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -32,13 +32,22 @@ public class DeleteEventWindow {
         primaryStage.show();
 
         btnDelete.setOnAction(e -> {
+            if (parentForm instanceof VolunteerWindow){
             for (Event ev : Event.eventArrayList){
                 if (ev.getIdNumber()==ID){
                     Event.eventArrayList.remove(ev);
-                    parentForm.btnRefreshEventFeed.fire();
+                    ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();
                     break;
                 }
-            }
+            }}
+            else if (parentForm instanceof AdminWindow){
+                for (Event ev : Event.eventArrayList){
+                    if (ev.getIdNumber()==ID){
+                        Event.eventArrayList.remove(ev);
+                        ((AdminWindow)parentForm).btnRefreshEventFeed.fire();
+                        break;
+                    }
+                }}
 
             primaryStage.hide();
         });

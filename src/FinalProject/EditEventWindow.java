@@ -19,7 +19,7 @@ public class EditEventWindow {
     TextArea txtDescription = new TextArea();
     Button btnConfirm = new Button("Confirm Changes to Event");
 
-    public EditEventWindow(int ID, VolunteerWindow parentForm){
+    public <T> EditEventWindow(int ID, T parentForm){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -66,7 +66,10 @@ public class EditEventWindow {
             Event.eventArrayList.get(ID-1).setCity(txtCity.getText());
             Event.eventArrayList.get(ID-1).setState(txtState.getText());
             Event.eventArrayList.get(ID-1).setDescription(txtDescription.getText());
-            parentForm.btnRefreshEventFeed.fire();
+            if (parentForm instanceof VolunteerWindow){
+                ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
+            else if (parentForm instanceof AdminWindow){
+                ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
             primaryStage.hide();
 
         });

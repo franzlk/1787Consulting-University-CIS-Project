@@ -14,8 +14,16 @@ import javafx.stage.Stage;
 
 public class AdminWindow {
     // home tab nodes
+    Label lblHome = new Label("Share a post with other volunteers!");
+    Button btnAddPost = new Button("Add Post");
+    Button btnRefreshFeed = new Button("Refresh");
+    VBox homeVBox = new VBox(5);
 
     // event tab nodes
+    Label lblEvent = new Label("Create an event for volunteers to attend!");
+    Button btnAddEvent = new Button("Add Event");
+    Button btnRefreshEventFeed = new Button("Refresh");
+    VBox eventVBox = new VBox(5);
 
     // pet tab nodes
     ListView petListView = new ListView();
@@ -70,8 +78,9 @@ public class AdminWindow {
 
     Button btnEdit = new Button("Confirm Account Changes");
     Button btnLogout = new Button("Logout");
+    Volunteer currentUser;
     
-public AdminWindow(Volunteer activeUser){
+public AdminWindow(Volunteer activeUser) {
     Stage primaryStage = new Stage();
 
     // TabPanes to be used in each Scene
@@ -205,7 +214,7 @@ public AdminWindow(Volunteer activeUser){
     //cbSpecialization.setText
     //lblShadowName.setText();
     txtEmergencyContactPhone.setText(activeUser.getEmergencyContactPhone());
-    
+
     Scene primaryScene = new Scene(TabPane, 775, 600);
     primaryStage.setScene(primaryScene);
     primaryStage.setTitle("BARK Admin View");
@@ -231,6 +240,65 @@ public AdminWindow(Volunteer activeUser){
         primaryStage.hide();
     });
 }
+
+    public void addSocialPost(int ID){
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setStyle("-fx-background-color: WHITE");
+        Label label = new Label("Post on: " + getCurrentDate() + " " + getCurrentTime());
+        AnchorPane.setLeftAnchor(label, 5.0);
+        AnchorPane.setTopAnchor(label, 5.0);
+        Label content = new Label((SocialPost.getByID(ID).text));
+        AnchorPane.setLeftAnchor(content, 200.0);
+        AnchorPane.setTopAnchor(content, 5.0);
+        Button btnRemove = new Button("Remove");
+        btnRemove.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
+        AnchorPane.setRightAnchor(btnRemove, 5.0);
+        AnchorPane.setTopAnchor(btnRemove, 5.0);
+        AnchorPane.setBottomAnchor(btnRemove, 5.0);
+        anchorPane.getChildren().addAll(label, content, btnRemove);
+        homeVBox.getChildren().add(anchorPane);
+
+    }
+
+    public void addEvent(int ID){
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.setStyle("-fx-background-color: WHITE");
+        Label label = new Label("Event: " + (Event.getByID(ID).name));
+        Label content = new Label(Event.getByID(ID).description);
+        AnchorPane.setLeftAnchor(label, 5.0);
+        AnchorPane.setTopAnchor(label, 5.0);
+
+        Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
+        Button btnEditEvent = new Button ("Edit");
+        Button btnViewEvent = new Button ("View");
+
+        AnchorPane.setLeftAnchor(content, 200.0);
+        AnchorPane.setTopAnchor(content, 5.0);
+
+        AnchorPane.setRightAnchor(btnViewEvent, 200.0);
+        AnchorPane.setTopAnchor(btnViewEvent, 5.0);
+        AnchorPane.setBottomAnchor(btnViewEvent, 5.0);
+        btnViewEvent.setOnAction(evt -> {
+            ViewEventWindow vew = new ViewEventWindow(ID);
+        });
+        AnchorPane.setRightAnchor(btnEditEvent, 100.0);
+        AnchorPane.setTopAnchor(btnEditEvent, 5.0);
+        AnchorPane.setBottomAnchor(btnEditEvent, 5.0);
+        btnEditEvent.setOnAction(evt -> {
+            EditEventWindow eew = new EditEventWindow(ID, this);
+        });
+        AnchorPane.setRightAnchor(btnDeleteEvent, 5.0);
+        AnchorPane.setTopAnchor(btnDeleteEvent, 5.0);
+        AnchorPane.setBottomAnchor(btnDeleteEvent, 5.0);
+        btnDeleteEvent.setOnAction(evt -> {
+            //show delete window
+            DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
+
+        });
+        anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);
+        eventVBox.getChildren().add(anchorPane);
+
+    }
 
     public void setPositionAlignment(GridPane... gp) {
         for (GridPane g : gp) {
