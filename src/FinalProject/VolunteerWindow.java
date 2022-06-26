@@ -201,7 +201,7 @@ public class VolunteerWindow {
                 //add HomePost constructor and set the values each time the btnAddPost is clicked
                 AnchorPane anchorPane = new AnchorPane();
                 anchorPane.setStyle("-fx-background-color: WHITE");
-                Label label = new Label("Post #" + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
+                Label label = new Label("Post on: " + (homeVBox.getChildren().size() + 1 + ", " + getCurrentTime()));
                 AnchorPane.setLeftAnchor(label, 5.0);
                 AnchorPane.setTopAnchor(label, 5.0);
                 Label content = new Label(txtPost.getText());

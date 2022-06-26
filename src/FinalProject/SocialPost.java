@@ -75,4 +75,13 @@ public class SocialPost {
             Collections.addAll(socialPostArrayList, sp);
         }
     }
+
+    public static SocialPost getByID(int ID){
+        SocialPost sp = socialPostArrayList.get(0);
+        for (SocialPost s : socialPostArrayList){
+            if (ID==s.idNumber){
+                sp = s;}
+        }
+        return sp;
+    }
 }
