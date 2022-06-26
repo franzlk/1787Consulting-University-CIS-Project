@@ -39,13 +39,16 @@ public class AddSocialPostWindow {
             SocialPost sp = new SocialPost(((VolunteerWindow)parentForm).getCurrentDate(), ((VolunteerWindow)parentForm).getCurrentTime(),
                     ((VolunteerWindow)parentForm).currentUser.idNumber, txtDescription.getText());
             primaryStage.hide();
-            ((VolunteerWindow)parentForm).addSocialPost(sp.userID);;}
+            ((VolunteerWindow)parentForm).addSocialPost(sp.userID);
+            ((VolunteerWindow)parentForm).btnRefreshFeed.fire();}
 
             else if (parentForm instanceof AdminWindow){
                 SocialPost sp = new SocialPost(((AdminWindow)parentForm).getCurrentDate(), ((AdminWindow)parentForm).getCurrentTime(),
                         ((AdminWindow)parentForm).currentUser.idNumber, txtDescription.getText());
                 primaryStage.hide();
-                ((AdminWindow)parentForm).addSocialPost(sp.userID);;}
+                ((AdminWindow)parentForm).addSocialPost(sp.userID);
+                ((AdminWindow)parentForm).btnRefreshFeed.fire();
+                }
         });
     }
 

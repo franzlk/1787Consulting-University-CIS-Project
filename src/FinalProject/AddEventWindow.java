@@ -62,12 +62,15 @@ public class AddEventWindow {
             Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
                     txtCity.getText(), txtState.getText(), txtDescription.getText(), ((VolunteerWindow)parentForm).currentUser.idNumber);
             primaryStage.hide();
-            ((VolunteerWindow)parentForm).addEvent(event.idNumber);}
+            ((VolunteerWindow)parentForm).addEvent(event.idNumber);
+            ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
+
             else if (parentForm instanceof AdminWindow){
                 Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
                         txtCity.getText(), txtState.getText(), txtDescription.getText(), ((VolunteerWindow)parentForm).currentUser.idNumber);
                 primaryStage.hide();
-                ((AdminWindow)parentForm).addEvent(event.idNumber);}
+                ((AdminWindow)parentForm).addEvent(event.idNumber);
+                ((AdminWindow)parentForm).btnRefreshEventFeed.fire();}
         });
 
     }
