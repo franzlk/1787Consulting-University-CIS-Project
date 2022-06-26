@@ -217,11 +217,11 @@ public AdminWindow(Volunteer activeUser){
     // clock io tab lambda expression
     // clock in/out tab lambda expressions
     btnClockIn.setOnAction(e -> {
-        lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentTime());
+        lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
     });
 
     btnClockOut.setOnAction(e -> {
-        lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentTime());
+        lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
     });
     // volunteer management tab lambda expressions
     // account tab lambda expressions
@@ -261,8 +261,14 @@ public AdminWindow(Volunteer activeUser){
             lv.getItems().add(obsList.get(i));
     }
 
+    public String getCurrentDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();
+        return (dtf.format(now));
+    }
+
     public String getCurrentTime() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return (dtf.format(now));
     }
