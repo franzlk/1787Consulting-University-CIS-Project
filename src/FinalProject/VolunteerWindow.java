@@ -229,7 +229,7 @@ public class VolunteerWindow {
 
         // pet tab lambda expressions
         btnAddPet.setOnAction(e -> {
-            AddNewPetWindow anpw = new AddNewPetWindow(this);
+            AddPetWindow anpw = new AddPetWindow(this);
         });
 
         btnViewPet.setOnAction(e -> {

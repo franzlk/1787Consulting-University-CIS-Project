@@ -69,7 +69,7 @@ public class ViewPetWindow {
         
         Scene primaryScene = new Scene(gridPane, 550, 350);
         primaryStage.setScene(primaryScene);
-        primaryStage.setTitle("View Event");
+        primaryStage.setTitle("View Pet");
         primaryStage.show();
     }
 }

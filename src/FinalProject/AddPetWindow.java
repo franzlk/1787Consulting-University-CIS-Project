@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class AddNewPetWindow {
+public class AddPetWindow {
     TextField txtName = new TextField();
     TextField txtAnimalType = new TextField();
     TextField txtSpecies = new TextField();
@@ -29,7 +29,7 @@ public class AddNewPetWindow {
 
 
 
-    public <T> AddNewPetWindow(T parentForm){
+    public <T> AddPetWindow(T parentForm){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);

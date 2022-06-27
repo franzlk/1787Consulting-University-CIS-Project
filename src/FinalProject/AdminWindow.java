@@ -273,7 +273,11 @@ public AdminWindow(Volunteer activeUser) {
 
     // pet tab lambda expressions
     btnAddPet.setOnAction(e -> {
-        AddNewPetWindow anpw = new AddNewPetWindow(this);
+        AddPetWindow anpw = new AddPetWindow(this);
+    });
+
+    btnViewPet.setOnAction(e -> {
+        ViewPetWindow vpw = new ViewPetWindow((Pet)petListView.getSelectionModel().getSelectedItem());
     });
 
     // clock io tab lambda expression
