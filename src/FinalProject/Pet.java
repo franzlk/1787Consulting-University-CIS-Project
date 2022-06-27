@@ -172,7 +172,7 @@ public class Pet {
     @Override
     public String toString() {
         return "Name: " + name + ",\tType: " + animalType +
-                ",\tOwner: " + ownerName + ",\tPhone" + ownerPhone;
+                ",\tOwner: " + ownerName + ",\tPhone: " + ownerPhone;
     }
 
     public static void addPets(Pet... pets){

@@ -232,6 +232,10 @@ public class VolunteerWindow {
             AddNewPetWindow anpw = new AddNewPetWindow(this);
         });
 
+        btnViewPet.setOnAction(e -> {
+            ViewPetWindow vpw = new ViewPetWindow((Pet)petListView.getSelectionModel().getSelectedItem());
+        });
+
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
             lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
