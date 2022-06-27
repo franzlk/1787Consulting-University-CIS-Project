@@ -311,6 +311,10 @@ public AdminWindow(Volunteer activeUser) {
     // volunteer management tab lambda expressions
 
     // account tab lambda expressions
+    btnEdit.setOnAction(e -> {
+        ConfirmAccountChangesWindow cecw = new ConfirmAccountChangesWindow(currentUser.idNumber, this);
+    });
+
     btnLogout.setOnAction(e -> {
         Main m = new Main();
         m.start(new Stage());

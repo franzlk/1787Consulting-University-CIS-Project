@@ -260,6 +260,10 @@ public class VolunteerWindow {
             ViewVolunteersWindow vv = new ViewVolunteersWindow();
         });
 
+        btnEdit.setOnAction(e -> {
+            ConfirmAccountChangesWindow cecw = new ConfirmAccountChangesWindow(currentUser.idNumber, this);
+        });
+
         btnLogout.setOnAction(e -> {
             Main m = new Main();
             m.start(new Stage());
