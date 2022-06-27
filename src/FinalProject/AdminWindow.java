@@ -27,6 +27,7 @@ public class AdminWindow {
 
     // pet tab nodes
     ListView petListView = new ListView();
+    Button btnAddPet = new Button("Add New Pet");
     Button btnViewPet = new Button("View Selected Pet");
     Button btnEditPet = new Button("Edit Selected Pet");
     Button btnDeletePet = new Button("Delete Selected Pet");
@@ -81,6 +82,7 @@ public class AdminWindow {
     Volunteer currentUser;
     
 public AdminWindow(Volunteer activeUser) {
+    currentUser = activeUser;
     Stage primaryStage = new Stage();
 
     // TabPanes to be used in each Scene
@@ -95,8 +97,16 @@ public AdminWindow(Volunteer activeUser) {
     // Panes to hold the nodes (buttons, labels) of each tab
     //--------home tab
     GridPane homeGridPane = new GridPane();
+    ScrollPane homeScroller = new ScrollPane(homeVBox);
+    homeScroller.setFitToWidth(true);
+    BorderPane homeBorderPane = new BorderPane(homeScroller, homeGridPane, null, null, null);
+    homeBorderPane.setMargin(homeGridPane, new Insets(12, 12, 12, 12));
     //--------event tab
     GridPane eventGridPane = new GridPane();
+    ScrollPane eventScroller = new ScrollPane(eventVBox);
+    eventScroller.setFitToWidth(true);
+    BorderPane eventBorderPane = new BorderPane(eventScroller, eventGridPane, null, null, null);
+    eventBorderPane.setMargin(eventGridPane, new Insets(12, 12, 12, 12));
     //--------pet tab
     VBox petVBox = new VBox();
     //--------clock i/o tab
@@ -108,8 +118,8 @@ public AdminWindow(Volunteer activeUser) {
 
     setPositionAlignment(volunteerGridPane, clockIOPane, accountGridPane);
 
-    Tab1.setContent(homeGridPane);
-    Tab2.setContent(eventGridPane);
+    Tab1.setContent(homeBorderPane);
+    Tab2.setContent(eventBorderPane);
     Tab3.setContent(petVBox);
     Tab4.setContent(clockIOPane);
     Tab5.setContent(volunteerGridPane);
@@ -117,13 +127,23 @@ public AdminWindow(Volunteer activeUser) {
     TabPane.getTabs().addAll(Tab1, Tab2, Tab3, Tab4, Tab5, Tab6);
 
     // nodal content of homeGridPane
+    homeGridPane.setHgap(10);
+    homeGridPane.setVgap(10);
+    homeGridPane.add(lblHome, 0, 0, 2, 1);
+    homeGridPane.add(btnAddPost, 0, 1);
+    homeGridPane.add(btnRefreshFeed, 1, 1);
 
     // nodal content of eventGridPane
+    eventGridPane.setHgap(10);
+    eventGridPane.setVgap(10);
+    eventGridPane.add(lblEvent, 0, 0, 2, 1);
+    eventGridPane.add(btnAddEvent, 0, 1);
+    eventGridPane.add(btnRefreshEventFeed, 1, 1);
 
     // nodal content of petVBox
     petVBox.setAlignment(Pos.CENTER);
-    petVBox.setSpacing(20);
-    petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
+    petVBox.setSpacing(10);
+    petVBox.getChildren().addAll(petListView, btnAddPet, btnViewPet, btnEditPet, btnDeletePet);
     petListView.setMaxWidth(700);
 
     // nodal content of clockIOPane
@@ -221,9 +241,42 @@ public AdminWindow(Volunteer activeUser) {
     primaryStage.show();
 
     // home tab lambda expressions
+    btnAddPost.setOnAction(e -> {
+        AddSocialPostWindow aspw = new AddSocialPostWindow(this);
+    });
+
+    btnRefreshFeed.setOnAction(e -> {
+        homeVBox.getChildren().clear();
+
+        for (SocialPost sp : SocialPost.socialPostArrayList){
+            addSocialPost(sp.idNumber);
+        }
+    });
+
     // event tab lambda expression
+    btnAddEvent.setOnAction(e -> {
+        AddEventWindow aew = new AddEventWindow(this);
+    });
+
+    btnRefreshEventFeed.setOnAction(e -> {
+        eventVBox.getChildren().clear();
+
+        for (Event element : Event.eventArrayList){
+            addEvent(element.idNumber);
+
+        }
+    });
+
     // pet tab lambda expressions
     // clock io tab lambda expression
+    btnClockIn.setOnAction(e -> {
+        lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
+    });
+
+    btnClockOut.setOnAction(e -> {
+        lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
+    });
+
     // clock in/out tab lambda expressions
     btnClockIn.setOnAction(e -> {
         lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
@@ -232,7 +285,9 @@ public AdminWindow(Volunteer activeUser) {
     btnClockOut.setOnAction(e -> {
         lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
     });
+
     // volunteer management tab lambda expressions
+
     // account tab lambda expressions
     btnLogout.setOnAction(e -> {
         Main m = new Main();

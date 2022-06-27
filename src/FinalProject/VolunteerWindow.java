@@ -24,6 +24,7 @@ public class VolunteerWindow {
     // pet tab nodes
     ListView petListView = new ListView();
     Button btnViewPet = new Button("View Selected Pet");
+    Button btnAddPet = new Button("Add New Pet");
     Button btnEditPet = new Button("Edit Selected Pet");
     Button btnDeletePet = new Button("Delete Selected Pet");
 
@@ -113,7 +114,6 @@ public class VolunteerWindow {
         homeGridPane.add(btnAddPost, 0, 1);
         homeGridPane.add(btnRefreshFeed, 1, 1);
 
-        
         // nodal content of EventPane
         eventGridPane.setHgap(10);
         eventGridPane.setVgap(10);
@@ -123,8 +123,8 @@ public class VolunteerWindow {
 
         // nodal content of petVBox
         petVBox.setAlignment(Pos.CENTER);
-        petVBox.setSpacing(20);
-        petVBox.getChildren().addAll(petListView, btnViewPet, btnEditPet, btnDeletePet);
+        petVBox.setSpacing(10);
+        petVBox.getChildren().addAll(petListView, btnAddPet, btnViewPet, btnEditPet, btnDeletePet);
         petListView.setMaxWidth(700);
         
         // nodal content of clockIOPane
@@ -220,6 +220,8 @@ public class VolunteerWindow {
 
             }
         });
+
+        // pet tab lambda expressions
 
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
