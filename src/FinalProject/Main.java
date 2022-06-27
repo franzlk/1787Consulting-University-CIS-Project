@@ -47,6 +47,8 @@ public class Main extends Application{
                         && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(Volunteer.volunteerArrayList.get(i).password))
                         && (Volunteer.volunteerArrayList.get(i).adminID==-1)){
                     AdminWindow vw = new AdminWindow(Volunteer.volunteerArrayList.get(i));
+                    vw.btnRefreshEventFeed.fire();
+                    vw.btnRefreshFeed.fire();
                     primaryStage.hide();
                     bool = true;
 
@@ -54,6 +56,8 @@ public class Main extends Application{
                 else if ((txtUsername.getText().equals(Volunteer.volunteerArrayList.get(i).username))
                         && (CryptoHash.cryptoProtect(txtPassword.getText()).equals(Volunteer.volunteerArrayList.get(i).password))) {
                     VolunteerWindow vw = new VolunteerWindow(Volunteer.volunteerArrayList.get(i));
+                    vw.btnRefreshEventFeed.fire();
+                    vw.btnRefreshFeed.fire();
                     primaryStage.hide();
                     bool = true;
 

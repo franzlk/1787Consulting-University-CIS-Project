@@ -244,6 +244,8 @@ public AdminWindow(Volunteer activeUser) {
     primaryStage.setTitle("BARK Admin View");
     primaryStage.show();
 
+
+
     // home tab lambda expressions
     btnAddPost.setOnAction(e -> {
         AddSocialPostWindow aspw = new AddSocialPostWindow(this);
