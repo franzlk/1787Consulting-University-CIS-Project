@@ -222,6 +222,9 @@ public class VolunteerWindow {
         });
 
         // pet tab lambda expressions
+        btnAddPet.setOnAction(e -> {
+            AddNewPetWindow anpw = new AddNewPetWindow(this);
+        });
 
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {

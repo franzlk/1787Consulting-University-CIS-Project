@@ -20,12 +20,14 @@ public class Pet {
     String ownerState;
     String ownerZip;
     String comments;
+    String vetBusinessName;
     String vetPhone;
 
     static ArrayList<Pet> petArrayList = new ArrayList<>();
 
-    public Pet(String name, String animalType, String species, String dateOfBirth, String ownerName, String ownerPhone, String ownerEmail,
-               String ownerAddress, String ownerCity, String ownerState, String ownerZip, String comments, String vetPhone) {
+    public Pet(String name, String animalType, String species, String dateOfBirth, String ownerName, String ownerPhone,
+               String ownerEmail, String ownerAddress, String ownerCity, String ownerState, String ownerZip,
+               String comments, String vetBusinessName, String vetPhone) {
         this.idNumber = ++count;
         this.name = name;
         this.animalType = animalType;
@@ -39,6 +41,7 @@ public class Pet {
         this.ownerState = ownerState;
         this.ownerZip = ownerZip;
         this.comments = comments;
+        this.vetBusinessName = vetBusinessName;
         this.vetPhone = vetPhone;
 
         addPets(this);
@@ -142,6 +145,14 @@ public class Pet {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public String getVetBusinessName() {
+        return vetBusinessName;
+    }
+
+    public void setVetBusinessName(String vetBusinessName) {
+        this.vetBusinessName = vetBusinessName;
     }
 
     public String getVetPhone() {
