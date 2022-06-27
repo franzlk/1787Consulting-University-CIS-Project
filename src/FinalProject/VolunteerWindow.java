@@ -25,7 +25,7 @@ public class VolunteerWindow {
     VBox eventVBox = new VBox(5);
 
     // pet tab nodes
-    ListView petListView = new ListView();
+    ListView petListView = new ListView();//
     Button btnViewPet = new Button("View Selected Pet");
     Button btnAddPet = new Button("Add New Pet");
     Button btnEditPet = new Button("Edit Selected Pet");
