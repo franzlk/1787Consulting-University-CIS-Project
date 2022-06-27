@@ -309,6 +309,10 @@ public AdminWindow(Volunteer activeUser) {
     });
 
     // volunteer management tab lambda expressions
+    btnViewVolInfo.setOnAction(e -> {
+        ViewSelectedVolunteerWindow vsvw = new ViewSelectedVolunteerWindow((Volunteer) volunteerListView.getSelectionModel().getSelectedItem());
+    });
+
 
     // account tab lambda expressions
     btnEdit.setOnAction(e -> {
