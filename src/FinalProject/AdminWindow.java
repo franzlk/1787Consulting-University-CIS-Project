@@ -317,6 +317,10 @@ public AdminWindow(Volunteer activeUser) {
         EditSelectedVolunteerWindow esvw = new EditSelectedVolunteerWindow((Volunteer) volunteerListView.getSelectionModel().getSelectedItem(), this);
     });
 
+    btnDelVol.setOnAction(e -> {
+        DeleteSelectedVolunteerWindow dsvw = new DeleteSelectedVolunteerWindow((Volunteer) volunteerListView.getSelectionModel().getSelectedItem(), this);
+    });
+
 
     // account tab lambda expressions
     btnEdit.setOnAction(e -> {
@@ -419,6 +423,8 @@ public AdminWindow(Volunteer activeUser) {
 
     public void clearUpdateTable(ListView lv, ArrayList al, ObservableList obsList) {
         lv.getItems().clear();
+        obsList.clear();
+        obsList.addAll(al);
         for (int i = 0; i<al.size(); i++)
             lv.getItems().add(obsList.get(i));
     }
