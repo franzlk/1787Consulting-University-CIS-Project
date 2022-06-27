@@ -37,6 +37,7 @@ public class Main extends Application{
         primaryStage.setTitle("BARK Login");
         primaryStage.show();
 
+        btnLogin.setDefaultButton(true);
         btnLogin.requestFocus();
 
         btnLogin.setOnAction(e -> {
