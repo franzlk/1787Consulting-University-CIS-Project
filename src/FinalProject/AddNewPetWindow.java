@@ -1,6 +1,8 @@
 package FinalProject;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,6 +27,8 @@ public class AddNewPetWindow {
     TextField txtVetPhone = new TextField();
     Button btnAdd = new Button("Add Pet");
 
+
+
     public <T> AddNewPetWindow(T parentForm){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
@@ -47,6 +51,9 @@ public class AddNewPetWindow {
         txtOwnerZip.setPromptText("Zip Code");
         txtComments.setPromptText("Miscellaneous Comments");
 
+        setMaxWidth(txtName, txtAnimalType, txtSpecies, txtDoB, txtVetBusinessName, txtVetPhone, txtOwnerName, txtOwnerPhone,
+                txtOwnerEmail, txtOwnerAddress, txtOwnerCity, txtOwnerState, txtOwnerZip);
+
         gridPane.add(txtName, 0, 0);
         gridPane.add(txtAnimalType, 0, 1);
         gridPane.add(txtSpecies, 0, 2);
@@ -68,12 +75,41 @@ public class AddNewPetWindow {
         btnAdd.setMinWidth(510);
         gridPane.add(btnAdd, 0, 8, 2, 1);
 
-
         Scene primaryScene = new Scene(gridPane, 550, 450);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Add New Pet");
         primaryStage.show();
 
         btnAdd.requestFocus();
+
+
+
+
+
+        btnAdd.setOnAction(e -> {
+            Pet pet = new Pet(txtName.getText(), txtAnimalType.getText(), txtSpecies.getText(), txtDoB.getText(),
+                    txtOwnerName.getText(), txtOwnerPhone.getText(), txtOwnerEmail.getText(), txtOwnerAddress.getText(),
+                    txtOwnerCity.getText(), txtOwnerState.getText(), txtOwnerZip.getText(), txtComments.getText(),
+                    txtVetBusinessName.getText(), txtVetPhone.getText());
+            primaryStage.hide();
+
+            ObservableList<Pet> petObservableList
+                    = FXCollections.observableArrayList(Pet.petArrayList);
+
+            if (parentForm instanceof VolunteerWindow){
+                ((VolunteerWindow) parentForm).clearUpdateTable(((VolunteerWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
+            }
+
+            else if (parentForm instanceof AdminWindow){
+                ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
+            }
+        });
+
     }
+
+    public void setMaxWidth(TextField... tf){
+        for (TextField t: tf)
+            t.setPrefWidth(250);
+    }
+
 }

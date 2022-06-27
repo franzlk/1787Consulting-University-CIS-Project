@@ -32,6 +32,7 @@ public class AdminWindow {
     Button btnEditPet = new Button("Edit Selected Pet");
     Button btnDeletePet = new Button("Delete Selected Pet");
 
+
     // Clock-In/Clock-Out tab nodes
     Button btnClockIn = new Button("Clock-In");
     Label lblClockInTime = new Label();
@@ -141,6 +142,9 @@ public AdminWindow(Volunteer activeUser) {
     eventGridPane.add(btnRefreshEventFeed, 1, 1);
 
     // nodal content of petVBox
+    ObservableList<Pet> petObservableList
+            = FXCollections.observableArrayList(Pet.petArrayList);
+    clearUpdateTable(petListView, Pet.petArrayList, petObservableList );
     petVBox.setAlignment(Pos.CENTER);
     petVBox.setSpacing(10);
     petVBox.getChildren().addAll(petListView, btnAddPet, btnViewPet, btnEditPet, btnDeletePet);
@@ -268,6 +272,10 @@ public AdminWindow(Volunteer activeUser) {
     });
 
     // pet tab lambda expressions
+    btnAddPet.setOnAction(e -> {
+        AddNewPetWindow anpw = new AddNewPetWindow(this);
+    });
+
     // clock io tab lambda expression
     btnClockIn.setOnAction(e -> {
         lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());

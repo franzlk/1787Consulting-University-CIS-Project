@@ -1,5 +1,7 @@
 package FinalProject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -7,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class VolunteerWindow {
     // home tab nodes
@@ -122,6 +125,9 @@ public class VolunteerWindow {
         eventGridPane.add(btnRefreshEventFeed, 1, 1);
 
         // nodal content of petVBox
+        ObservableList<Pet> petObservableList
+                = FXCollections.observableArrayList(Pet.petArrayList);
+        clearUpdateTable(petListView, Pet.petArrayList, petObservableList );
         petVBox.setAlignment(Pos.CENTER);
         petVBox.setSpacing(10);
         petVBox.getChildren().addAll(petListView, btnAddPet, btnViewPet, btnEditPet, btnDeletePet);
@@ -316,6 +322,12 @@ public class VolunteerWindow {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now = LocalDateTime.now();
         return (dtf.format(now));
+    }
+
+    public void clearUpdateTable(ListView lv, ArrayList al, ObservableList obsList) {
+        lv.getItems().clear();
+        for (int i = 0; i<al.size(); i++)
+            lv.getItems().add(obsList.get(i));
     }
 
     public String getCurrentTime() {
