@@ -280,6 +280,10 @@ public AdminWindow(Volunteer activeUser) {
         ViewPetWindow vpw = new ViewPetWindow((Pet)petListView.getSelectionModel().getSelectedItem());
     });
 
+    btnEditPet.setOnAction(e -> {
+        EditPetWindow epw = new EditPetWindow(this, (Pet)petListView.getSelectionModel().getSelectedItem());
+    });
+
     // clock io tab lambda expression
     btnClockIn.setOnAction(e -> {
         lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
