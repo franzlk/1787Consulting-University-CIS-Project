@@ -242,6 +242,10 @@ public class VolunteerWindow {
             EditPetWindow epw = new EditPetWindow(this, (Pet)petListView.getSelectionModel().getSelectedItem());
         });
 
+        btnDeletePet.setOnAction(e -> {
+            DeletePetWindow dpw = new DeletePetWindow((Pet)petListView.getSelectionModel().getSelectedItem(), this);
+        });
+
         // clock in/out tab lambda expressions
         btnClockIn.setOnAction(e -> {
             lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
