@@ -197,4 +197,13 @@ public class Volunteer {
         }
 
     }
+
+    public static Volunteer getByID(int ID){
+        Volunteer vlnt = volunteerArrayList.get(0);
+        for (Volunteer v : volunteerArrayList){
+            if (ID==v.idNumber){
+                vlnt = v;}
+        }
+        return vlnt;
+    }
 }

@@ -315,11 +315,12 @@ public AdminWindow(Volunteer activeUser) {
     public void addSocialPost(int ID){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setStyle("-fx-background-color: WHITE");
-        Label label = new Label("Post on: " + getCurrentDate() + " " + getCurrentTime());
+        Label label = new Label("Post on: " + SocialPost.getByID(ID).date+ " " + SocialPost.getByID(ID).time + "\n" +
+                "from: " + Volunteer.getByID(SocialPost.getByID(ID).userID).name);
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
         Label content = new Label((SocialPost.getByID(ID).text));
-        content.setMaxWidth(300);
+        content.setMaxWidth(450);
         content.setWrapText(true);
         AnchorPane.setLeftAnchor(content, 200.0);
         AnchorPane.setTopAnchor(content, 5.0);

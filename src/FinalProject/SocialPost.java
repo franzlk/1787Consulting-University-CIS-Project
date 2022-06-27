@@ -1,5 +1,7 @@
 package FinalProject;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class SocialPost {
@@ -11,9 +13,11 @@ public class SocialPost {
     int userID;
     String text;
 
+
     static ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
 
     public SocialPost(String date, String time, int userID, String text) {
+
         this.idNumber = ++count;
         this.date = date;
         this.time = time;
@@ -81,4 +85,5 @@ public class SocialPost {
         }
         return sp;
     }
+
 }

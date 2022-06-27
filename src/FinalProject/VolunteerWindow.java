@@ -266,7 +266,8 @@ public class VolunteerWindow {
     public void addSocialPost(int ID){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setStyle("-fx-background-color: WHITE");
-        Label label = new Label("Post on: " + getCurrentDate() + " " + getCurrentTime());
+        Label label = new Label("Post on: " + SocialPost.getByID(ID).date+ " " + SocialPost.getByID(ID).time + "\n" +
+                "from: " + Volunteer.getByID(SocialPost.getByID(ID).userID).name);
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
         Label content = new Label((SocialPost.getByID(ID).text));
@@ -325,17 +326,16 @@ public class VolunteerWindow {
         eventVBox.getChildren().add(anchorPane);
 
     }
+    public void clearUpdateTable(ListView lv, ArrayList al, ObservableList obsList) {
+        lv.getItems().clear();
+        for (int i = 0; i<al.size(); i++)
+            lv.getItems().add(obsList.get(i));
+    }
 
     public String getCurrentDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now = LocalDateTime.now();
         return (dtf.format(now));
-    }
-
-    public void clearUpdateTable(ListView lv, ArrayList al, ObservableList obsList) {
-        lv.getItems().clear();
-        for (int i = 0; i<al.size(); i++)
-            lv.getItems().add(obsList.get(i));
     }
 
     public String getCurrentTime() {

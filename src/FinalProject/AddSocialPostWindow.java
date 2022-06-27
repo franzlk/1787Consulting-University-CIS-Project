@@ -6,6 +6,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class AddSocialPostWindow {
     TextArea txtDescription = new TextArea();
     Button btnConfirm = new Button("Add Post");
@@ -51,5 +54,7 @@ public class AddSocialPostWindow {
                 }
         });
     }
+
+
 
 }

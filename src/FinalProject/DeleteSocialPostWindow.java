@@ -12,7 +12,7 @@ public class DeleteSocialPostWindow {
     Button btnDelete = new Button("Delete");
     Button btnCancel = new Button("Cancel");
 
-    public DeleteSocialPostWindow(int ID, VolunteerWindow parentForm){
+    public <T> DeleteSocialPostWindow(int ID, T parentForm){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -32,12 +32,23 @@ public class DeleteSocialPostWindow {
         primaryStage.show();
 
         btnDelete.setOnAction(e -> {
+            if (parentForm instanceof VolunteerWindow){
             for (SocialPost sp : SocialPost.socialPostArrayList){
                 if (sp.getIdNumber()==ID){
                     SocialPost.socialPostArrayList.remove(sp);
-                    parentForm.btnRefreshFeed.fire();
+                    ((VolunteerWindow)parentForm).btnRefreshFeed.fire();
                     break;
                 }
+            }}
+            else if (parentForm instanceof AdminWindow){
+                for (SocialPost sp : SocialPost.socialPostArrayList){
+                    if (sp.getIdNumber()==ID){
+                        SocialPost.socialPostArrayList.remove(sp);
+                        ((AdminWindow)parentForm).btnRefreshFeed.fire();
+                        break;
+                    }
+                }
+
             }
 
             primaryStage.hide();
