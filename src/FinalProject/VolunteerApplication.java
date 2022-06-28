@@ -19,7 +19,6 @@ public class VolunteerApplication {
     String ShadowPreference;
     String EmergencyContactPhone;
     String password;
-
     String username;
 
     static ArrayList<VolunteerApplication> volunteerApplicationArrayList = new ArrayList<>();

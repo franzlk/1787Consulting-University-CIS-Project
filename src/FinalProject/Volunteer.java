@@ -25,6 +25,7 @@ public class Volunteer {
     int adminID = 0;
     String username;
     String password;
+    int volunteerApplicationID;// add reference to volunteer application
 
     static ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
 
