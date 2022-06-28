@@ -1,22 +1,43 @@
 CREATE TABLE VOLUNTEER(
 	VolunteerID			Integer(5) primary key NOT NULL,
 	Name				VARCHAR(30),
-	DateOfBirth			CHAR (20),
+	DateOfBirth			CHAR(20),
 	Specialization			VARCHAR(70),
 	EmailAddress			VARCHAR(30),		
 	HoursServed			FLOAT(5),
 	PhoneNumber			VARCHAR(15),
 	Status				VARCHAR(20),
+	Address				VARCHAR(45),
+	City				CHAR(20),
+	State				CHAR(20),
+	Zip				Integer(5),
 	EmergencyContactNum		VARCHAR(15),	
 	WorkHistory			VARCHAR(70),
-	TotalMileage			Integer(10),
+	TotalHours			Integer(10),
+	UserName			VARCHAR(30) NOT NULL
+		references VOLUNTEERAPPLICATION(Username),
+	Password			VARCHAR(30) NOT NULL
+		references VOLUNTEERAPPLICATION(Password),
 	AdminID				Integer(5) NOT NULL
-		references VOLUNTEER(VolunteerID)
+		references VOLUNTEER(VolunteerID),
+	VolunteerApplicationID		Integer(5) NOT NULL
+		references VOLUNTEERAPPLICATION(VolunteerApplicationID)
+
 );
 
 CREATE TABLE EVENT(
 	EventID				Integer(5) primary key NOT NULL,
-	location			VARCHAR(35)
+	location			VARCHAR(35),
+	Name				VARCHAR(50),
+	Date				CHAR(20),
+	Time				VARCHAR(7),
+	Address				VARCHAR(45),
+	City				CHAR(20),
+	State				CHAR(20),
+	Zip				Integer(5),
+	Description			VARCHAR(150),
+	EventCreatorID			Integer(5) NOT NULL
+		references VOLUNTEER(VolunteerID)
 );
 
 CREATE TABLE TRIP(
@@ -35,7 +56,8 @@ CREATE TABLE SOCIALPOSTS(
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
 	Content				VARCHAR(150),
-	CreationDate			CHAR (20)
+	CreationDate			CHAR (20),
+	Time				VARCHAR(7)
 );
 
 CREATE TABLE VOLUNTEERAPPLICATION(
@@ -43,7 +65,7 @@ CREATE TABLE VOLUNTEERAPPLICATION(
 	VolunteerID			Integer(5) NOT NULL
 		references VOLUNTEER(VolunteerID),
 	Name				VARCHAR(30),
-	DateOfBirth			CHAR (20),
+	DateOfBirth			CHAR(20),
 	EmailAddress			VARCHAR(30),
 	PhoneNumber			VARCHAR(15),
 	ShadowPreference		VARCHAR(30),
@@ -51,9 +73,11 @@ CREATE TABLE VOLUNTEERAPPLICATION(
 	City				CHAR(20),
 	State				CHAR(20),
 	Zip				Integer(5),
-	Experience			VARCHAR(250),
+	WorkHistory			VARCHAR(250),
 	PreferredSpecialization 	VARCHAR(70),
-	EmergencyContactNum		VARCHAR(15)
+	EmergencyContactNum		VARCHAR(15),
+	Username 			VARCHAR(30),
+	Password			VARCHAR(30)
 );
 
 CREATE TABLE TIMEHISTORY(
@@ -63,5 +87,23 @@ CREATE TABLE TIMEHISTORY(
 	Date				CHAR (20),
 	TimeIn				CHAR (7),
 	TimeOut				CHAR (7)
+);
+
+CREATE TABLE PET(
+	PetID				Integer(5) primary key NOT NULL,
+	Name				VARCHAR(30),
+	AnimalType			VARCHAR(35),
+	Species				VARCHAR(35),
+	DateOfBirth			CHAR(20),
+	OwnerName			VARCHAR(30),
+	OwnerPhoneNumber		VARCHAR(15),
+	OwnerEmailAddress		VARCHAR(30),		
+	OwnerAddress			VARCHAR(45),
+	OwnerCity			CHAR(20),
+	OwnerState			CHAR(20),
+	OwnerZip			Integer(5),
+	Comments			VARCHAR(50),	
+	VetBusinessName			VARCHAR(35),
+	VetPhoneNumber			VARCHAR(15)
 );
 
