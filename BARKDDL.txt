@@ -23,6 +23,7 @@ CREATE TABLE VOLUNTEER(
 		references VOLUNTEERAPPLICATION(VolunteerApplicationID)
 
 );
+--IsAdminField uses -1 for an admin, 0 for a regular volunteer
 
 CREATE TABLE EVENT(
 	EventID				Integer(5) primary key NOT NULL,
