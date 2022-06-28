@@ -7,6 +7,10 @@ import javafx.scene.control.*;
 import javafx.stage.*;
 import javafx.scene.layout.*;
 
+import java.sql.*;
+import oracle.jdbc.pool.*;
+import java.util.*;
+
 public class Main extends Application{
     public static void main(String[] args){
         launch(args);
