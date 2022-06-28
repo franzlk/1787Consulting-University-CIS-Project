@@ -23,18 +23,18 @@ public class VolunteerApplication {
 
     static ArrayList<VolunteerApplication> volunteerApplicationArrayList = new ArrayList<>();
 
-    public VolunteerApplication(String name, String doB, String email,
+    public VolunteerApplication(String name, String DoB, String email,
                                 String phone, String address, String city, String state,
                                 String zip, String workHistory, String specializationPreference,
                                 String shadowPreference, String emergencyContactPhone, String username, String password) {
         this.idNumber = ++count;
         this.name = name;
-        DoB = doB;
+        this.DoB = DoB;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.city = city;
-        State = state;
+        this.State = state;
         this.zip = zip;
         this.workHistory = workHistory;
         this.specializationPreference = specializationPreference;

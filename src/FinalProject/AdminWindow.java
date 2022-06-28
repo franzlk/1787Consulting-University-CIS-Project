@@ -321,6 +321,10 @@ public AdminWindow(Volunteer activeUser) {
         DeleteSelectedVolunteerWindow dsvw = new DeleteSelectedVolunteerWindow((Volunteer) volunteerListView.getSelectionModel().getSelectedItem(), this);
     });
 
+    btnViewApp.setOnAction(e -> {
+        ViewSelectedApplicationWindow vsaw = new ViewSelectedApplicationWindow((VolunteerApplication) applicationListView.getSelectionModel().getSelectedItem());
+    });
+
 
     // account tab lambda expressions
     btnEdit.setOnAction(e -> {
