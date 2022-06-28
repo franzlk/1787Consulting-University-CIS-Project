@@ -86,6 +86,8 @@ public class Main extends Application{
 
     @Override
     public void init(){
+        
+
         // creating an initial admin user
         Volunteer admin = new Volunteer("Julie Markinson", "10/26/1998", "Administration",
                 "genericemail@gmail.com", 20.0, "(999) 999-9999", "Full Volunteer",

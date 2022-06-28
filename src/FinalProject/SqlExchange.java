@@ -20,6 +20,11 @@ public class SqlExchange {
     ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
     ArrayList<Pet> petArrayList = new ArrayList<>();
 
+    public static void main(String[] args) {
+
+    }
+
+
     public void sendDBCommand(String sqlQuery) {
         // Set up your connection strings
         // IF YOU ARE IN CIS330 NOW: use YOUR Oracle Username/Password
@@ -59,12 +64,18 @@ public class SqlExchange {
             // pointed to by the reference variable dbResults
             // Because we declared this variable globally above, we can use
             // the results in any method in the class.
+            System.out.println();
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
     }
 
-    public String populateArrayLists() {
+    public void sendString(String string){
+        sendDBCommand(string);
+    }
+
+
+    public Statement populateArrayLists() {
         Statement statement = null;
         try {
             dbConn.createStatement();
@@ -72,9 +83,9 @@ public class SqlExchange {
             if (statement != null) {
                 rs = statement.executeQuery("select * from volunteer");
             }
-            while (rs.next()){
-                volunteerArrayList.add(new Volunteer(rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7)));}
+            while (rs.next()){}
+//                volunteerArrayList.add(new Volunteer(rs.getString(1), rs.getString(2), rs.getString(3),
+//                        rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getString(7)));}
             dbConn.close();
 
         } catch (SQLException e) {
