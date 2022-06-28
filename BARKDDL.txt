@@ -18,8 +18,7 @@ CREATE TABLE VOLUNTEER(
 		references VOLUNTEERAPPLICATION(Username),
 	Password			VARCHAR(30) NOT NULL
 		references VOLUNTEERAPPLICATION(Password),
-	AdminID				Integer(5) NOT NULL
-		references VOLUNTEER(VolunteerID),
+	IsAdmin				Integer(2) NOT NULL,
 	VolunteerApplicationID		Integer(5) NOT NULL
 		references VOLUNTEERAPPLICATION(VolunteerApplicationID)
 
