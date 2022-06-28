@@ -14,7 +14,7 @@ public class Event {
     String address;
     String city;
     String state;
-    String zip; // add to windows and constructor
+    String zip; // add to related windows and constructor
     String description;
     int eventCreatorID;
 
