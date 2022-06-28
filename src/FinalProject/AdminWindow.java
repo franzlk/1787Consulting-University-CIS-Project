@@ -325,6 +325,13 @@ public AdminWindow(Volunteer activeUser) {
         ViewSelectedApplicationWindow vsaw = new ViewSelectedApplicationWindow((VolunteerApplication) applicationListView.getSelectionModel().getSelectedItem());
     });
 
+    btnApproveApp.setOnAction(event -> {
+        ApproveSelectedApplicationWindow asaw = new ApproveSelectedApplicationWindow((VolunteerApplication) applicationListView.getSelectionModel().getSelectedItem(), this);
+    });
+
+    btnDenyApp.setOnAction(event -> {
+        DenySelectedApplicationWindow dsaw = new DenySelectedApplicationWindow((VolunteerApplication) applicationListView.getSelectionModel().getSelectedItem(), this);
+    });
 
     // account tab lambda expressions
     btnEdit.setOnAction(e -> {
