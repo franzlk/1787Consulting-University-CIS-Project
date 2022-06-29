@@ -1,110 +1,107 @@
-CREATE TABLE VOLUNTEER(
-	VolunteerID			Integer(5) primary key NOT NULL,
-	Name				VARCHAR(30),
-	DateOfBirth			CHAR(20),
-	Specialization			VARCHAR(70),
-	EmailAddress			VARCHAR(30),		
-	HoursServed			FLOAT(5),
-	PhoneNumber			VARCHAR(15),
-	Status				VARCHAR(20),
-	Address				VARCHAR(45),
-	City				CHAR(20),
-	State				CHAR(20),
-	Zip				Integer(5),
-	EmergencyContactNum		VARCHAR(15),	
-	WorkHistory			VARCHAR(70),
-	TotalHours			Integer(10),
-	UserName			VARCHAR(30) NOT NULL
-		references VOLUNTEERAPPLICATION(Username),
-	Password			VARCHAR(30) NOT NULL
-		references VOLUNTEERAPPLICATION(Password),
-	IsAdmin				Integer(2) NOT NULL,
-	VolunteerApplicationID		Integer(5) NOT NULL
-		references VOLUNTEERAPPLICATION(VolunteerApplicationID)
-
+CREATE TABLE VOLUNTEERAPPLICATION(
+ VolunteerApplicationID  INT primary key NOT NULL,
+ Name    VARCHAR(30),
+ DateOfBirth   CHAR(20),
+ EmailAddress   VARCHAR(30),
+ PhoneNumber   VARCHAR(15),
+ ShadowPreference  VARCHAR(30),
+ Address    VARCHAR(45),
+ City    CHAR(20),
+ State    CHAR(20),
+ Zip    INT,
+ WorkHistory   VARCHAR(250),
+ PreferredSpecialization  VARCHAR(70),
+ EmergencyContactNum  VARCHAR(15),
+ Username    VARCHAR(30),
+ Password   VARCHAR(30)
 );
+
+CREATE TABLE VOLUNTEER(
+ VolunteerID         INT primary key NOT NULL,
+ Name                VARCHAR(30),
+ DateOfBirth         CHAR(20),
+ Specialization      VARCHAR(70),
+ EmailAddress        VARCHAR(30),
+ HoursServed         FLOAT(5),
+ PhoneNumber         VARCHAR(15),
+ Status              VARCHAR(20),
+ Address             VARCHAR(45),
+ City                CHAR(20),
+ State               CHAR(20),
+ Zip                 INT,
+ EmergencyContactNum VARCHAR(15),
+ WorkHistory         VARCHAR(70),
+ TotalHours          INT,
+ UserName            VARCHAR(30) NOT NULL,
+ Password            VARCHAR(30) NOT NULL,
+ IsAdmin             INT NOT NULL,
+ VolunteerApplicationID      INT NOT NULL references VOLUNTEERAPPLICATION(VolunteerApplicationID)
+);
+
 --IsAdminField uses -1 for an admin, 0 for a regular volunteer
 
 CREATE TABLE EVENT(
-	EventID				Integer(5) primary key NOT NULL,
-	location			VARCHAR(35),
-	Name				VARCHAR(50),
-	Date				CHAR(20),
-	Time				VARCHAR(7),
-	Address				VARCHAR(45),
-	City				CHAR(20),
-	State				CHAR(20),
-	Zip				Integer(5),
-	Description			VARCHAR(150),
-	EventCreatorID			Integer(5) NOT NULL
-		references VOLUNTEER(VolunteerID)
+ EventID    INT primary key NOT NULL,
+ Location   VARCHAR(35),
+ Name    VARCHAR(50),
+ EventDate    CHAR(20),
+ Time    VARCHAR(7),
+ Address    VARCHAR(45),
+ City    CHAR(20),
+ State    CHAR(20),
+ Zip    INT,
+ Description   VARCHAR(150),
+ EventCreatorID   INT NOT NULL
+  references VOLUNTEER(VolunteerID)
 );
 
 CREATE TABLE TRIP(
-	TripID				Integer(5) primary key NOT NULL,
-	VolunteerID			Integer(5)
-		references VOLUNTEER(VolunteerID),
-	Mileage 			Integer(3),
-	Date				CHAR (20),
-	Info				VARCHAR(50),
-	EventID				Integer(5)
-		references EVENT(EventID)	
+ TripID    INT primary key NOT NULL,
+ VolunteerID   INT
+  references VOLUNTEER(VolunteerID),
+ Mileage    INT,
+ TripDate    CHAR (20),
+ Info    VARCHAR(50),
+ EventID    INT
+  references EVENT(EventID) 
 );
 
 CREATE TABLE SOCIALPOSTS(
-	PostID				Integer(5) primary key NOT NULL,
-	VolunteerID			Integer(5) NOT NULL
-		references VOLUNTEER(VolunteerID),
-	Content				VARCHAR(150),
-	CreationDate			CHAR (20),
-	Time				VARCHAR(7)
+ PostID    INT primary key NOT NULL,
+ VolunteerID   INT NOT NULL
+  references VOLUNTEER(VolunteerID),
+ Content    VARCHAR(150),
+ CreationDate   CHAR (20),
+ Time    VARCHAR(7)
 );
 
-CREATE TABLE VOLUNTEERAPPLICATION(
-	VolunteerApplicationID		Integer(5) primary key NOT NULL,
-	VolunteerID			Integer(5) NOT NULL
-		references VOLUNTEER(VolunteerID),
-	Name				VARCHAR(30),
-	DateOfBirth			CHAR(20),
-	EmailAddress			VARCHAR(30),
-	PhoneNumber			VARCHAR(15),
-	ShadowPreference		VARCHAR(30),
-	Address				VARCHAR(45),
-	City				CHAR(20),
-	State				CHAR(20),
-	Zip				Integer(5),
-	WorkHistory			VARCHAR(250),
-	PreferredSpecialization 	VARCHAR(70),
-	EmergencyContactNum		VARCHAR(15),
-	Username 			VARCHAR(30),
-	Password			VARCHAR(30)
-);
+
 
 CREATE TABLE TIMEHISTORY(
-	ClockInID			Integer(5) primary key NOT NULL,
-	VolunteerID			Integer(5) NOT NULL
-		references VOLUNTEER(VolunteerID),
-	Date				CHAR (20),
-	TimeIn				CHAR (7),
-	TimeOut				CHAR (7)
+ ClockInID   INT primary key NOT NULL,
+ VolunteerID   INT NOT NULL
+  references VOLUNTEER(VolunteerID),
+ clockDate    CHAR (20),
+ TimeIn    CHAR (7),
+ TimeOut    CHAR (7)
 );
 
 CREATE TABLE PET(
-	PetID				Integer(5) primary key NOT NULL,
-	Name				VARCHAR(30),
-	AnimalType			VARCHAR(35),
-	Species				VARCHAR(35),
-	DateOfBirth			CHAR(20),
-	OwnerName			VARCHAR(30),
-	OwnerPhoneNumber		VARCHAR(15),
-	OwnerEmailAddress		VARCHAR(30),		
-	OwnerAddress			VARCHAR(45),
-	OwnerCity			CHAR(20),
-	OwnerState			CHAR(20),
-	OwnerZip			Integer(5),
-	Comments			VARCHAR(50),	
-	VetBusinessName			VARCHAR(35),
-	VetPhoneNumber			VARCHAR(15)
+ PetID    INT primary key NOT NULL,
+ Name    VARCHAR(30),
+ AnimalType   VARCHAR(35),
+ Species    VARCHAR(35),
+ DateOfBirth   CHAR(20),
+ OwnerName   VARCHAR(30),
+ OwnerPhoneNumber  VARCHAR(15),
+ OwnerEmailAddress  VARCHAR(30),  
+ OwnerAddress   VARCHAR(45),
+ OwnerCity   CHAR(20),
+ OwnerState   CHAR(20),
+ OwnerZip   INT,
+ Comments   VARCHAR(50), 
+ VetBusinessName   VARCHAR(35),
+ VetPhoneNumber   VARCHAR(15)
 );
 
 
