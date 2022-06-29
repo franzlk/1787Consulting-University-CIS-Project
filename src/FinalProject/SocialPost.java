@@ -28,6 +28,7 @@ public class SocialPost {
         addPost(this);
     }
 
+    //present pk constructor
     public SocialPost(int idNumber, int userID, String text, String date, String time) {
 
         this.idNumber = idNumber;

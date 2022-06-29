@@ -25,13 +25,13 @@ public class ViewEventWindow {
         gridPane.setVgap(5);
         gridPane.setHgap(10);
 
-        lblName.setText("Name:\t" + Event.eventArrayList.get(ID-1).name);
-        lblDate.setText("Date:\t" + Event.eventArrayList.get(ID-1).date);
-        lblTime.setText("Time:\t" + Event.eventArrayList.get(ID-1).time);
-        lblAddress.setText("Address:\t" + Event.eventArrayList.get(ID-1).address);
-        lblCity.setText("City:\t" + Event.eventArrayList.get(ID-1).city);
-        lblState.setText("State:\t" + Event.eventArrayList.get(ID-1).state);
-        lblDescription.setText("Description:\t" + Event.eventArrayList.get(ID-1).description);
+        lblName.setText("Name:\t" + Event.getByID(ID).name);
+        lblDate.setText("Date:\t" + Event.getByID(ID).date);
+        lblTime.setText("Time:\t" + Event.getByID(ID).time);
+        lblAddress.setText("Address:\t" + Event.getByID(ID).address);
+        lblCity.setText("City:\t" + Event.getByID(ID).city);
+        lblState.setText("State:\t" + Event.getByID(ID).state);
+        lblDescription.setText("Description:\t" + Event.getByID(ID).description);
         lblDescription.setMaxWidth(500);
         lblDescription.setWrapText(true);
 

@@ -20,6 +20,7 @@ public class Event {
 
     static ArrayList<Event> eventArrayList = new ArrayList<>();
 
+    // null pk constructor
     public Event(String name, String date, String time, String address,
                  String city, String state, String description, int eventCreatorID) {
         this.idNumber = ++count;
@@ -33,6 +34,20 @@ public class Event {
         this.eventCreatorID = eventCreatorID;
 
         addEvents(this);
+    }
+
+    // present pk constructor
+    public Event(int idNumber, String name, String date, String time, String address,
+                 String city, String state, String description, int eventCreatorID) {
+        this.idNumber = idNumber;
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.description = description;
+        this.eventCreatorID = eventCreatorID;
     }
 
     public String getName() {

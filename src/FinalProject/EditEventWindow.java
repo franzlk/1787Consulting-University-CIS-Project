@@ -26,13 +26,13 @@ public class EditEventWindow {
         gridPane.setVgap(5);
         gridPane.setHgap(10);
 
-        txtName.setText(Event.eventArrayList.get(ID-1).name);
-        txtDate.setText(Event.eventArrayList.get(ID-1).date);
-        txtTime.setText(Event.eventArrayList.get(ID-1).time);
-        txtAddress.setText(Event.eventArrayList.get(ID-1).address);
-        txtCity.setText(Event.eventArrayList.get(ID-1).city);
-        txtState.setText(Event.eventArrayList.get(ID-1).state);
-        txtDescription.setText(Event.eventArrayList.get(ID-1).description);
+        txtName.setText(Event.getByID(ID).name);
+        txtDate.setText(Event.getByID(ID).date);
+        txtTime.setText(Event.getByID(ID).time);
+        txtAddress.setText(Event.getByID(ID).address);
+        txtCity.setText(Event.getByID(ID).city);
+        txtState.setText(Event.getByID(ID).state);
+        txtDescription.setText(Event.getByID(ID).description);
 
         // formatting
         setMaxWidth(txtDescription, txtName, txtDate, txtTime, txtAddress,
@@ -59,13 +59,13 @@ public class EditEventWindow {
 
         btnConfirm.setOnAction(e -> {
 
-            Event.eventArrayList.get(ID-1).setName(txtName.getText());
-            Event.eventArrayList.get(ID-1).setDate(txtDate.getText());
-            Event.eventArrayList.get(ID-1).setTime(txtTime.getText());
-            Event.eventArrayList.get(ID-1).setAddress(txtAddress.getText());
-            Event.eventArrayList.get(ID-1).setCity(txtCity.getText());
-            Event.eventArrayList.get(ID-1).setState(txtState.getText());
-            Event.eventArrayList.get(ID-1).setDescription(txtDescription.getText());
+            Event.getByID(ID).setName(txtName.getText());
+            Event.getByID(ID).setDate(txtDate.getText());
+            Event.getByID(ID).setTime(txtTime.getText());
+            Event.getByID(ID).setAddress(txtAddress.getText());
+            Event.getByID(ID).setCity(txtCity.getText());
+            Event.getByID(ID).setState(txtState.getText());
+            Event.getByID(ID).setDescription(txtDescription.getText());
             if (parentForm instanceof VolunteerWindow){
                 ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
             else if (parentForm instanceof AdminWindow){

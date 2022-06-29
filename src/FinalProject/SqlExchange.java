@@ -123,6 +123,20 @@ public class SqlExchange {
                         rs.getString(3), rs.getString(4), rs.getString(5)));
             }
 
+            // event arraylist population
+            stmt = null;
+            stmt = connection.createStatement();
+            rs = null;
+            if (stmt != null) {
+                rs = stmt.executeQuery("select * from event");
+            }
+            while (rs.next()){
+
+                Event.eventArrayList.add(new Event(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9)));
+            }
+
             connection.close();
 
         } catch (SQLException e) {
