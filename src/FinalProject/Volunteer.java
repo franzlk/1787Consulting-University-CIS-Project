@@ -32,8 +32,7 @@ public class Volunteer {
     // null pk constructor
     public Volunteer(String name, String dateOfBirth, String specialization,
                 String email, Double hoursServed, String phone, String status,String address, String city, String state,
-                String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password) {
-
+                String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password, int adminID) {
         this.idNumber = ++count;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -51,6 +50,7 @@ public class Volunteer {
         this.totalHours = totalHours;
         this.username = username;
         this.password = CryptoHash.cryptoProtect(password);
+        this.adminID = adminID;
 
         addVolunteers(this); // this is only not necessary when the volunteer array list is initially populated by the db
         // so we don't need to include this method call below in the 'present pk constructor'
@@ -59,7 +59,7 @@ public class Volunteer {
     // present pk constructor
     public Volunteer(int idNumber, String name, String dateOfBirth, String specialization,
                      String email, Double hoursServed, String phone, String status,String address, String city, String state,
-                     String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password) {
+                     String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password, int adminID) {
 
         this.idNumber = idNumber;
         this.name = name;
@@ -78,6 +78,7 @@ public class Volunteer {
         this.totalHours = totalHours;
         this.username = username;
         this.password = password;
+        this.adminID = adminID;
     }
 
     public String getAddress() {

@@ -41,7 +41,7 @@ public class ApproveSelectedApplicationWindow {
             // create new volunteer
             Volunteer volunteer = new Volunteer(volApp.name, volApp.DoB, "New Learner", volApp.email,
                     0.0, volApp.phone, "Conditional Volunteer", volApp.address, volApp.city, volApp.State,
-                    volApp.zip, volApp.EmergencyContactPhone, volApp.workHistory, 0.0, volApp.username, volApp.password);
+                    volApp.zip, volApp.EmergencyContactPhone, volApp.workHistory, 0.0, volApp.username, volApp.password, 0);
             // remove the approved application
             VolunteerApplication.volunteerApplicationArrayList.remove(volApp);
 
