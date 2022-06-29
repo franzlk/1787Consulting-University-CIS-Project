@@ -26,7 +26,7 @@ public class Pet {
     static ArrayList<Pet> petArrayList = new ArrayList<>();
 
 
-
+    // null pk constructor
     public Pet(String name, String animalType, String species, String dateOfBirth, String ownerName, String ownerPhone,
                String ownerEmail, String ownerAddress, String ownerCity, String ownerState, String ownerZip,
                String comments, String vetBusinessName, String vetPhone) {
@@ -47,6 +47,27 @@ public class Pet {
         this.vetPhone = vetPhone;
 
         addPets(this);
+    }
+
+    public Pet(int idNumber, String name, String animalType, String species, String dateOfBirth, String ownerName, String ownerPhone,
+               String ownerEmail, String ownerAddress, String ownerCity, String ownerState, String ownerZip,
+               String comments, String vetBusinessName, String vetPhone) {
+        this.idNumber = idNumber;
+        this.name = name;
+        this.animalType = animalType;
+        this.species = species;
+        this.dateOfBirth = dateOfBirth;
+        this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
+        this.ownerEmail = ownerEmail;
+        this.ownerAddress = ownerAddress;
+        this.ownerCity = ownerCity;
+        this.ownerState = ownerState;
+        this.ownerZip = ownerZip;
+        this.comments = comments;
+        this.vetBusinessName = vetBusinessName;
+        this.vetPhone = vetPhone;
+
     }
 
     public int getIdNumber() {
