@@ -16,6 +16,7 @@ public class SocialPost {
 
     static ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
 
+    // null pk constructor
     public SocialPost(String date, String time, int userID, String text) {
 
         this.idNumber = ++count;
@@ -25,6 +26,15 @@ public class SocialPost {
         this.text = text;
 
         addPost(this);
+    }
+
+    public SocialPost(int idNumber, int userID, String text, String date, String time) {
+
+        this.idNumber = idNumber;
+        this.date = date;
+        this.time = time;
+        this.userID = userID;
+        this.text = text;
     }
 
     public static int getCount() {

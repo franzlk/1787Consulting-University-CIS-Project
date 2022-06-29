@@ -78,7 +78,7 @@ public class SqlExchange {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:1521:XE", "javauser", "javapass");
-            // volunteer application array population
+            // volunteer application arraylist population
             Statement stmt = null;
             stmt = connection.createStatement();
             ResultSet rs = null;
@@ -94,7 +94,7 @@ public class SqlExchange {
                         rs.getString(14), rs.getString(15)));
             }
 
-            // volunteer array population
+            // volunteer arraylist population
             stmt = null;
             stmt = connection.createStatement();
             rs = null;
@@ -110,6 +110,18 @@ public class SqlExchange {
                         rs.getDouble(15), rs.getString(16), rs.getString(17),  rs.getInt(18)));
             }
 
+            // social post arraylist population
+            stmt = null;
+            stmt = connection.createStatement();
+            rs = null;
+            if (stmt != null) {
+                rs = stmt.executeQuery("select * from socialposts");
+            }
+            while (rs.next()){
+
+                SocialPost.socialPostArrayList.add(new SocialPost(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
 
             connection.close();
 
