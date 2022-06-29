@@ -44,7 +44,7 @@ CREATE TABLE EVENT(
  Location   VARCHAR(35),
  Name    VARCHAR(50),
  EventDate    CHAR(20),
- Time    VARCHAR(10),
+ Time    VARCHAR(25),
  Address    VARCHAR(45),
  City    CHAR(20),
  State    CHAR(20),
@@ -71,7 +71,7 @@ CREATE TABLE SOCIALPOSTS(
   references VOLUNTEER(VolunteerID),
  Content    VARCHAR(150),
  CreationDate   CHAR (20),
- Time    VARCHAR(7)
+ Time    VARCHAR(25)
 );
 
 
@@ -81,8 +81,8 @@ CREATE TABLE TIMEHISTORY(
  VolunteerID   INT NOT NULL
   references VOLUNTEER(VolunteerID),
  clockDate    CHAR (20),
- TimeIn    CHAR (7),
- TimeOut    CHAR (7)
+ TimeIn    CHAR (25),
+ TimeOut    CHAR (25)
 );
 
 CREATE TABLE PET(
