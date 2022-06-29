@@ -44,7 +44,7 @@ CREATE TABLE EVENT(
  Location   VARCHAR(35),
  Name    VARCHAR(50),
  EventDate    CHAR(20),
- Time    VARCHAR(7),
+ Time    VARCHAR(10),
  Address    VARCHAR(45),
  City    CHAR(20),
  State    CHAR(20),

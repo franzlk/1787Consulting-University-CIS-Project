@@ -35,27 +35,27 @@ INSERT INTO VOLUNTEER (VolunteerID, Name,DateOfBirth,Specialization,EmailAddress
 INSERT INTO VOLUNTEER (VolunteerID, Name,DateOfBirth,Specialization,EmailAddress,HoursServed,PhoneNumber,Status,Address,City,State,Zip,EmergencyContactNum,WorkHistory,TotalHours,UserName,Password, IsAdmin) values (21840, 'Arya Stark',12-28-2002,'Animal Health Care','angerIssues@aol.com',27,7889633214,'Volunteer','423 Honest Abe Is Watching Ct', 'Waynesboro', 'VA', 22980, 7074456325, 'Walmart', 22, 'astark', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 0);
 INSERT INTO VOLUNTEER (VolunteerID, Name,DateOfBirth,Specialization,EmailAddress,HoursServed,PhoneNumber,Status,Address,City,State,Zip,EmergencyContactNum,WorkHistory,TotalHours,UserName,Password, IsAdmin) values (21950, 'Theon Greyjoy',09-11-2001,'Event Volunteer','ICryMyselfToSleep@gmail.com',39,8523697412,'Volunteer','Stop Watching Me Ln', 'Harrisonburg', 'VA', 22801, 4041112365, 'Billy Jacks',30, 'tgreyjoy', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 0);
 
-INSERT INTO EVENT (70354, 'Bridgewater', 'Picking Up', 06-01-2022, '09:30 AM', '101 Park Avenue', 'Harrisonburg', 'VA', 22801, 'A'Pick up', 10101);
-INSERT INTO EVENT (12345, 'Bridgewater', 'Check Up', 05-08-2022, '10:00 AM', 103 Centerville St', 'Bridgewater', 'VA', 22812, 'Vet Appointment', 20201);
-INSERT INTO EVENT (98765, 'Harrisonburg', 'Work Day', 06-22-2022, '07:30 AM', '4984 Smart Guy Ct', 'Bridgewater', 'VA', 22812, 'Cleaning Holding Area', 20111);
-INSERT INTO EVENT (74125, 'Bridgewater', 'Transport', 09-15-2022, '11:00 AM', '2949 Pets Dr', 'Harrisonburg', 'VA', 22801, 'Transport to PetSmart', 11011);
-INSERT INTO EVENT (96325, 'Harrisonburg', 'Transport', 08-24-2022, '10:15 AM', '9482 New Home Ln', 'Waynesboro', 'VA', 22980, 'Fostering Transport', 13011);
-INSERT INTO EVENT (25896, 'Harrisonburg', 'Bath', 08-10-2022, '02:20 PM', '999 New Look St', 'Bridgewater', 'VA', 22812, 'Grooming', 10101);
-INSERT INTO EVENT (24682, 'Bridgewater', 'Work Day', 06-14-2022, '04:00 PM', '4984 Smart Guy Ct', 'Bridgewater', 'VA', 22812, 'Walk', 20111);
-INSERT INTO EVENT (12589, 'Bridgewater', 'Training', 03-22-2022, '05:00 PM', '4984 Smart Guy Ct', 'Bridgewater', 'VA', 22812, 'Pet Training', 21840);
-INSERT INTO EVENT (46270, 'Harrisonburg', 'Work Day', 07-11-2022, '11:00 AM', '444 Dont Get Addicted Dr', Harrisonburg', 'VA', 22801, 'Medicine Handout', 21950);
-INSERT INTO EVENT (98124, 'Bridgewater', 'Festival Set Up', 07-01-2022, '07:00 AM', '101 Smile Ln', 'Bridgewater', 'VA', 22812, 'Booth Set Up', 30301);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (70354, 'Bridgewater', 'Picking Up', 06-01-2022, '09:30 AM', '101 Park Avenue', 'Harrisonburg', 'VA', 22801, 'Pick up', 10101);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (12345, 'Bridgewater', 'Check Up', 05-08-2022, '10:00 AM', '103 Centerville St', 'Bridgewater', 'VA', 22812, 'Vet Appointment', 20201);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (98765, 'Harrisonburg', 'Work Day', 06-22-2022, '07:30 AM', '4984 Smart Guy Ct', 'Bridgewater', 'VA', 22812, 'Cleaning Holding Area', 20111);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (74125, 'Bridgewater', 'Transport', 09-15-2022, '11:00 AM', '2949 Pets Dr', 'Harrisonburg', 'VA', 22801, 'Transport to PetSmart', 11011);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (96325, 'Harrisonburg', 'Transport', 08-24-2022, '10:15 AM', '9482 New Home Ln', 'Waynesboro', 'VA', 22980, 'Fostering Transport', 13011);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (25896, 'Harrisonburg', 'Bath', 08-10-2022, '02:20 PM', '999 New Look St', 'Bridgewater', 'VA', 22812, 'Grooming', 10101);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (24682, 'Bridgewater', 'Work Day', 06-14-2022, '04:00 PM', '4984 Smart Guy Ct', 'Bridgewater', 'VA', 22812, 'Walk', 20111);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (12589, 'Bridgewater', 'Training', 03-22-2022, '05:00 PM', '4984 Smart Guy Ct', 'Bridgewater', 'VA', 22812, 'Pet Training', 21840);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (46270, 'Harrisonburg', 'Work Day', 07-11-2022, '11:00 AM', '444 Dont Get Addicted Dr', 'Harrisonburg', 'VA', 22801, 'Medicine Handout', 21950);
+INSERT INTO EVENT (EventID, Location, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) values (98124, 'Bridgewater', 'Festival Set Up', 07-01-2022, '07:00 AM', '101 Smile Ln', 'Bridgewater', 'VA', 22812, 'Booth Set Up', 30301);
 
-INSERT INTO TRIP (01486, 30301, 8, 09-15-2022, 'Adoption', 74125);
-INSERT INTO TRIP (01486, 12011, 8, 09-15-2022, 'Adoption', 74125);
-INSERT INTO TRIP (01486, 11011, 8, 09-15-2022, 'Adoption', 74125);
-INSERT INTO TRIP (24680, 21840, 0, 06-22-2022, 'Cleaning', 98765);
-INSERT INTO TRIP (24680, 90901, 0, 07-25-2022, 'Cleaning', 98765);
-INSERT INTO TRIP (54321, 40401, 5, 05-08-2022, 'Appointment', 12345);
-INSERT INTO TRIP (25642, 13011, 12, 08-10-2022, 'Vet Grooming', 25896);
-INSERT INTO TRIP (10672, 21950, 3, 06-14-2022, 'Park Walk', 24682);
-INSERT INTO TRIP (38106, 20201, 6, 03-22-2022, 'Obedience Training', 12589);
-INSERT INTO TRIP (81354, 17121, 10, 07-01-2022, 'Festival Booth', 98124);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (01486, 30301, 8, 09-15-2022, 'Adoption', 74125);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (01487, 12011, 8, 09-15-2022, 'Adoption', 74125);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (01488, 11011, 8, 09-15-2022, 'Adoption', 74125);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (24680, 21840, 0, 06-22-2022, 'Cleaning', 98765);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (24681, 90901, 0, 07-25-2022, 'Cleaning', 98765);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (54321, 40401, 5, 05-08-2022, 'Appointment', 12345);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (25642, 13011, 12, 08-10-2022, 'Vet Grooming', 25896);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (10672, 21950, 3, 06-14-2022, 'Park Walk', 24682);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (38106, 20201, 6, 03-22-2022, 'Obedience Training', 12589);
+INSERT INTO TRIP (TripID, VolunteerID, Mileage, TripDate, Info, EventID) values (81354, 17121, 10, 07-01-2022, 'Festival Booth', 98124);
 
 INSERT INTO SOCIALPOSTS (42658, 10101, 'Adoption Ad', 06-10-2022, '09:00 AM');
 INSERT INTO SOCIALPOSTS (42659, 50501, 'Adoption Ad', 05-30-2022, '09:45 AM');
