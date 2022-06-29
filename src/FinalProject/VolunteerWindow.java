@@ -70,6 +70,7 @@ public class VolunteerWindow {
     Volunteer currentUser;
 
     public VolunteerWindow(Volunteer activeUser) {
+        //SqlExchange.populateArrayLists();
         currentUser = activeUser;
         Stage primaryStage = new Stage();
 

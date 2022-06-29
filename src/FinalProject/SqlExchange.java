@@ -14,15 +14,12 @@ public class SqlExchange {
     ResultSet dbResults;
 
     public ResultSet rs;
-    ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
+    //ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
     ArrayList<VolunteerApplication> volunteerApplicationArrayList = new ArrayList<>();
     ArrayList<Event> eventArrayList = new ArrayList<>();
     ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
     ArrayList<Pet> petArrayList = new ArrayList<>();
 
-    public static void main(String[] args) {
-
-    }
 
 
     public void sendDBCommand(String sqlQuery) {
@@ -75,7 +72,8 @@ public class SqlExchange {
     }
 
 
-    public static void populateArrayLists() {
+    public static ArrayList<Volunteer> populateArrayLists() {
+        ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(
@@ -99,7 +97,8 @@ public class SqlExchange {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return volunteerArrayList;
     }
+
 
 }
