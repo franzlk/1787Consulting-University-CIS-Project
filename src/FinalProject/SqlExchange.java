@@ -87,11 +87,11 @@ public class SqlExchange {
             }
             while (rs.next()){
 
-                VolunteerApplication.volunteerApplicationArrayList.add(new VolunteerApplication(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getDouble(5),
+                VolunteerApplication.volunteerApplicationArrayList.add(new VolunteerApplication(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5),
                         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
                         rs.getString(10),rs.getString(11),  rs.getString(12), rs.getString(13),
-                        rs.getDouble(14));
+                        rs.getString(14), rs.getString(15)));
             }
 
             // volunteer array population
@@ -103,11 +103,11 @@ public class SqlExchange {
             }
             while (rs.next()){
 
-                Volunteer.volunteerArrayList.add(new Volunteer(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getDouble(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10),rs.getString(11),  rs.getString(12), rs.getString(13),
-                        rs.getDouble(14), rs.getString(15),  rs.getString(16)));
+                Volunteer.volunteerArrayList.add(new Volunteer(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getDouble(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
+                        rs.getString(11),rs.getString(12),  rs.getString(13), rs.getString(14),
+                        rs.getDouble(15), rs.getString(16),  rs.getString(17)));
             }
 
 
