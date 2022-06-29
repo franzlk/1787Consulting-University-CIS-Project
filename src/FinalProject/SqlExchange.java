@@ -72,15 +72,32 @@ public class SqlExchange {
     }
 
 
-    public static ArrayList<Volunteer> populateArrayLists() {
+    public static void populateArrayLists() {
         ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(
                     "jdbc:oracle:thin:@localhost:1521:XE", "javauser", "javapass");
+            // volunteer application array population
             Statement stmt = null;
             stmt = connection.createStatement();
             ResultSet rs = null;
+            if (stmt != null) {
+                rs = stmt.executeQuery("select * from volunteerapplication");
+            }
+            while (rs.next()){
+
+                VolunteerApplication.volunteerApplicationArrayList.add(new VolunteerApplication(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getDouble(5),
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10),rs.getString(11),  rs.getString(12), rs.getString(13),
+                        rs.getDouble(14));
+            }
+
+            // volunteer array population
+            stmt = null;
+            stmt = connection.createStatement();
+            rs = null;
             if (stmt != null) {
                 rs = stmt.executeQuery("select * from Volunteer");
             }
@@ -92,12 +109,14 @@ public class SqlExchange {
                         rs.getString(10),rs.getString(11),  rs.getString(12), rs.getString(13),
                         rs.getDouble(14), rs.getString(15),  rs.getString(16)));
             }
+
+
             connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return volunteerArrayList;
+
     }
 
 

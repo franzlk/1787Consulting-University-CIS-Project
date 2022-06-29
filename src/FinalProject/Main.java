@@ -86,8 +86,8 @@ public class Main extends Application{
 
     @Override
     public void init(){
-        ArrayList<Volunteer> volunteerArrayList = new ArrayList<>(SqlExchange.populateArrayLists());
-        //;
+        SqlExchange.populateArrayLists();
+
 
         /*// creating an initial admin user
         Volunteer admin = new Volunteer("Julie Markinson", "10/26/1998", "Administration",
