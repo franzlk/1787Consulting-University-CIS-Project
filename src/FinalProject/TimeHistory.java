@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class TimeHistory {
-    static int count = 0;
+
     int idNumber;
     int volunteerID;
     String date;
@@ -16,9 +16,11 @@ public class TimeHistory {
     String timeOut;
 
     static ArrayList<TimeHistory> timeHistoryArrayList = new ArrayList<>();
+    static int count = 0;
 
     // no pk constructor
     public TimeHistory(int volunteerID, String date, String timeIn, String timeOut) {
+        count = timeHistoryArrayList.size();
         this.idNumber = ++count;
         this.volunteerID = volunteerID;
         this.date = date;
@@ -35,6 +37,8 @@ public class TimeHistory {
         this.date = date;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
+
+
     }
 
     @Override

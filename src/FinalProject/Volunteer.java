@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.*;
 
 public class Volunteer {
-    static int count = 0;
+
     int idNumber;
     String name;
     String dateOfBirth;
@@ -25,14 +25,15 @@ public class Volunteer {
     int adminID = 0;
     String username;
     String password;
-    int volunteerApplicationID;// add reference to volunteer application
 
     static ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
+    static int count = 0;
 
     // null pk constructor
     public Volunteer(String name, String dateOfBirth, String specialization,
                 String email, Double hoursServed, String phone, String status,String address, String city, String state,
                 String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password, int adminID) {
+        count = volunteerArrayList.size();
         this.idNumber = ++count;
         this.name = name;
         this.dateOfBirth = dateOfBirth;

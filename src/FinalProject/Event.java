@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Event {
     String name;
-    static int count = 0;
+
     int idNumber;
     String date;
     String time;
@@ -19,10 +19,13 @@ public class Event {
     int eventCreatorID;
 
     static ArrayList<Event> eventArrayList = new ArrayList<>();
+    static int count = 0;
 
     // null pk constructor
     public Event(String name, String date, String time, String address,
                  String city, String state, String zip, String description, int eventCreatorID) {
+        count = eventArrayList.size();
+
         this.idNumber = ++count;
         this.name = name;
         this.date = date;
@@ -50,6 +53,8 @@ public class Event {
         this.zip = zip;
         this.description = description;
         this.eventCreatorID = eventCreatorID;
+
+
     }
 
     public String getName() {

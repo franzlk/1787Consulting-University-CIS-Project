@@ -6,7 +6,7 @@ import java.util.*;
 
 public class SocialPost {
 
-    static int count = 0;
+
     int idNumber;
     String date;
     String time;
@@ -15,10 +15,11 @@ public class SocialPost {
 
 
     static ArrayList<SocialPost> socialPostArrayList = new ArrayList<>();
+    static int count = 0;
 
     // null pk constructor
     public SocialPost(String date, String time, int userID, String text) {
-
+        count = socialPostArrayList.size();
         this.idNumber = ++count;
         this.date = date;
         this.time = time;
@@ -36,6 +37,8 @@ public class SocialPost {
         this.time = time;
         this.userID = userID;
         this.text = text;
+
+
     }
 
     public static int getCount() {

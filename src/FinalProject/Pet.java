@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.*;
 
 public class Pet {
-    static int count = 0;
+
     int idNumber;
     String name;
     String animalType;
@@ -24,12 +24,13 @@ public class Pet {
     String vetPhone;
 
     static ArrayList<Pet> petArrayList = new ArrayList<>();
-
+    static int count = 0;
 
     // null pk constructor
     public Pet(String name, String animalType, String species, String dateOfBirth, String ownerName, String ownerPhone,
                String ownerEmail, String ownerAddress, String ownerCity, String ownerState, String ownerZip,
                String comments, String vetBusinessName, String vetPhone) {
+        count = petArrayList.size();
         this.idNumber = ++count;
         this.name = name;
         this.animalType = animalType;
@@ -67,6 +68,8 @@ public class Pet {
         this.comments = comments;
         this.vetBusinessName = vetBusinessName;
         this.vetPhone = vetPhone;
+
+
 
     }
 
