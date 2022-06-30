@@ -35,6 +35,11 @@ public class DeleteEventWindow {
             if (parentForm instanceof VolunteerWindow){
             for (Event ev : Event.eventArrayList){
                 if (ev.getIdNumber()==ID){
+                    // sql delete query for volunteer application
+                    String sqlEventDeleteQuery = "DELETE from javauser.event where eventid = " + ev.idNumber;
+
+                    SqlExchange.sendDBCommand(sqlEventDeleteQuery);
+
                     Event.eventArrayList.remove(ev);
                     ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();
                     break;
@@ -43,6 +48,11 @@ public class DeleteEventWindow {
             else if (parentForm instanceof AdminWindow){
                 for (Event ev : Event.eventArrayList){
                     if (ev.getIdNumber()==ID){
+                        // sql delete query for volunteer application
+                        String sqlEventDeleteQuery = "DELETE from javauser.event where eventid = " + ev.idNumber;
+
+                        SqlExchange.sendDBCommand(sqlEventDeleteQuery);
+
                         Event.eventArrayList.remove(ev);
                         ((AdminWindow)parentForm).btnRefreshEventFeed.fire();
                         break;
