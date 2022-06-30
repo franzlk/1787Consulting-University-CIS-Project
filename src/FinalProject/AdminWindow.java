@@ -348,15 +348,15 @@ public AdminWindow(Volunteer activeUser) {
     public void addSocialPost(int ID){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setStyle("-fx-background-color: WHITE");
-        Label label = new Label("" + SocialPost.getByID(ID).date+ "\n" + SocialPost.getByID(ID).time + "\n" +
+        Label lblPostMetaData = new Label("" + SocialPost.getByID(ID).date+ "\n" + SocialPost.getByID(ID).time + "\n" +
                 Volunteer.getByID(SocialPost.getByID(ID).userID).name);
-        AnchorPane.setLeftAnchor(label, 5.0);
-        AnchorPane.setTopAnchor(label, 5.0);
-        Label content = new Label((SocialPost.getByID(ID).text));
-        content.setMaxWidth(450);
-        content.setWrapText(true);
-        AnchorPane.setLeftAnchor(content, 175.0);
-        AnchorPane.setTopAnchor(content, 5.0);
+        AnchorPane.setLeftAnchor(lblPostMetaData, 5.0);
+        AnchorPane.setTopAnchor(lblPostMetaData, 5.0);
+        Label lblPostContent = new Label((SocialPost.getByID(ID).text));
+        lblPostContent.setMaxWidth(450);
+        lblPostContent.setWrapText(true);
+        AnchorPane.setLeftAnchor(lblPostContent, 175.0);
+        AnchorPane.setTopAnchor(lblPostContent, 5.0);
         Button btnRemove = new Button("Remove");
         btnRemove.setOnAction(event -> {
             DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, anchorPane);
@@ -364,7 +364,7 @@ public AdminWindow(Volunteer activeUser) {
         AnchorPane.setRightAnchor(btnRemove, 5.0);
         AnchorPane.setTopAnchor(btnRemove, 20.0);
         AnchorPane.setBottomAnchor(btnRemove, 20.0);
-        anchorPane.getChildren().addAll(label, content, btnRemove);
+        anchorPane.getChildren().addAll(lblPostMetaData, lblPostContent, btnRemove);
         homeVBox.getChildren().add(anchorPane);
 
     }
@@ -372,41 +372,42 @@ public AdminWindow(Volunteer activeUser) {
     public void addEvent(int ID){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setStyle("-fx-background-color: WHITE");
-        Label label = new Label("Event: " + (Event.getByID(ID).name));
-        Label content = new Label(Event.getByID(ID).description);
-        content.setMaxWidth(300);
-        content.setWrapText(true);
-        AnchorPane.setLeftAnchor(label, 5.0);
-        AnchorPane.setTopAnchor(label, 5.0);
+        Label lblEventMetaData = new Label("Event: " + (Event.getByID(ID).name) + "\n" + (Event.getByID(ID).date) + "\n" + (Event.getByID(ID).time) + "\n" +
+                "Created by: " + Volunteer.getByID(Event.getByID(ID).eventCreatorID).name);
+        Label lblEventDescription = new Label(Event.getByID(ID).description);
+        lblEventDescription.setMaxWidth(300);
+        lblEventDescription.setWrapText(true);
+        AnchorPane.setLeftAnchor(lblEventMetaData, 5.0);
+        AnchorPane.setTopAnchor(lblEventMetaData, 5.0);
 
         Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
         Button btnEditEvent = new Button ("Edit");
         Button btnViewEvent = new Button ("View");
 
-        AnchorPane.setLeftAnchor(content, 200.0);
-        AnchorPane.setTopAnchor(content, 5.0);
+        AnchorPane.setLeftAnchor(lblEventDescription, 200.0);
+        AnchorPane.setTopAnchor(lblEventDescription, 5.0);
 
-        AnchorPane.setRightAnchor(btnViewEvent, 200.0);
-        AnchorPane.setTopAnchor(btnViewEvent, 10.0);
-        AnchorPane.setBottomAnchor(btnViewEvent, 10.0);
+        AnchorPane.setRightAnchor(btnViewEvent, 100.0);
+        AnchorPane.setTopAnchor(btnViewEvent, 20.0);
+        AnchorPane.setBottomAnchor(btnViewEvent, 20.0);
         btnViewEvent.setOnAction(evt -> {
             ViewEventWindow vew = new ViewEventWindow(ID);
         });
-        AnchorPane.setRightAnchor(btnEditEvent, 100.0);
-        AnchorPane.setTopAnchor(btnEditEvent, 10.0);
-        AnchorPane.setBottomAnchor(btnEditEvent, 10.0);
+        AnchorPane.setRightAnchor(btnEditEvent, 60.0);
+        AnchorPane.setTopAnchor(btnEditEvent, 20.0);
+        AnchorPane.setBottomAnchor(btnEditEvent, 20.0);
         btnEditEvent.setOnAction(evt -> {
             EditEventWindow eew = new EditEventWindow(ID, this);
         });
         AnchorPane.setRightAnchor(btnDeleteEvent, 5.0);
-        AnchorPane.setTopAnchor(btnDeleteEvent, 10.0);
-        AnchorPane.setBottomAnchor(btnDeleteEvent, 10.0);
+        AnchorPane.setTopAnchor(btnDeleteEvent, 20.0);
+        AnchorPane.setBottomAnchor(btnDeleteEvent, 20.0);
         btnDeleteEvent.setOnAction(evt -> {
             //show delete window
             DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
 
         });
-        anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);
+        anchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);
         eventVBox.getChildren().add(anchorPane);
 
     }
