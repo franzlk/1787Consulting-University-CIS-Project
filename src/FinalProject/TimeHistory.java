@@ -39,12 +39,10 @@ public class TimeHistory {
 
     @Override
     public String toString() {
-        return "TimeHistory{" +
-                "volunteerID=" + volunteerID +
-                ", date='" + date + '\'' +
-                ", timeIn='" + timeIn + '\'' +
-                ", timeOut='" + timeOut + '\'' +
-                '}';
+        return  "Volunteer =" + Volunteer.getByID(volunteerID).name +
+                ", date=" + date +
+                ", timeIn=" + timeIn +
+                ", timeOut=" + timeOut;
     }
 
     public static void addTimeHistory(TimeHistory... timeHistories){

@@ -155,6 +155,19 @@ public class SqlExchange {
                         rs.getString(15)));
             }
 
+            // TimeHistory arraylist population
+            stmt = null;
+            stmt = connection.createStatement();
+            rs = null;
+            if (stmt != null) {
+                rs = stmt.executeQuery("select * from timehistory");
+            }
+            while (rs.next()){
+
+                TimeHistory.timeHistoryArrayList.add(new TimeHistory(rs.getInt(1), rs.getInt(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5)));
+            }
+
             connection.close();
 
         } catch (SQLException e) {
