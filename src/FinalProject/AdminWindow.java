@@ -307,13 +307,29 @@ public AdminWindow(Volunteer activeUser) {
     btnClockIn.setOnAction(e -> {
         TimeHistory T = new TimeHistory(currentUser.idNumber, getCurrentDate(), getCurrentTime(), "0");
         lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
+
+        String sqlTimeHistoryInsertQuery = "INSERT INTO TIMEHISTORY (ClockInID, VolunteerID, clockDate, TimeIn, TimeOut) " +
+                "values (" + T.idNumber + ", " + currentUser.idNumber + ", '" + T.date +
+                "', '" + T.timeIn + "', '" + T.timeOut + "')";
+
+        SqlExchange.sendDBCommand(sqlTimeHistoryInsertQuery);
     });
 
     btnClockOut.setOnAction(e -> {
         for (TimeHistory element : TimeHistory.timeHistoryArrayList){
             if ((element.volunteerID==currentUser.idNumber)&&(element.timeOut.equals("0"))){
                 lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
-                element.timeOut = lblClockOutTime.getText();}
+                element.timeOut = getCurrentTime();
+                element.date = getCurrentDate();
+
+                // sql edit query for timeclock
+                String sqlTimeHistoryEditQuery = "UPDATE TIMEHISTORY SET " +
+                        "clockDate = '" + element.date + "', " +
+                        "TimeIn = '" + element.timeIn + "', " +
+                        "TimeOut = '" + element.timeOut + "' " +
+                        "WHERE ClockInID = " + element.idNumber;
+
+                SqlExchange.sendDBCommand(sqlTimeHistoryEditQuery);}
             else{
                 continue;
             }
