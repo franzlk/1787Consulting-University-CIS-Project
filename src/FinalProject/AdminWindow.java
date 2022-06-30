@@ -38,6 +38,8 @@ public class AdminWindow {
     Label lblClockInTime = new Label();
     Button btnClockOut = new Button("Clock-Out");
     Label lblClockOutTime = new Label();
+    Label lblSpacer = new Label();
+    Button btnViewTimeHistory = new Button("View Clock-In History");
 
     // volunteer tab nodes
     Label lblVolunteer = new Label("Volunteers");
@@ -157,10 +159,14 @@ public AdminWindow(Volunteer activeUser) {
     btnClockOut.setPrefWidth(250);
     btnClockOut.setPrefHeight(60);
     btnClockOut.setStyle("-fx-font: 16 arial");
+    btnViewTimeHistory.setPrefWidth(250);
+    lblSpacer.setMinHeight(200);
     clockIOPane.add(btnClockIn, 0, 0);
     clockIOPane.add(lblClockInTime, 0, 1);
     clockIOPane.add(btnClockOut, 0, 2);
     clockIOPane.add(lblClockOutTime, 0, 3);
+    clockIOPane.add(lblSpacer, 0, 4);
+    clockIOPane.add(btnViewTimeHistory, 0, 5);
 
     // nodal content of volunteerGridPane
     volunteerGridPane.setVgap(10);
@@ -306,6 +312,10 @@ public AdminWindow(Volunteer activeUser) {
 
     btnClockOut.setOnAction(e -> {
         lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
+    });
+
+    btnViewTimeHistory.setOnAction(e -> {
+        ViewTimeHistoryWindow vthw = new ViewTimeHistoryWindow();
     });
 
     // volunteer management tab lambda expressions

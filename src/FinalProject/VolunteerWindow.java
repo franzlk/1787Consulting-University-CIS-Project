@@ -36,6 +36,8 @@ public class VolunteerWindow {
     Label lblClockInTime = new Label();
     Button btnClockOut = new Button("Clock-Out");
     Label lblClockOutTime = new Label();
+    Label lblSpacer = new Label();
+    Button btnViewTimeHistory = new Button("View Clock-In History");
 
     // account tab nodes
     Label lblMyAccountInfo = new Label("My Account Info");
@@ -140,10 +142,14 @@ public class VolunteerWindow {
         btnClockOut.setPrefWidth(250);
         btnClockOut.setPrefHeight(60);
         btnClockOut.setStyle("-fx-font: 16 arial");
+        btnViewTimeHistory.setPrefWidth(250);
+        lblSpacer.setMinHeight(200);
         clockIOPane.add(btnClockIn, 0, 0);
         clockIOPane.add(lblClockInTime, 0, 1);
         clockIOPane.add(btnClockOut, 0, 2);
         clockIOPane.add(lblClockOutTime, 0, 3);
+        clockIOPane.add(lblSpacer, 0, 4);
+        clockIOPane.add(btnViewTimeHistory, 0, 5);
 
         // nodal content of AccountPane
         // formatting
@@ -253,6 +259,10 @@ public class VolunteerWindow {
 
         btnClockOut.setOnAction(e -> {
             lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
+        });
+
+        btnViewTimeHistory.setOnAction(e -> {
+            ViewTimeHistoryWindow vthw = new ViewTimeHistoryWindow();
         });
 
         // account tab lambda expressions
