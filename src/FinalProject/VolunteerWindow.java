@@ -329,8 +329,8 @@ public class VolunteerWindow {
     }
 
     public void addSocialPost(int ID){
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setStyle("-fx-background-color: WHITE");
+        AnchorPane postAnchorPane = new AnchorPane();
+        postAnchorPane.setStyle("-fx-background-color: WHITE");
         Label lblPostMetaData = new Label("" + SocialPost.getByID(ID).date+ "\n" + SocialPost.getByID(ID).time + "\n" +
                 Volunteer.getByID(SocialPost.getByID(ID).userID).name);
         AnchorPane.setLeftAnchor(lblPostMetaData, 5.0);
@@ -344,22 +344,22 @@ public class VolunteerWindow {
         if (SocialPost.getByID(ID).userID == currentUser.idNumber){
             Button btnRemove = new Button("Remove");
             btnRemove.setOnAction(event -> {
-                DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, anchorPane);
+                DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, postAnchorPane);
             });
             AnchorPane.setRightAnchor(btnRemove, 5.0);
             AnchorPane.setTopAnchor(btnRemove, 20.0);
             AnchorPane.setBottomAnchor(btnRemove, 20.0);
-            anchorPane.getChildren().addAll(lblPostMetaData, lblPostContent, btnRemove);}
+            postAnchorPane.getChildren().addAll(lblPostMetaData, lblPostContent, btnRemove);}
         else{
-            anchorPane.getChildren().addAll(lblPostMetaData, lblPostContent);
+            postAnchorPane.getChildren().addAll(lblPostMetaData, lblPostContent);
         }
-        homeVBox.getChildren().add(anchorPane);
+        homeVBox.getChildren().add(postAnchorPane);
 
     }
 
     public void addEvent(int ID){
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setStyle("-fx-background-color: WHITE");
+        AnchorPane eventAnchorPane = new AnchorPane();
+        eventAnchorPane.setStyle("-fx-background-color: WHITE");
         Label lblEventMetaData = new Label("Event: " + (Event.getByID(ID).name) + "\n" + (Event.getByID(ID).date) + "\n" + (Event.getByID(ID).time) + "\n" +
                 "Created by: " + Volunteer.getByID(Event.getByID(ID).eventCreatorID).name);
         Label lblEventDescription = new Label(Event.getByID(ID).description);
@@ -399,11 +399,11 @@ public class VolunteerWindow {
                 DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
 
         });
-        anchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);}
+        eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);}
         else{
-            anchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnViewEvent);
+            eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnViewEvent);
         }
-        eventVBox.getChildren().add(anchorPane);
+        eventVBox.getChildren().add(eventAnchorPane);
 
     }
     public void clearUpdateTable(ListView lv, ArrayList al, ObservableList obsList) {

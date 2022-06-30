@@ -390,8 +390,8 @@ public AdminWindow(Volunteer activeUser) {
 }
 
     public void addSocialPost(int ID){
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setStyle("-fx-background-color: WHITE");
+        AnchorPane postAnchorPane = new AnchorPane();
+        postAnchorPane.setStyle("-fx-background-color: WHITE");
         Label lblPostMetaData = new Label("" + SocialPost.getByID(ID).date+ "\n" + SocialPost.getByID(ID).time + "\n" +
                 Volunteer.getByID(SocialPost.getByID(ID).userID).name);
         AnchorPane.setLeftAnchor(lblPostMetaData, 5.0);
@@ -403,19 +403,19 @@ public AdminWindow(Volunteer activeUser) {
         AnchorPane.setTopAnchor(lblPostContent, 5.0);
         Button btnRemove = new Button("Remove");
         btnRemove.setOnAction(event -> {
-            DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, anchorPane);
+            DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, postAnchorPane);
         });
         AnchorPane.setRightAnchor(btnRemove, 5.0);
         AnchorPane.setTopAnchor(btnRemove, 20.0);
         AnchorPane.setBottomAnchor(btnRemove, 20.0);
-        anchorPane.getChildren().addAll(lblPostMetaData, lblPostContent, btnRemove);
-        homeVBox.getChildren().add(anchorPane);
+        postAnchorPane.getChildren().addAll(lblPostMetaData, lblPostContent, btnRemove);
+        homeVBox.getChildren().add(postAnchorPane);
 
     }
 
     public void addEvent(int ID){
-        AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setStyle("-fx-background-color: WHITE");
+        AnchorPane eventAnchorPane = new AnchorPane();
+        eventAnchorPane.setStyle("-fx-background-color: WHITE");
         Label lblEventMetaData = new Label("Event: " + (Event.getByID(ID).name) + "\n" + (Event.getByID(ID).date) + "\n" + (Event.getByID(ID).time) + "\n" +
                 "Created by: " + Volunteer.getByID(Event.getByID(ID).eventCreatorID).name);
         Label lblEventDescription = new Label(Event.getByID(ID).description);
@@ -451,8 +451,8 @@ public AdminWindow(Volunteer activeUser) {
             DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
 
         });
-        anchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);
-        eventVBox.getChildren().add(anchorPane);
+        eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);
+        eventVBox.getChildren().add(eventAnchorPane);
 
     }
 
