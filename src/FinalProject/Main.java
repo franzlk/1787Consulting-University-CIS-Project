@@ -78,7 +78,6 @@ public class Main extends Application{
 
         btnSignUp.setOnAction(e -> {
             SignUpWindow suw = new SignUpWindow();
-            primaryStage.hide();
         });
 
 

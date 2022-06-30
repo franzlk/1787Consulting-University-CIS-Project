@@ -41,13 +41,13 @@ public class SignUpWindow {
         txtName.setPromptText("Name");
         txtDoB.setPromptText("Date of birth");
         txtEmail.setPromptText("Email");
-        txtPhone.setPromptText("Phone Number");
-        txtEmergencyContactPhone.setPromptText("Emergency Contact Phone Number");
+        txtPhone.setPromptText("Phone Number (no spaces or special characters)");
+        txtEmergencyContactPhone.setPromptText("Emergency Contact Phone Number (no spaces or special characters)");
         txtWorkHistory.setPromptText("Work History");
         txtAddress.setPromptText("Street Address");
         txtCity.setPromptText("City");
         txtState.setPromptText("State");
-        txtZip.setPromptText("Zip Code");
+        txtZip.setPromptText("Zip Code (no spaces or special characters)");
         txtUsername.setPromptText("Username");
         txtPassword.setPromptText("Password");
 
@@ -96,9 +96,17 @@ public class SignUpWindow {
                     (String)cbSpecializationPreference.getSelectionModel().getSelectedItem(),
                     (String)cbShadowPreference.getSelectionModel().getSelectedItem(), txtEmergencyContactPhone.getText(),
                     txtUsername.getText(), txtPassword.getText());
+
+            String sqlVolunteerApplicationInsertQuery = "INSERT INTO VOLUNTEERAPPLICATION(VolunteerApplicationID, Name, DateOfBirth, EmailAddress, " +
+                    "PhoneNumber, ShadowPreference, Address, City, State, Zip, WorkHistory, PreferredSpecialization, EmergencyContactNum, Username, Password) " +
+                    "values (" + newVA.idNumber + ", '" + newVA.name + "', '" + newVA.DoB + "', '" + newVA.email + "', " +
+                    newVA.phone + ", '" + newVA.ShadowPreference + "', '" + newVA.address + "','" + newVA.city + "','" + newVA.State +
+                    "'," + newVA.zip + ",'" + newVA.workHistory + "','" + newVA.specializationPreference + "'," + newVA.EmergencyContactPhone + ", '" + newVA.username + "', " +
+                    "'" + newVA.password + "')";
+
+            SqlExchange.sendDBCommand(sqlVolunteerApplicationInsertQuery);
+
             primaryStage.hide();
-            Main m = new Main();
-            m.start(new Stage());
             GenericMessageWindow newAppWindow = new GenericMessageWindow("Application successfully submitted",
                     "Your application has been submitted.\n\nPlease try logging in a later date" +
                             " with your chosen username\nand password after your volunteer application is approved.");
