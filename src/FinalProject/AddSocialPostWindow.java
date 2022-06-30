@@ -39,11 +39,19 @@ public class AddSocialPostWindow {
 
         btnConfirm.setOnAction(e -> {
             if (parentForm instanceof VolunteerWindow){
-            SocialPost sp = new SocialPost(((VolunteerWindow)parentForm).getCurrentDate(), ((VolunteerWindow)parentForm).getCurrentTime(),
-                    ((VolunteerWindow)parentForm).currentUser.idNumber, txtDescription.getText());
-            primaryStage.hide();
-            ((VolunteerWindow)parentForm).addSocialPost(sp.userID);
-            ((VolunteerWindow)parentForm).btnRefreshFeed.fire();}
+                SocialPost sp = new SocialPost(((VolunteerWindow)parentForm).getCurrentDate(), ((VolunteerWindow)parentForm).getCurrentTime(),
+                        ((VolunteerWindow)parentForm).currentUser.idNumber, txtDescription.getText());
+                primaryStage.hide();
+                ((VolunteerWindow)parentForm).addSocialPost(sp.userID);
+                ((VolunteerWindow)parentForm).btnRefreshFeed.fire();
+
+                String sqlSocialPostInsertQuery = "INSERT INTO SOCIALPOSTS (PostID, VolunteerID, Content, CreationDate, Time) " +
+                        "values (" + sp.idNumber + ", " + ((VolunteerWindow)parentForm).currentUser.idNumber + ", '" + sp.text +
+                        "', '" + sp.date + "', '" + sp.time + "')";
+
+                SqlExchange.sendDBCommand(sqlSocialPostInsertQuery);
+
+            }
 
             else if (parentForm instanceof AdminWindow){
                 SocialPost sp = new SocialPost(((AdminWindow)parentForm).getCurrentDate(), ((AdminWindow)parentForm).getCurrentTime(),
@@ -51,6 +59,13 @@ public class AddSocialPostWindow {
                 primaryStage.hide();
                 ((AdminWindow)parentForm).addSocialPost(sp.userID);
                 ((AdminWindow)parentForm).btnRefreshFeed.fire();
+
+                String sqlSocialPostInsertQuery = "INSERT INTO SOCIALPOSTS (PostID, VolunteerID, Content, CreationDate, Time) " +
+                        "values (" + sp.idNumber + ", " + ((AdminWindow)parentForm).currentUser.idNumber + ", '" + sp.text +
+                        "', '" + sp.date + "', '" + sp.time + "')";
+
+                SqlExchange.sendDBCommand(sqlSocialPostInsertQuery);
+
                 }
         });
     }
