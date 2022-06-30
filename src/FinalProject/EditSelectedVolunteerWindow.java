@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class EditSelectedVolunteerWindow {
@@ -22,11 +23,14 @@ public class EditSelectedVolunteerWindow {
     TextField txtState = new TextField();
     TextField txtZip = new TextField();
     TextField txtEmergencyContactPhone = new TextField();
-    TextArea txtWorkHistory = new TextArea();
+    TextField txtWorkHistory = new TextField();
     TextField txtTotalHours = new TextField();
     TextField txtAdminID = new TextField();
     TextField txtUsername = new TextField();
     Button btnConfirm = new Button("Confirm Changes");
+    Label lblPasswordExplanation = new Label("Use the change password button below if a volunteer has forgotten their password.\n" +
+            "Inform the volunteer of their new password and encourage them to change their password again after logging in for safety.");
+    Button btnChangePassword = new Button("Change Password");
 
     public EditSelectedVolunteerWindow(Volunteer volunteer, AdminWindow parentForm){
         Stage primaryStage = new Stage();
@@ -47,8 +51,6 @@ public class EditSelectedVolunteerWindow {
         txtState.setPromptText("State");
         txtZip.setPromptText("Zip");
         txtEmergencyContactPhone.setPromptText("Emergency Contact Phone");
-        txtWorkHistory.setWrapText(true);
-        txtWorkHistory.setMaxWidth(250);
         txtWorkHistory.setPromptText("Work History");
         txtTotalHours.setPromptText("Total Hours");
         txtAdminID.setPromptText("Type 0 for regular volunteer, -1 for admin");
@@ -72,8 +74,12 @@ public class EditSelectedVolunteerWindow {
         txtUsername.setText(volunteer.username);
 
         btnConfirm.setMinWidth(510);
+        lblPasswordExplanation.setPrefWidth(510);
+        lblPasswordExplanation.setWrapText(true);
+        lblPasswordExplanation.setTextAlignment(TextAlignment.CENTER);
+        btnChangePassword.setMinWidth(510);
         setMaxWidth(txtName, txtDateOfBirth, txtSpecialization, txtEmail, txtHoursServed, txtPhone, txtStatus, txtEmergencyContactPhone,
-                txtAddress, txtCity, txtState, txtZip, txtTotalHours, txtAdminID, txtUsername);
+                txtAddress, txtCity, txtState, txtZip, txtTotalHours, txtAdminID, txtUsername, txtWorkHistory);
 
         gridPane.add(txtName, 0, 0);
         gridPane.add(txtDateOfBirth, 0, 1);
@@ -94,8 +100,11 @@ public class EditSelectedVolunteerWindow {
         gridPane.add(txtUsername, 1, 7);
 
         gridPane.add(btnConfirm, 0, 8, 2, 1);
+        gridPane.add(lblPasswordExplanation, 0, 9, 2, 1);
+        gridPane.add(btnChangePassword, 0, 10, 2, 1);
 
-        Scene primaryScene = new Scene(gridPane, 550, 500);
+
+        Scene primaryScene = new Scene(gridPane, 550, 400);
         primaryStage.setScene(primaryScene);
         primaryStage.setTitle("Edit Volunteer's Info");
         primaryStage.show();
@@ -148,6 +157,10 @@ public class EditSelectedVolunteerWindow {
             ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).volunteerListView, Volunteer.volunteerArrayList, volunteerObservableList);
 
             primaryStage.hide();
+        });
+
+        btnChangePassword.setOnAction(e -> {
+            ChangePasswordWindow cpw = new ChangePasswordWindow(volunteer.idNumber);
         });
     }
 

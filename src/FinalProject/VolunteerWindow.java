@@ -65,6 +65,7 @@ public class VolunteerWindow {
     Label lblShadowName = new Label("Example Name");
     Label lblEmergencyContactPhone = new Label("Emergency Contact Phone Number\t");
     TextField txtEmergencyContactPhone = new TextField();
+    Button btnChangePassword = new Button("Change Password");
 
     Button btnEdit = new Button("Confirm Account Changes");
     Button btnViewVolunteers = new Button("View Volunteers");
@@ -191,6 +192,7 @@ public class VolunteerWindow {
         accountPane.add(lblShadowName, 1, 10, 3, 1);
         accountPane.add(lblEmergencyContactPhone, 1, 11, 3, 1);
         accountPane.add(txtEmergencyContactPhone, 1, 12, 3, 1);
+        accountPane.add(btnChangePassword, 1, 14);
         accountPane.add(btnEdit, 1, 16);
         accountPane.add(btnViewVolunteers, 2, 16);
         accountPane.add(btnLogout, 3, 16);
@@ -303,6 +305,10 @@ public class VolunteerWindow {
         });
 
         // account tab lambda expressions
+        btnChangePassword.setOnAction(e -> {
+            ChangePasswordWindow cpw = new ChangePasswordWindow(currentUser.idNumber);
+        });
+
         btnViewVolunteers.setOnAction(e -> {
             ViewVolunteersWindow vv = new ViewVolunteersWindow();
         });

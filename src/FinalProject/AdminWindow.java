@@ -79,6 +79,7 @@ public class AdminWindow {
     Label lblShadowName = new Label("Example Name");
     Label lblEmergencyContactPhone = new Label("Emergency Contact Phone Number\t");
     TextField txtEmergencyContactPhone = new TextField();
+    Button btnChangePassword = new Button("Change Password");
 
     Button btnEdit = new Button("Confirm Account Changes");
     Button btnLogout = new Button("Logout");
@@ -236,6 +237,7 @@ public AdminWindow(Volunteer activeUser) {
     accountGridPane.add(lblShadowName, 1, 10, 3, 1);
     accountGridPane.add(lblEmergencyContactPhone, 1, 11, 3, 1);
     accountGridPane.add(txtEmergencyContactPhone, 1, 12, 3, 1);
+    accountGridPane.add(btnChangePassword, 1, 14);
     accountGridPane.add(btnEdit, 1, 16);
     accountGridPane.add(btnLogout, 3, 16);
 
@@ -370,6 +372,10 @@ public AdminWindow(Volunteer activeUser) {
     });
 
     // account tab lambda expressions
+    btnChangePassword.setOnAction(e -> {
+        ChangePasswordWindow cpw = new ChangePasswordWindow(currentUser.idNumber);
+    });
+
     btnEdit.setOnAction(e -> {
         ConfirmAccountChangesWindow cecw = new ConfirmAccountChangesWindow(currentUser.idNumber, this);
     });
