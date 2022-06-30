@@ -41,7 +41,6 @@ CREATE TABLE VOLUNTEER(
 
 CREATE TABLE EVENT(
  EventID    INT primary key NOT NULL,
- Location   VARCHAR(35),
  Name    VARCHAR(50),
  EventDate    CHAR(20),
  Time    VARCHAR(25),

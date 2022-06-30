@@ -63,14 +63,22 @@ public class AddEventWindow {
                     txtCity.getText(), txtState.getText(), txtDescription.getText(), ((VolunteerWindow)parentForm).currentUser.idNumber);
             primaryStage.hide();
             ((VolunteerWindow)parentForm).addEvent(event.idNumber);
-            ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
+            ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();
+
+            }
 
             else if (parentForm instanceof AdminWindow){
                 Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
                         txtCity.getText(), txtState.getText(), txtDescription.getText(), ((AdminWindow)parentForm).currentUser.idNumber);
                 primaryStage.hide();
                 ((AdminWindow)parentForm).addEvent(event.idNumber);
-                ((AdminWindow)parentForm).btnRefreshEventFeed.fire();}
+                ((AdminWindow)parentForm).btnRefreshEventFeed.fire();
+
+                String sqlEventInsertQuery = "INSERT INTO EVENT (EventID, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) " +
+                        "values (" + event.idNumber + ", 'Picking Up', '06-01-2022', '09:30 AM', '101 Park Avenue', 'Harrisonburg', 'VA', 22801, 'Pick up', 10101)";
+
+            }
+
         });
 
     }
