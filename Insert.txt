@@ -120,4 +120,4 @@ INSERT INTO PET (PetID, Name, AnimalType, Species, DateOfBirth, OwnerName, Owner
 INSERT INTO PET (PetID, Name, AnimalType, Species, DateOfBirth, OwnerName, OwnerPhoneNumber, OwnerEmailAddress, OwnerAddress, OwnerCity, OwnerState, OwnerZip, Comments, VetBusinessName, VetPhoneNumber) values (10018, 'Tom Doggy', 'Dog', 'Boston Terrier', '06/03/2022', 'Gabbie', 5124863019,'ILoveBoston@yahoo.com','609 Mouse Rd', 'Bridgewater', 'VA', 22812, 'Caring', 'Mr. Nice Guys Vet', 6417930168);
 INSERT INTO PET (PetID, Name, AnimalType, Species, DateOfBirth, OwnerName, OwnerPhoneNumber, OwnerEmailAddress, OwnerAddress, OwnerCity, OwnerState, OwnerZip, Comments, VetBusinessName, VetPhoneNumber) values (10019, 'Scooby', 'Dog', 'Great Dane', '06/10/2022', 'Jordan', 8403574165,'WhereTheGangAllGo@gmail.com','5208 Scary Ln', 'Waynesboro', 'VA', 22980,'N/A', 'Hburg Vet', 9513574102);
 
-
+commit;
