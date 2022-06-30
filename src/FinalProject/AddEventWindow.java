@@ -34,7 +34,7 @@ public class AddEventWindow {
         txtCity.setPromptText("Event City");
         txtState.setPromptText("Event State");
         txtZip.setPromptText("Event Zip Code (no spaces or special characters)");
-        txtDescription.setPromptText("Event Description");
+        txtDescription.setPromptText("Event Description (Max 150 characters)");
 
         // formatting
         setMaxWidth(txtDescription, txtName, txtDate, txtTime, txtAddress,

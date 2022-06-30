@@ -56,6 +56,8 @@ public class EditEventWindow {
         primaryStage.show();
 
         btnConfirm.requestFocus();
+        
+        Event event = Event.getByID(ID);
 
         btnConfirm.setOnAction(e -> {
 
@@ -69,9 +71,23 @@ public class EditEventWindow {
             if (parentForm instanceof VolunteerWindow){
                 ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
             else if (parentForm instanceof AdminWindow){
-                ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();}
+                ((AdminWindow)parentForm).btnRefreshEventFeed.fire();}
             primaryStage.hide();
 
+            // sql edit query for pet
+            String sqlEventEditQuery = "UPDATE EVENT SET " +
+                    "Name = '" + event.name + "', " +
+                    "EventDate = '" + event.date + "', " +
+                    "Time = '" + event.time + "', " +
+                    "Address = '" + event.address + "', " +
+                    "City = '" + event.city + "', " +
+                    "State = '" + event.state + "', " +
+                    "Zip = " + event.zip + ", " + 
+                    "Description = '" + event.description + "', " +
+                    "EventCreatorID = " + event.eventCreatorID + " " +
+                    "WHERE eventID = " + event.idNumber;
+
+            SqlExchange.sendDBCommand(sqlEventEditQuery);
         });
 
     }

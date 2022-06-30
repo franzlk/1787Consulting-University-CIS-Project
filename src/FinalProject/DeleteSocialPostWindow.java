@@ -42,7 +42,7 @@ public class DeleteSocialPostWindow {
                 ((AdminWindow)parentForm).btnRefreshFeed.fire();
             }
 
-            // sql delete query for volunteer application
+            // sql delete query for social post
             String sqlSocialPostDeleteQuery = "DELETE from javauser.socialposts where postid = " + ID;
 
             SqlExchange.sendDBCommand(sqlSocialPostDeleteQuery);

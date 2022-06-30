@@ -120,7 +120,7 @@ public class EditPetWindow {
                 ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
             }
 
-            // sql delete query for volunteer application
+            // sql edit query for pet
             String sqlPetEditQuery = "UPDATE PET SET " +
                     "Name = '" + pet.name + "', " +
                     "AnimalType = '" + pet.animalType + "', " +
