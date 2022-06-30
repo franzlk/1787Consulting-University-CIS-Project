@@ -292,8 +292,8 @@ public class VolunteerWindow {
                 DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, anchorPane);
             });
             AnchorPane.setRightAnchor(btnRemove, 5.0);
-            AnchorPane.setTopAnchor(btnRemove, 5.0);
-            AnchorPane.setBottomAnchor(btnRemove, 5.0);
+            AnchorPane.setTopAnchor(btnRemove, 20.0);
+            AnchorPane.setBottomAnchor(btnRemove, 20.0);
             anchorPane.getChildren().addAll(label, content, btnRemove);}
         else{
             anchorPane.getChildren().addAll(label, content);
@@ -318,8 +318,8 @@ public class VolunteerWindow {
         AnchorPane.setTopAnchor(content, 5.0);
 
         AnchorPane.setRightAnchor(btnViewEvent, 200.0);
-        AnchorPane.setTopAnchor(btnViewEvent, 5.0);
-        AnchorPane.setBottomAnchor(btnViewEvent, 5.0);
+        AnchorPane.setTopAnchor(btnViewEvent, 10.0);
+        AnchorPane.setBottomAnchor(btnViewEvent, 10.0);
         btnViewEvent.setOnAction(evt -> {
             ViewEventWindow vew = new ViewEventWindow(ID);
         });
@@ -330,14 +330,14 @@ public class VolunteerWindow {
         Button btnEditEvent = new Button ("Edit");
 
         AnchorPane.setRightAnchor(btnEditEvent, 100.0);
-        AnchorPane.setTopAnchor(btnEditEvent, 5.0);
-        AnchorPane.setBottomAnchor(btnEditEvent, 5.0);
+        AnchorPane.setTopAnchor(btnEditEvent, 10.0);
+        AnchorPane.setBottomAnchor(btnEditEvent, 10.0);
         btnEditEvent.setOnAction(evt -> {
                 EditEventWindow eew = new EditEventWindow(ID, this);
         });
         AnchorPane.setRightAnchor(btnDeleteEvent, 5.0);
-        AnchorPane.setTopAnchor(btnDeleteEvent, 5.0);
-        AnchorPane.setBottomAnchor(btnDeleteEvent, 5.0);
+        AnchorPane.setTopAnchor(btnDeleteEvent, 10.0);
+        AnchorPane.setBottomAnchor(btnDeleteEvent, 10.0);
         btnDeleteEvent.setOnAction(evt -> {
             //show delete window
                 DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
