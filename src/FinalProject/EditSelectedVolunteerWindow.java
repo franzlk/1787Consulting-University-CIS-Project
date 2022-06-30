@@ -120,6 +120,29 @@ public class EditSelectedVolunteerWindow {
             volunteer.setAdminID(Integer.valueOf(txtAdminID.getText()));
             volunteer.setUsername(txtUsername.getText());
 
+            // sql edit query for pet
+            String sqlVolunteerEditQuery = "UPDATE VOLUNTEER SET " +
+                    "Name = '" + volunteer.name + "', " +
+                    "DateOfBirth = '" + volunteer.dateOfBirth + "', " +
+                    "Specialization = '" + volunteer.specialization + "', " +
+                    "EmailAddress = '" + volunteer.email + "', " +
+                    "HoursServed = " + volunteer.hoursServed + ", " +
+                    "PhoneNumber = '" + volunteer.phone + "', " +
+                    "Status = '" + volunteer.status + "', " +
+                    "Address = '" + volunteer.address + "', " +
+                    "City = '" + volunteer.city + "', " +
+                    "State = '" + volunteer.state + "', " +
+                    "Zip = " + volunteer.zip + ", " +
+                    "EmergencyContactNum = '" + volunteer.emergencyContactPhone + "', " +
+                    "WorkHistory = '" + volunteer.workHistory + "', " +
+                    "TotalHours = " + volunteer.totalHours + ", " +
+                    "UserName = '" + volunteer.username + "', " +
+                    "Password = '" + volunteer.password + "', " +
+                    "IsAdmin = " + volunteer.adminID + " " +
+                    "WHERE volunteerID = " + volunteer.idNumber;
+
+            SqlExchange.sendDBCommand(sqlVolunteerEditQuery);
+
             ObservableList<Volunteer> volunteerObservableList
                     = FXCollections.observableArrayList(Volunteer.volunteerArrayList);
             ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).volunteerListView, Volunteer.volunteerArrayList, volunteerObservableList);

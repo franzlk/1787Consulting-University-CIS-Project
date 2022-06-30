@@ -13,6 +13,7 @@ public class ConfirmAccountChangesWindow {
     Label lblMessage = new Label("Account changes successfully applied.");
 
     public <T> ConfirmAccountChangesWindow(int userID, T parentForm){
+        Volunteer volunteer = Volunteer.getByID(userID);
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -51,6 +52,29 @@ public class ConfirmAccountChangesWindow {
             //Volunteer.getByID(userID).setSpecialization((String) ((AdminWindow) parentForm).cbSpecialization.getSelectionModel().getSelectedItem());
             Volunteer.getByID(userID).setEmergencyContactPhone(((AdminWindow) parentForm).txtEmergencyContactPhone.getText());
         }
+
+        // sql edit query for pet
+        String sqlVolunteerEditQuery = "UPDATE VOLUNTEER SET " +
+                "Name = '" + volunteer.name + "', " +
+                "DateOfBirth = '" + volunteer.dateOfBirth + "', " +
+                "Specialization = '" + volunteer.specialization + "', " +
+                "EmailAddress = '" + volunteer.email + "', " +
+                "HoursServed = " + volunteer.hoursServed + ", " +
+                "PhoneNumber = '" + volunteer.phone + "', " +
+                "Status = '" + volunteer.status + "', " +
+                "Address = '" + volunteer.address + "', " +
+                "City = '" + volunteer.city + "', " +
+                "State = '" + volunteer.state + "', " +
+                "Zip = " + volunteer.zip + ", " +
+                "EmergencyContactNum = '" + volunteer.emergencyContactPhone + "', " +
+                "WorkHistory = '" + volunteer.workHistory + "', " +
+                "TotalHours = " + volunteer.totalHours + ", " +
+                "UserName = '" + volunteer.username + "', " +
+                "Password = '" + volunteer.password + "', " +
+                "IsAdmin = " + volunteer.adminID + " " +
+                "WHERE volunteerID = " + volunteer.idNumber;
+
+        SqlExchange.sendDBCommand(sqlVolunteerEditQuery);
 
         Scene primaryScene = new Scene(gridPane, 475, 175);
         primaryStage.setScene(primaryScene);
