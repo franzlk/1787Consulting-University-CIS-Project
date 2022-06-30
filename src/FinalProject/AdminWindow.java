@@ -167,6 +167,13 @@ public AdminWindow(Volunteer activeUser) {
     clockIOPane.add(lblClockOutTime, 0, 3);
     clockIOPane.add(lblSpacer, 0, 4);
     clockIOPane.add(btnViewTimeHistory, 0, 5);
+    for (TimeHistory element : TimeHistory.timeHistoryArrayList){ //checking if user is already clocked in
+        if ((element.volunteerID==currentUser.idNumber)&&(element.timeOut.equals("0"))){
+            lblClockInTime.setText("You are already Clocked-In.");
+        }
+        else{
+            continue;
+        }}
 
     // nodal content of volunteerGridPane
     volunteerGridPane.setVgap(10);
@@ -296,25 +303,28 @@ public AdminWindow(Volunteer activeUser) {
         DeletePetWindow dpw = new DeletePetWindow((Pet)petListView.getSelectionModel().getSelectedItem(), this);
     });
 
-    // clock io tab lambda expression
-    btnClockIn.setOnAction(e -> {
-        lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
-    });
-
-    btnClockOut.setOnAction(e -> {
-        lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
-    });
-
     // clock in/out tab lambda expressions
     btnClockIn.setOnAction(e -> {
+        TimeHistory T = new TimeHistory(currentUser.idNumber, getCurrentDate(), getCurrentTime(), "0");
         lblClockInTime.setText("Clock-In Time:\t\t" + getCurrentDate() + " " + getCurrentTime());
     });
 
     btnClockOut.setOnAction(e -> {
-        lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
+        for (TimeHistory element : TimeHistory.timeHistoryArrayList){
+            if ((element.volunteerID==currentUser.idNumber)&&(element.timeOut.equals("0"))){
+                lblClockOutTime.setText("Clock-Out Time:\t" + getCurrentDate() + " " + getCurrentTime());
+                element.timeOut = lblClockOutTime.getText();}
+            else{
+                continue;
+            }
+        }
+
+
     });
 
     btnViewTimeHistory.setOnAction(e -> {
+
+
         ViewTimeHistoryWindow vthw = new ViewTimeHistoryWindow();
     });
 
