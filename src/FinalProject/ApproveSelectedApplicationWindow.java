@@ -42,6 +42,17 @@ public class ApproveSelectedApplicationWindow {
             Volunteer volunteer = new Volunteer(volApp.name, volApp.DoB, "New Learner", volApp.email,
                     0.0, volApp.phone, "Conditional Volunteer", volApp.address, volApp.city, volApp.State,
                     volApp.zip, volApp.EmergencyContactPhone, volApp.workHistory, 0.0, volApp.username, volApp.password, 0);
+
+            // sql insert query for new volunteer
+            String sqlVolunteerInsertQuery = "INSERT INTO VOLUNTEER (VolunteerID, Name, DateOfBirth, Specialization, EmailAddress, " +
+                    "HoursServed, PhoneNumber, Status, Address, City, State, Zip, EmergencyContactNum, WorkHistory, TotalHours, UserName, Password, IsAdmin) " +
+                    "values (" + volunteer.idNumber + ", '" + volunteer.name + "', '" + volunteer.dateOfBirth + "', '" + volunteer.specialization + "', '" + volunteer.email + "', " +
+                    volunteer.hoursServed + ", " + volunteer.phone + ", '" + volunteer.status + "', '" + volunteer.address + "', '" + volunteer.city
+                    + "', '" + volunteer.state + "', " + volunteer.zip + ", " + volunteer.emergencyContactPhone + ", '" + volunteer.workHistory + "', " + volunteer.totalHours
+                    + ", '" + volunteer.username + "', '" + volunteer.password + "', " + volunteer.adminID + ")";
+
+            SqlExchange.sendDBCommand(sqlVolunteerInsertQuery);
+
             // remove the approved application
             VolunteerApplication.volunteerApplicationArrayList.remove(volApp);
 
