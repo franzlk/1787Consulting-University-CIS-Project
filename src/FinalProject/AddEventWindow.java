@@ -16,10 +16,11 @@ public class AddEventWindow {
     TextField txtAddress = new TextField();
     TextField txtCity = new TextField();
     TextField txtState = new TextField();
+    TextField txtZip = new TextField();
     TextArea txtDescription = new TextArea();
     Button btnConfirm = new Button("Confirm Event");
 
-    public <T> AddEventWindow(T parentForm){
+    public <T> AddEventWindow(T parentForm, int currentUserID){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -32,11 +33,12 @@ public class AddEventWindow {
         txtAddress.setPromptText("Event Street Address");
         txtCity.setPromptText("Event City");
         txtState.setPromptText("Event State");
+        txtZip.setPromptText("Event Zip Code");
         txtDescription.setPromptText("Event Description");
 
         // formatting
         setMaxWidth(txtDescription, txtName, txtDate, txtTime, txtAddress,
-                txtCity, txtState);
+                txtCity, txtState, txtZip);
         txtDescription.setMaxHeight(150);
         txtDescription.setWrapText(true);
         btnConfirm.setMinWidth(510);
@@ -47,8 +49,9 @@ public class AddEventWindow {
         gridPane.add(txtAddress, 1, 0);
         gridPane.add(txtCity, 1, 1);
         gridPane.add(txtState, 1, 2);
-        gridPane.add(txtDescription, 0, 3, 2, 1);
-        gridPane.add(btnConfirm, 0, 4, 2, 1);
+        gridPane.add(txtZip, 1, 3);
+        gridPane.add(txtDescription, 0, 4, 2, 1);
+        gridPane.add(btnConfirm, 0, 5, 2, 1);
 
         Scene primaryScene = new Scene(gridPane, 550, 350);
         primaryStage.setScene(primaryScene);
@@ -58,27 +61,24 @@ public class AddEventWindow {
         btnConfirm.requestFocus();
 
         btnConfirm.setOnAction(e -> {
-            if (parentForm instanceof VolunteerWindow){
             Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
-                    txtCity.getText(), txtState.getText(), txtDescription.getText(), ((VolunteerWindow)parentForm).currentUser.idNumber);
+                    txtCity.getText(), txtState.getText(), txtZip.getText(), txtDescription.getText(), currentUserID);
+            if (parentForm instanceof VolunteerWindow){
             primaryStage.hide();
             ((VolunteerWindow)parentForm).addEvent(event.idNumber);
             ((VolunteerWindow)parentForm).btnRefreshEventFeed.fire();
-
             }
-
             else if (parentForm instanceof AdminWindow){
-                Event event = new Event(txtName.getText(), txtDate.getText(), txtTime.getText(), txtAddress.getText(),
-                        txtCity.getText(), txtState.getText(), txtDescription.getText(), ((AdminWindow)parentForm).currentUser.idNumber);
                 primaryStage.hide();
                 ((AdminWindow)parentForm).addEvent(event.idNumber);
                 ((AdminWindow)parentForm).btnRefreshEventFeed.fire();
-
-                String sqlEventInsertQuery = "INSERT INTO EVENT (EventID, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) " +
-                        "values (" + event.idNumber + ", 'Picking Up', '06-01-2022', '09:30 AM', '101 Park Avenue', 'Harrisonburg', 'VA', 22801, 'Pick up', 10101)";
-
             }
 
+            String sqlEventInsertQuery = "INSERT INTO EVENT (EventID, Name, EventDate, Time, Address, City, State, Zip, Description, EventCreatorID) " +
+                    "values (" + event.idNumber + ", '" + event.name + "', '" + event.date + "', '"+ event.time +
+                    "', '" + event.address + "', '" + event.city + "', '" + event.state + "', " + event.zip + ", '" + event.description + "', " + currentUserID + ")";
+
+            SqlExchange.sendDBCommand(sqlEventInsertQuery);
         });
 
     }

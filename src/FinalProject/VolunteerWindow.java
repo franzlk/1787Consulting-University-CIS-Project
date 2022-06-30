@@ -218,7 +218,7 @@ public class VolunteerWindow {
 
         // event tab lambda expressions
         btnAddEvent.setOnAction(e -> {
-            AddEventWindow aew = new AddEventWindow(this);
+            AddEventWindow aew = new AddEventWindow(this, activeUser.idNumber);
         });
 
         btnRefreshEventFeed.setOnAction(e -> {

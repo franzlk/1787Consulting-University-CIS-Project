@@ -9,13 +9,8 @@ import java.util.*;
 
 public class SqlExchange {
 
-    Connection dbConn;
-    Statement commStmt;
-    ResultSet dbResults;
 
-    String URL = "jdbc:oracle:thin:@localhost:1521:XE";
-    String userID = "javauser"; // Change to YOUR Oracle username
-    String userPASS = "javapass"; // Change to YOUR Oracle password
+
     public ResultSet rs;
     //ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
     ArrayList<VolunteerApplication> volunteerApplicationArrayList = new ArrayList<>();
@@ -25,11 +20,16 @@ public class SqlExchange {
 
 
 
-    public void sendDBCommand(String sqlQuery) {
+    public static void sendDBCommand(String sqlQuery) {
         // Set up your connection strings
         // IF YOU ARE IN CIS330 NOW: use YOUR Oracle Username/Password
-
+        String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+        String userID = "javauser"; // Change to YOUR Oracle username
+        String userPASS = "javapass"; // Change to YOUR Oracle password
         OracleDataSource ds;
+        Connection dbConn;
+        Statement commStmt;
+        ResultSet dbResults;
 
         // Clear Box Testing - Print each query to check SQL syntax
         //  sent to this method.
@@ -135,7 +135,8 @@ public class SqlExchange {
 
                 Event.eventArrayList.add(new Event(rs.getInt(1), rs.getString(2),
                         rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getInt(10)));
             }
 
             // pet arraylist population

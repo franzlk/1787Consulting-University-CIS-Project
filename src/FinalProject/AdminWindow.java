@@ -261,7 +261,7 @@ public AdminWindow(Volunteer activeUser) {
 
     // event tab lambda expression
     btnAddEvent.setOnAction(e -> {
-        AddEventWindow aew = new AddEventWindow(this);
+        AddEventWindow aew = new AddEventWindow(this, activeUser.idNumber);
     });
 
     btnRefreshEventFeed.setOnAction(e -> {

@@ -22,7 +22,7 @@ public class Event {
 
     // null pk constructor
     public Event(String name, String date, String time, String address,
-                 String city, String state, String description, int eventCreatorID) {
+                 String city, String state, String zip, String description, int eventCreatorID) {
         this.idNumber = ++count;
         this.name = name;
         this.date = date;
@@ -30,6 +30,7 @@ public class Event {
         this.address = address;
         this.city = city;
         this.state = state;
+        this.zip = zip;
         this.description = description;
         this.eventCreatorID = eventCreatorID;
 
@@ -38,7 +39,7 @@ public class Event {
 
     // present pk constructor
     public Event(int idNumber, String name, String date, String time, String address,
-                 String city, String state, String description, int eventCreatorID) {
+                 String city, String state, String zip, String description, int eventCreatorID) {
         this.idNumber = idNumber;
         this.name = name;
         this.date = date;
@@ -46,6 +47,7 @@ public class Event {
         this.address = address;
         this.city = city;
         this.state = state;
+        this.zip = zip;
         this.description = description;
         this.eventCreatorID = eventCreatorID;
     }
