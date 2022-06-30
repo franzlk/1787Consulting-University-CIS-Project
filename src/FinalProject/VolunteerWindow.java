@@ -70,7 +70,6 @@ public class VolunteerWindow {
     Volunteer currentUser;
 
     public VolunteerWindow(Volunteer activeUser) {
-        //SqlExchange.populateArrayLists();
         currentUser = activeUser;
         Stage primaryStage = new Stage();
 
@@ -218,7 +217,7 @@ public class VolunteerWindow {
 
         // event tab lambda expressions
         btnAddEvent.setOnAction(e -> {
-            AddEventWindow aew = new AddEventWindow(this, activeUser.idNumber);
+            AddEventWindow aew = new AddEventWindow(this, currentUser.idNumber);
         });
 
         btnRefreshEventFeed.setOnAction(e -> {
@@ -232,7 +231,7 @@ public class VolunteerWindow {
 
         // pet tab lambda expressions
         btnAddPet.setOnAction(e -> {
-            AddPetWindow anpw = new AddPetWindow(this);
+            AddPetWindow anpw = new AddPetWindow(this, currentUser.idNumber);
         });
 
         btnViewPet.setOnAction(e -> {

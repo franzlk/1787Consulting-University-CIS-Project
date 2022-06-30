@@ -33,7 +33,7 @@ public class AddEventWindow {
         txtAddress.setPromptText("Event Street Address");
         txtCity.setPromptText("Event City");
         txtState.setPromptText("Event State");
-        txtZip.setPromptText("Event Zip Code");
+        txtZip.setPromptText("Event Zip Code (no spaces or special characters)");
         txtDescription.setPromptText("Event Description");
 
         // formatting

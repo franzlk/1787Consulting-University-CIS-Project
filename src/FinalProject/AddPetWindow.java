@@ -29,7 +29,7 @@ public class AddPetWindow {
 
 
 
-    public <T> AddPetWindow(T parentForm){
+    public <T> AddPetWindow(T parentForm, int currentUserID){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -41,14 +41,14 @@ public class AddPetWindow {
         txtSpecies.setPromptText("Species");
         txtDoB.setPromptText("Date of Birth");
         txtVetBusinessName.setPromptText("Vet's Business Name");
-        txtVetPhone.setPromptText("Vet's Phone Number");//
+        txtVetPhone.setPromptText("Vet's Phone Number (no spaces or special characters)");
         txtOwnerName.setPromptText("Owner Name");
-        txtOwnerPhone.setPromptText("Phone Number");
+        txtOwnerPhone.setPromptText("Phone Number (no spaces or special characters)");
         txtOwnerEmail.setPromptText("Email");
         txtOwnerAddress.setPromptText("Street Address");
         txtOwnerCity.setPromptText("City");
         txtOwnerState.setPromptText("State");
-        txtOwnerZip.setPromptText("Zip Code");
+        txtOwnerZip.setPromptText("Zip Code (no spaces or special characters)");
         txtComments.setPromptText("Miscellaneous Comments");
 
         setMaxWidth(txtName, txtAnimalType, txtSpecies, txtDoB, txtVetBusinessName, txtVetPhone, txtOwnerName, txtOwnerPhone,
@@ -103,6 +103,15 @@ public class AddPetWindow {
             else if (parentForm instanceof AdminWindow){
                 ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
             }
+
+            String sqlPetInsertQuery = "INSERT INTO PET (PetID, Name, AnimalType, Species, DateOfBirth, OwnerName, " +
+                    "OwnerPhoneNumber, OwnerEmailAddress, OwnerAddress, OwnerCity, OwnerState, OwnerZip, Comments, VetBusinessName, VetPhoneNumber) " +
+                    "values (" + pet.idNumber + ", '" + pet.name + "', '" + pet.animalType + "', '" + pet.species + "', '" + pet.dateOfBirth + "', " +
+                    "'" + pet.ownerName + "', " + pet.ownerPhone + ",'" + pet.ownerEmail + "'," +
+                    "'" + pet.ownerAddress + "', '" + pet.ownerCity + "', '" + pet.ownerState + "', " + pet.ownerZip +
+                    ", '" + pet.comments + "', '" + pet.vetBusinessName + "', " + pet.vetPhone + ")";
+
+            SqlExchange.sendDBCommand(sqlPetInsertQuery);
         });
 
     }

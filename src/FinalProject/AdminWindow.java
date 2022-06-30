@@ -261,7 +261,7 @@ public AdminWindow(Volunteer activeUser) {
 
     // event tab lambda expression
     btnAddEvent.setOnAction(e -> {
-        AddEventWindow aew = new AddEventWindow(this, activeUser.idNumber);
+        AddEventWindow aew = new AddEventWindow(this, currentUser.idNumber);
     });
 
     btnRefreshEventFeed.setOnAction(e -> {
@@ -275,7 +275,7 @@ public AdminWindow(Volunteer activeUser) {
 
     // pet tab lambda expressions
     btnAddPet.setOnAction(e -> {
-        AddPetWindow anpw = new AddPetWindow(this);
+        AddPetWindow anpw = new AddPetWindow(this, currentUser.idNumber);
     });
 
     btnViewPet.setOnAction(e -> {
