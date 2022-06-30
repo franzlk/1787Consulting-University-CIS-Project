@@ -9,6 +9,9 @@ import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
 
 public class DeleteSelectedVolunteerWindow {
     Label lblMessage = new Label("Are you sure you want to remove this volunteer?");
@@ -16,6 +19,7 @@ public class DeleteSelectedVolunteerWindow {
     Button btnCancel = new Button("Cancel");
 
     public DeleteSelectedVolunteerWindow(Volunteer volunteer, AdminWindow parentForm){
+
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -38,17 +42,18 @@ public class DeleteSelectedVolunteerWindow {
                 = FXCollections.observableArrayList(Volunteer.volunteerArrayList);
 
         btnDelete.setOnAction(e -> {
-                for (Volunteer v : Volunteer.volunteerArrayList) {
-                    if (v.getIdNumber() == volunteer.getIdNumber()) {
-                        Volunteer.volunteerArrayList.remove(v);
-                        ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).volunteerListView, Volunteer.volunteerArrayList, volunteerObservableList);
+            // sql delete query for volunteer application
+            String sqlVolunteerDeleteQuery = "DELETE from javauser.volunteer where volunteerid = " + volunteer.idNumber;
 
-                    }
-                    break;
+            SqlExchange.sendDBCommand(sqlVolunteerDeleteQuery);
 
+            Volunteer.volunteerArrayList.remove(volunteer);
 
-                }
-                primaryStage.hide();
+            volunteerObservableList.clear();
+            volunteerObservableList.addAll(Volunteer.volunteerArrayList);
+            ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).volunteerListView, Volunteer.volunteerArrayList, volunteerObservableList);
+
+            primaryStage.hide();
         });
 
         btnCancel.setOnAction(e -> {
