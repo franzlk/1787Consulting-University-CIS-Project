@@ -119,6 +119,27 @@ public class EditPetWindow {
             else if (parentForm instanceof AdminWindow){
                 ((AdminWindow) parentForm).clearUpdateTable(((AdminWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
             }
+
+            // sql delete query for volunteer application
+            String sqlPetEditQuery = "UPDATE PET SET " +
+                    "Name = '" + pet.name + "', " +
+                    "AnimalType = '" + pet.animalType + "', " +
+                    "Species = '" + pet.species + "', " +
+                    "DateOfBirth = '" + pet.dateOfBirth + "', " +
+                    "OwnerName = '" + pet.ownerName + "', " +
+                    "OwnerPhoneNumber = '" + pet.ownerPhone + "', " +
+                    "OwnerEmailAddress = '" + pet.ownerEmail + "', " +
+                    "OwnerAddress = '" + pet.ownerAddress + "', " +
+                    "OwnerCity = '" + pet.ownerCity + "', " +
+                    "OwnerState = '" + pet.ownerState + "', " +
+                    "OwnerZip = " + pet.ownerZip + ", " + //
+                    "Comments = '" + pet.comments + "', " +
+                    "VetBusinessName = '" + pet.vetBusinessName + "', " +
+                    "VetPhoneNumber = '" + pet.vetPhone + "' " +
+                    "WHERE PETID = " + pet.idNumber;
+
+            SqlExchange.sendDBCommand(sqlPetEditQuery);
+
         });
 
     }
