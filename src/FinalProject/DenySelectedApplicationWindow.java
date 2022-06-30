@@ -37,7 +37,12 @@ public class DenySelectedApplicationWindow {
         ObservableList<VolunteerApplication> volunteerApplicationObservableList= FXCollections.observableArrayList(VolunteerApplication.volunteerApplicationArrayList);
 
         btnDeny.setOnAction(event -> {
-           //remove denied application
+            // sql delete query for volunteer application
+            String sqlVolunteerApplicationDeleteQuery = "DELETE from javauser.volunteerapplication where volunteerapplicationid = " + volApp.idNumber;
+
+            SqlExchange.sendDBCommand(sqlVolunteerApplicationDeleteQuery);
+
+            //remove denied application
             VolunteerApplication.volunteerApplicationArrayList.remove(volApp);
 
 

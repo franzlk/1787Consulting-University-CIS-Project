@@ -56,6 +56,11 @@ public class ApproveSelectedApplicationWindow {
             // remove the approved application
             VolunteerApplication.volunteerApplicationArrayList.remove(volApp);
 
+            // sql delete query for volunteer application
+            String sqlVolunteerApplicationDeleteQuery = "DELETE from javauser.volunteerapplication where volunteerapplicationid = " + volApp.idNumber;
+
+            SqlExchange.sendDBCommand(sqlVolunteerApplicationDeleteQuery);
+
 
             //update listviews on parent form
             volunteerObservableList.clear();
