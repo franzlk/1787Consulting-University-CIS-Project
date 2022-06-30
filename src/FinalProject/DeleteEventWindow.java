@@ -35,7 +35,7 @@ public class DeleteEventWindow {
             if (parentForm instanceof VolunteerWindow){
             for (Event ev : Event.eventArrayList){
                 if (ev.getIdNumber()==ID){
-                    // sql delete query for volunteer application
+                    // sql delete query for event
                     String sqlEventDeleteQuery = "DELETE from javauser.event where eventid = " + ev.idNumber;
 
                     SqlExchange.sendDBCommand(sqlEventDeleteQuery);
@@ -48,7 +48,7 @@ public class DeleteEventWindow {
             else if (parentForm instanceof AdminWindow){
                 for (Event ev : Event.eventArrayList){
                     if (ev.getIdNumber()==ID){
-                        // sql delete query for volunteer application
+                        // sql delete query for event
                         String sqlEventDeleteQuery = "DELETE from javauser.event where eventid = " + ev.idNumber;
 
                         SqlExchange.sendDBCommand(sqlEventDeleteQuery);

@@ -40,6 +40,11 @@ public class DeletePetWindow {
             if (parentForm instanceof VolunteerWindow){
                 for (Pet p : Pet.petArrayList){
                     if (p.getIdNumber()==pet.idNumber){
+                        // sql delete query for pet
+                        String sqlPetDeleteQuery = "DELETE from javauser.pet where petid = " + p.idNumber;
+
+                        SqlExchange.sendDBCommand(sqlPetDeleteQuery);
+
                         Pet.petArrayList.remove(p);
                         ((VolunteerWindow)parentForm).clearUpdateTable(((VolunteerWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
                         break;
@@ -48,6 +53,11 @@ public class DeletePetWindow {
             else if (parentForm instanceof AdminWindow){
                 for (Pet p : Pet.petArrayList){
                     if (p.getIdNumber()==pet.idNumber){
+                        // sql delete query for pet
+                        String sqlPetDeleteQuery = "DELETE from javauser.pet where petid = " + p.idNumber;
+
+                        SqlExchange.sendDBCommand(sqlPetDeleteQuery);
+
                         Pet.petArrayList.remove(p);
                         ((AdminWindow)parentForm).clearUpdateTable(((AdminWindow) parentForm).petListView, Pet.petArrayList, petObservableList);
                         break;
