@@ -60,9 +60,11 @@ public class VolunteerWindow {
     Label lblWorkHistory = new Label("Work History\t");
     TextArea txtWorkHistory = new TextArea();
     Label lblSpecialization = new Label("Specialization\t");
-    ComboBox cbSpecialization = new ComboBox();
+    ComboBox cbSpecialization = new ComboBox(FXCollections
+            .observableArrayList(Specialization.getSpecializationArrayList()));
     Label lblShadow = new Label("Shadow name");
-    Label lblShadowName = new Label("Example Name");
+    ComboBox cbShadow = new ComboBox(FXCollections
+            .observableArrayList(Volunteer.volunteerNameArrayList));
     Label lblEmergencyContactPhone = new Label("Emergency Contact Phone Number\t");
     TextField txtEmergencyContactPhone = new TextField();
     Button btnChangePassword = new Button("Change Password");
@@ -189,7 +191,7 @@ public class VolunteerWindow {
         accountPane.add(lblSpecialization, 1, 7, 3, 1);
         accountPane.add(cbSpecialization, 1, 8, 3, 1);
         accountPane.add(lblShadow, 1, 9, 3, 1);
-        accountPane.add(lblShadowName, 1, 10, 3, 1);
+        accountPane.add(cbShadow, 1, 10, 3, 1);
         accountPane.add(lblEmergencyContactPhone, 1, 11, 3, 1);
         accountPane.add(txtEmergencyContactPhone, 1, 12, 3, 1);
         accountPane.add(btnChangePassword, 1, 14);
@@ -206,8 +208,8 @@ public class VolunteerWindow {
         txtState.setText(activeUser.getState());
         txtZip.setText(activeUser.getZip());
         txtWorkHistory.setText(activeUser.getWorkHistory());
-        //cbSpecialization.setText
-        //lblShadowName.setText();
+        cbSpecialization.getSelectionModel().select(activeUser.specialization);
+        cbShadow.getSelectionModel().selectFirst();
         txtEmergencyContactPhone.setText(activeUser.getEmergencyContactPhone());
 
         Scene primaryScene = new Scene(TabPane, 775, 600);

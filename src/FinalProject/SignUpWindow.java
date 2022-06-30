@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class SignUpWindow {
 
@@ -17,9 +19,11 @@ public class SignUpWindow {
     TextField txtEmergencyContactPhone = new TextField();
     TextArea txtWorkHistory = new TextArea();
     Label lblSpecializationPreference = new Label("Specialization Preference");
-    ComboBox cbSpecializationPreference = new ComboBox();
+    ComboBox cbSpecializationPreference = new ComboBox(FXCollections
+            .observableArrayList(Specialization.getSpecializationArrayList()));
     Label lblShadowPreference = new Label("Shadow Preference");
-    ComboBox cbShadowPreference = new ComboBox();
+    ComboBox cbShadowPreference = new ComboBox(FXCollections
+            .observableArrayList(Volunteer.volunteerNameArrayList));
     TextField txtAddress = new TextField();
     TextField txtCity = new TextField();
     TextField txtState = new TextField();
@@ -56,7 +60,7 @@ public class SignUpWindow {
                 txtEmergencyContactPhone,  txtAddress, txtCity, txtState, txtZip,txtUsername, txtPassword);
         txtWorkHistory.setMaxHeight(150);
         txtWorkHistory.setWrapText(true);
-        btnSignUp.setMinWidth(510);
+        btnSignUp.setMinWidth(588);
 
         gridPane.add(lblBarkApplication, 0, 0, 2, 1);
         lblBarkApplication.setStyle("-fx-font: 18 arial");

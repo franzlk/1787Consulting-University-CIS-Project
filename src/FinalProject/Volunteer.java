@@ -28,6 +28,7 @@ public class Volunteer {
 
     static ArrayList<Volunteer> volunteerArrayList = new ArrayList<>();
     static int count = 0;
+    static ArrayList<String> volunteerNameArrayList = new ArrayList<>();
 
     // null pk constructor
     public Volunteer(String name, String dateOfBirth, String specialization,

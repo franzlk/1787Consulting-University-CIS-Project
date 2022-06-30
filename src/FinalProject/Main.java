@@ -86,6 +86,10 @@ public class Main extends Application{
     @Override
     public void init(){
         SqlExchange.populateArrayLists();
+        for (Volunteer v : Volunteer.volunteerArrayList){
+            Volunteer.volunteerNameArrayList.add(v.name);
+        }
+
 
         // test data before integrating db
         /*// creating an initial admin user
