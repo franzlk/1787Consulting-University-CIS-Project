@@ -30,7 +30,7 @@ public class Pet {
     public Pet(String name, String animalType, String species, String dateOfBirth, String ownerName, String ownerPhone,
                String ownerEmail, String ownerAddress, String ownerCity, String ownerState, String ownerZip,
                String comments, String vetBusinessName, String vetPhone) {
-        count = petArrayList.size();
+
         this.idNumber = ++count;
         this.name = name;
         this.animalType = animalType;

@@ -20,7 +20,7 @@ public class TimeHistory {
 
     // no pk constructor
     public TimeHistory(int volunteerID, String date, String timeIn, String timeOut) {
-        count = timeHistoryArrayList.size();
+
         this.idNumber = ++count;
         this.volunteerID = volunteerID;
         this.date = date;

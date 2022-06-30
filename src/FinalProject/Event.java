@@ -24,7 +24,6 @@ public class Event {
     // null pk constructor
     public Event(String name, String date, String time, String address,
                  String city, String state, String zip, String description, int eventCreatorID) {
-        count = eventArrayList.size();
 
         this.idNumber = ++count;
         this.name = name;

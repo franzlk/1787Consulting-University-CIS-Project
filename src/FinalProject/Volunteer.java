@@ -34,7 +34,7 @@ public class Volunteer {
     public Volunteer(String name, String dateOfBirth, String specialization,
                 String email, Double hoursServed, String phone, String status,String address, String city, String state,
                 String zip, String emergencyContactPhone, String workHistory, Double totalHours, String username, String password, int adminID) {
-        count = volunteerArrayList.size();
+
         this.idNumber = ++count;
         this.name = name;
         this.dateOfBirth = dateOfBirth;

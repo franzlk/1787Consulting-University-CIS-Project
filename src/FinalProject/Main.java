@@ -86,6 +86,14 @@ public class Main extends Application{
     @Override
     public void init(){
         SqlExchange.populateArrayLists();
+        Volunteer.count = Volunteer.volunteerArrayList.size();
+        VolunteerApplication.count = VolunteerApplication.volunteerApplicationArrayList.size();
+        Pet.count = Pet.petArrayList.size();
+        Event.count = Event.eventArrayList.size();
+        SocialPost.count = SocialPost.socialPostArrayList.size();
+        TimeHistory.count = TimeHistory.timeHistoryArrayList.size();
+
+        //populating a name arraylist for use in comboboxes
         for (Volunteer v : Volunteer.volunteerArrayList){
             Volunteer.volunteerNameArrayList.add(v.name);
         }

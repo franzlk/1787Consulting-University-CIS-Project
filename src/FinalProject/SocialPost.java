@@ -19,7 +19,7 @@ public class SocialPost {
 
     // null pk constructor
     public SocialPost(String date, String time, int userID, String text) {
-        count = socialPostArrayList.size();
+
         this.idNumber = ++count;
         this.date = date;
         this.time = time;
