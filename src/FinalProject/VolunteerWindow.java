@@ -13,13 +13,13 @@ import java.util.ArrayList;
 
 public class VolunteerWindow {
     // home tab nodes
-    Label lblHome = new Label("Share a post with other volunteers!");
+    Label lblHome = new Label("Share a post with other volunteers!\nYou cannot edit or delete other volunteer's posts.");
     Button btnAddPost = new Button("Add Post");
     Button btnRefreshFeed = new Button("Refresh");
     VBox homeVBox = new VBox(5);
 
     // event tab nodes
-    Label lblEvent = new Label("Create an event for volunteers to attend!");
+    Label lblEvent = new Label("Create an event for volunteers to attend!\nYou cannot edit or delete other volunteer's events.");
     Button btnAddEvent = new Button("Add Event");
     Button btnRefreshEventFeed = new Button("Refresh");
     VBox eventVBox = new VBox(5);
@@ -285,12 +285,19 @@ public class VolunteerWindow {
         content.setWrapText(true);
         AnchorPane.setLeftAnchor(content, 175.0);
         AnchorPane.setTopAnchor(content, 5.0);
-        Button btnRemove = new Button("Remove");
-        btnRemove.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
-        AnchorPane.setRightAnchor(btnRemove, 5.0);
-        AnchorPane.setTopAnchor(btnRemove, 5.0);
-        AnchorPane.setBottomAnchor(btnRemove, 5.0);
-        anchorPane.getChildren().addAll(label, content, btnRemove);
+        // only posts made by the current user are removable (however, in adminwindow all posts are removable for moderation purposes)
+        if (SocialPost.getByID(ID).userID == currentUser.idNumber){
+            Button btnRemove = new Button("Remove");
+            btnRemove.setOnAction(event -> {
+                DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, anchorPane);
+            });
+            AnchorPane.setRightAnchor(btnRemove, 5.0);
+            AnchorPane.setTopAnchor(btnRemove, 5.0);
+            AnchorPane.setBottomAnchor(btnRemove, 5.0);
+            anchorPane.getChildren().addAll(label, content, btnRemove);}
+        else{
+            anchorPane.getChildren().addAll(label, content);
+        }
         homeVBox.getChildren().add(anchorPane);
 
     }
@@ -305,8 +312,6 @@ public class VolunteerWindow {
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setTopAnchor(label, 5.0);
 
-        Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
-        Button btnEditEvent = new Button ("Edit");
         Button btnViewEvent = new Button ("View");
 
         AnchorPane.setLeftAnchor(content, 200.0);
@@ -318,6 +323,12 @@ public class VolunteerWindow {
         btnViewEvent.setOnAction(evt -> {
             ViewEventWindow vew = new ViewEventWindow(ID);
         });
+
+        // only events made by the current user are removable (however, in adminwindow all events are removable for moderation purposes)
+        if (Event.getByID(ID).eventCreatorID == currentUser.idNumber){
+        Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
+        Button btnEditEvent = new Button ("Edit");
+
         AnchorPane.setRightAnchor(btnEditEvent, 100.0);
         AnchorPane.setTopAnchor(btnEditEvent, 5.0);
         AnchorPane.setBottomAnchor(btnEditEvent, 5.0);
@@ -332,7 +343,10 @@ public class VolunteerWindow {
                 DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
 
         });
-        anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);
+        anchorPane.getChildren().addAll(label, content, btnDeleteEvent, btnEditEvent, btnViewEvent);}
+        else{
+            anchorPane.getChildren().addAll(label, content, btnViewEvent);
+        }
         eventVBox.getChildren().add(anchorPane);
 
     }

@@ -358,7 +358,9 @@ public AdminWindow(Volunteer activeUser) {
         AnchorPane.setLeftAnchor(content, 175.0);
         AnchorPane.setTopAnchor(content, 5.0);
         Button btnRemove = new Button("Remove");
-        btnRemove.setOnAction(evt -> homeVBox.getChildren().remove(anchorPane));
+        btnRemove.setOnAction(event -> {
+            DeleteSocialPostWindow dspw = new DeleteSocialPostWindow(ID, this, homeVBox, anchorPane);
+        });
         AnchorPane.setRightAnchor(btnRemove, 5.0);
         AnchorPane.setTopAnchor(btnRemove, 5.0);
         AnchorPane.setBottomAnchor(btnRemove, 5.0);

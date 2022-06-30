@@ -12,7 +12,7 @@ public class DeleteSocialPostWindow {
     Button btnDelete = new Button("Delete");
     Button btnCancel = new Button("Cancel");
 
-    public <T> DeleteSocialPostWindow(int ID, T parentForm){
+    public <T> DeleteSocialPostWindow(int ID, T parentForm, VBox homeVBox, AnchorPane anchorPane){
         Stage primaryStage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -33,23 +33,21 @@ public class DeleteSocialPostWindow {
 
         btnDelete.setOnAction(e -> {
             if (parentForm instanceof VolunteerWindow){
-            for (SocialPost sp : SocialPost.socialPostArrayList){
-                if (sp.getIdNumber()==ID){
-                    SocialPost.socialPostArrayList.remove(sp);
-                    ((VolunteerWindow)parentForm).btnRefreshFeed.fire();
-                    break;
-                }
-            }}
-            else if (parentForm instanceof AdminWindow){
-                for (SocialPost sp : SocialPost.socialPostArrayList){
-                    if (sp.getIdNumber()==ID){
-                        SocialPost.socialPostArrayList.remove(sp);
-                        ((AdminWindow)parentForm).btnRefreshFeed.fire();
-                        break;
-                    }
-                }
+                SocialPost.socialPostArrayList.remove(SocialPost.getByID(ID));
+                ((VolunteerWindow)parentForm).btnRefreshFeed.fire();
 
             }
+            else if (parentForm instanceof AdminWindow){
+                SocialPost.socialPostArrayList.remove(SocialPost.getByID(ID));
+                ((AdminWindow)parentForm).btnRefreshFeed.fire();
+            }
+
+            // sql delete query for volunteer application
+            String sqlSocialPostDeleteQuery = "DELETE from javauser.socialposts where postid = " + ID;
+
+            SqlExchange.sendDBCommand(sqlSocialPostDeleteQuery);
+
+            homeVBox.getChildren().remove(anchorPane);
 
             primaryStage.hide();
         });
