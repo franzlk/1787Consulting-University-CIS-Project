@@ -17,6 +17,8 @@ public class ViewEventWindow {
     Label lblCity = new Label();
     Label lblState = new Label();
     Label lblDescription = new Label();
+    Label lblSignUpStatus = new Label();
+
     
     public ViewEventWindow(int ID){
         Stage primaryStage = new Stage();
@@ -34,6 +36,13 @@ public class ViewEventWindow {
         lblDescription.setText("Description:\t" + Event.getByID(ID).description);
         lblDescription.setMaxWidth(500);
         lblDescription.setWrapText(true);
+        lblSignUpStatus.setWrapText(true);
+        if (Event.getByID(ID).attendingVolunteerID==0){
+            lblSignUpStatus.setText("Sign-Up Status:\tEvent currently needs volunteers.\n0 Volunteers currently working event.");
+        }
+        else{
+            lblSignUpStatus.setText("Sign-Up Status:\tEvent is staffed. " + Volunteer.getByID(Event.getByID(ID).attendingVolunteerID).name + "\nis signed-up for the vent.");
+        }
 
         gridPane.add(lblName, 0, 0);
         gridPane.add(lblDate, 0, 1);
@@ -42,6 +51,7 @@ public class ViewEventWindow {
         gridPane.add(lblCity, 1, 1);
         gridPane.add(lblState, 1, 2);
         gridPane.add(lblDescription, 0, 3, 2, 1);
+        gridPane.add(lblSignUpStatus, 0, 4, 2, 1);
 
         Scene primaryScene = new Scene(gridPane, 550, 350);
         primaryStage.setScene(primaryScene);

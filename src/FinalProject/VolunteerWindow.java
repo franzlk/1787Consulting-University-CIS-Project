@@ -368,10 +368,18 @@ public class VolunteerWindow {
         AnchorPane.setLeftAnchor(lblEventMetaData, 5.0);
         AnchorPane.setTopAnchor(lblEventMetaData, 5.0);
 
+        Button btnSignUp = new Button("Sign-Up");
         Button btnViewEvent = new Button ("View");
 
         AnchorPane.setLeftAnchor(lblEventDescription, 200.0);
         AnchorPane.setTopAnchor(lblEventDescription, 5.0);
+
+        AnchorPane.setRightAnchor(btnSignUp, 145.0);
+        AnchorPane.setTopAnchor(btnSignUp, 20.0);
+        AnchorPane.setBottomAnchor(btnSignUp, 20.0);
+        btnSignUp.setOnAction(evt -> {
+            EventSignUpWindow esuw = new EventSignUpWindow(ID, currentUser);
+        });
 
         AnchorPane.setRightAnchor(btnViewEvent, 100.0);
         AnchorPane.setTopAnchor(btnViewEvent, 20.0);
@@ -382,7 +390,7 @@ public class VolunteerWindow {
 
         // only events made by the current user are removable (however, in adminwindow all events are removable for moderation purposes)
         if (Event.getByID(ID).eventCreatorID == currentUser.idNumber){
-        Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
+        Button btnDeleteEvent = new Button ("Delete");
         Button btnEditEvent = new Button ("Edit");
 
         AnchorPane.setRightAnchor(btnEditEvent, 60.0);
@@ -399,9 +407,9 @@ public class VolunteerWindow {
                 DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
 
         });
-        eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);}
+        eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnSignUp, btnDeleteEvent, btnEditEvent, btnViewEvent);}
         else{
-            eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnViewEvent);
+            eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnSignUp, btnViewEvent);
         }
         eventVBox.getChildren().add(eventAnchorPane);
 

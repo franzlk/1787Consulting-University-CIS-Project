@@ -424,12 +424,20 @@ public AdminWindow(Volunteer activeUser) {
         AnchorPane.setLeftAnchor(lblEventMetaData, 5.0);
         AnchorPane.setTopAnchor(lblEventMetaData, 5.0);
 
-        Button btnDeleteEvent = new Button ("Delete"); // event still needs to be deleted from arraylist
+        Button btnSignUp = new Button("Sign-Up");
+        Button btnDeleteEvent = new Button ("Delete");
         Button btnEditEvent = new Button ("Edit");
         Button btnViewEvent = new Button ("View");
 
         AnchorPane.setLeftAnchor(lblEventDescription, 200.0);
         AnchorPane.setTopAnchor(lblEventDescription, 5.0);
+
+        AnchorPane.setRightAnchor(btnSignUp, 145.0);
+        AnchorPane.setTopAnchor(btnSignUp, 20.0);
+        AnchorPane.setBottomAnchor(btnSignUp, 20.0);
+        btnSignUp.setOnAction(evt -> {
+            EventSignUpWindow esuw = new EventSignUpWindow(ID, currentUser);
+        });
 
         AnchorPane.setRightAnchor(btnViewEvent, 100.0);
         AnchorPane.setTopAnchor(btnViewEvent, 20.0);
@@ -451,7 +459,7 @@ public AdminWindow(Volunteer activeUser) {
             DeleteEventWindow gcw = new DeleteEventWindow(ID, this);
 
         });
-        eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnDeleteEvent, btnEditEvent, btnViewEvent);
+        eventAnchorPane.getChildren().addAll(lblEventMetaData, lblEventDescription, btnSignUp, btnDeleteEvent, btnEditEvent, btnViewEvent);
         eventVBox.getChildren().add(eventAnchorPane);
 
     }

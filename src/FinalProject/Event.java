@@ -17,6 +17,7 @@ public class Event {
     String zip; // add to related windows and constructor
     String description;
     int eventCreatorID;
+    int attendingVolunteerID;
 
     static ArrayList<Event> eventArrayList = new ArrayList<>();
     static int count = 0;
@@ -35,13 +36,14 @@ public class Event {
         this.zip = zip;
         this.description = description;
         this.eventCreatorID = eventCreatorID;
+        this.attendingVolunteerID = 0;
 
         addEvents(this);
     }
 
     // present pk constructor
     public Event(int idNumber, String name, String date, String time, String address,
-                 String city, String state, String zip, String description, int eventCreatorID) {
+                 String city, String state, String zip, String description, int eventCreatorID, int attendingVolunteerID) {
         this.idNumber = idNumber;
         this.name = name;
         this.date = date;
@@ -52,6 +54,7 @@ public class Event {
         this.zip = zip;
         this.description = description;
         this.eventCreatorID = eventCreatorID;
+        this.attendingVolunteerID = attendingVolunteerID;
 
 
     }
