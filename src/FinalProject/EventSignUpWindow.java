@@ -15,15 +15,26 @@ public class EventSignUpWindow {
     String title;
 
     public EventSignUpWindow(int eventID, Volunteer currentUser){
+        Event event = Event.getByID(eventID);
+
         if (Event.getByID(eventID).attendingVolunteerID==currentUser.idNumber){
             message = "You are already signed up to work at this event";
             title = "Existing Event Sign-Up Found";
 
             Event.getByID(eventID).attendingVolunteerID = currentUser.idNumber;
+
+
         }
         else if (Event.getByID(eventID).attendingVolunteerID==0){
             message = "You have successfully signed up to work at this event";
             title = "Successful Event Sign-Up";
+
+            // sql edit query for pet
+            String sqlEventEditQuery = "UPDATE EVENT SET " +
+                    "AttendingVolunteerID = " + event.attendingVolunteerID + " " +
+                    "WHERE eventID = " + event.idNumber;
+
+            SqlExchange.sendDBCommand(sqlEventEditQuery);
 
             Event.getByID(eventID).attendingVolunteerID = currentUser.idNumber;
         }

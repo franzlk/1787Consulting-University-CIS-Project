@@ -85,6 +85,7 @@ public class EditEventWindow {
                     "Zip = " + event.zip + ", " + 
                     "Description = '" + event.description + "', " +
                     "EventCreatorID = " + event.eventCreatorID + " " +
+                    "AttendingVolunteerID = " + event.attendingVolunteerID + " " +
                     "WHERE eventID = " + event.idNumber;
 
             SqlExchange.sendDBCommand(sqlEventEditQuery);
