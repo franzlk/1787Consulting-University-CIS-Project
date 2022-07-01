@@ -1,3 +1,8 @@
+//1787 Consulting
+//Course: CIS 484
+//Final Project
+//I promise that this work was done in accordance with the JMU honor code and
+//I did not receive nor give unauthorized assistance in writing this program.
 package FinalProject;
 
 import javafx.collections.FXCollections;

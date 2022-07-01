@@ -1,3 +1,8 @@
+//1787 Consulting
+//Course: CIS 484
+//Final Project
+//I promise that this work was done in accordance with the JMU honor code and
+//I did not receive nor give unauthorized assistance in writing this program.
 package FinalProject;
 
 import javafx.collections.FXCollections;
@@ -42,7 +47,6 @@ public class DeletePetWindow {
                     if (p.getIdNumber()==pet.idNumber){
                         // sql delete query for pet
                         String sqlPetDeleteQuery = "DELETE from javauser.pet where petid = " + p.idNumber;
-
                         SqlExchange.sendDBCommand(sqlPetDeleteQuery);
 
                         Pet.petArrayList.remove(p);
