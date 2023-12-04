@@ -48,7 +48,7 @@ public class Event {
 
     // present pk constructor
     public Event(int idNumber, String name, String date, String time, String address,
-                 String city, String state, String zip, String description, int eventCreatorID, int attendingVolunteerID) {
+                 String city, String state, String zip, String description, int eventCreatorID) {
         this.idNumber = idNumber;
         this.name = name;
         this.date = date;
@@ -59,7 +59,7 @@ public class Event {
         this.zip = zip;
         this.description = description;
         this.eventCreatorID = eventCreatorID;
-        this.attendingVolunteerID = attendingVolunteerID;
+        //this.attendingVolunteerID = attendingVolunteerID;
 
 
     }

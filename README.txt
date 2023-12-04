@@ -14,3 +14,6 @@ Ensure that all database tables have been committed prior to using the applicati
 
 Package name is FinalProject.
 
+database connection within Oracle SQL command line:
+javauser
+javapass
